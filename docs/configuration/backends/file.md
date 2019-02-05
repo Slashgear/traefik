@@ -4,7 +4,7 @@ Traefik can be configured with a file.
 
 ## Reference
 
-```toml
+```ini
 [file]
 
 # Backends
@@ -211,7 +211,7 @@ TOML templating can be used if rules are not defined in the Traefik configuratio
 
 Add your configuration at the end of the global configuration file `traefik.toml`:
 
-```toml
+```ini
 defaultEntryPoints = ["http", "https"]
 
 [entryPoints]
@@ -245,12 +245,14 @@ defaultEntryPoints = ["http", "https"]
   # ...
 ```
 
-!!! note
+::: tip
     If `tls.entryPoints` is not defined, the certificate is attached to all the `defaultEntryPoints` with a TLS configuration.
+:::
 
-!!! note
+::: tip
     Adding certificates directly to the entryPoint is still maintained but certificates declared in this way cannot be managed dynamically.
     It's recommended to use the file provider to declare certificates.
+:::
 
 !!! warning
     TOML templating cannot be used if rules are defined in the Traefik configuration file.
@@ -263,7 +265,7 @@ Traefik allows defining rules in one or more separate files.
 
 You have to specify the file path in the `file.filename` option.
 
-```toml
+```ini
 # traefik.toml
 defaultEntryPoints = ["http", "https"]
 
@@ -284,7 +286,7 @@ The option `file.watch` allows Traefik to watch file changes automatically.
 
 You could have multiple `.toml` files in a directory (and recursively in its sub-directories):
 
-```toml
+```ini
 [file]
   directory = "/path/to/config/"
   watch = true
@@ -300,7 +302,7 @@ If you are defining rules in one or more separate files, you can use two formats
 
 Backends, Frontends and TLS certificates are defined one at time, as described in the file `rules.toml`:
 
-```toml
+```ini
 # rules.toml
 [backends]
   [backends.backend1]
@@ -334,7 +336,7 @@ Traefik allows using TOML templating.
 
 Thus, it's possible to define easily lot of Backends, Frontends and TLS certificates as described in the file `template-rules.toml` :
 
-```toml
+```ini
 # template-rules.toml
 [backends]
 {{ range $i, $e := until 100 }}

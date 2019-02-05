@@ -76,7 +76,7 @@ Finally, we're giving this container a static name called `traefik`.
 
 Let's take a look at a simple `traefik.toml` configuration as well before we'll create the Traefik container:
 
-```toml
+```ini
 debug = false
 
 logLevel = "ERROR"

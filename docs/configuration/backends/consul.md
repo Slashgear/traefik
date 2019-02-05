@@ -2,7 +2,7 @@
 
 Traefik can be configured to use Consul as a provider.
 
-```toml
+```ini
 ################################################################
 # Consul KV Provider
 ################################################################

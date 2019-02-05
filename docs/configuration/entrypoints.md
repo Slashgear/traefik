@@ -4,7 +4,7 @@
 
 ### TOML
 
-```toml
+```ini
 defaultEntryPoints = ["http", "https"]
 
 # ...
@@ -97,9 +97,10 @@ For more information about the CLI, see the documentation about [Traefik command
 --entryPoints='Name:https Address::443 TLS'
 ```
 
-!!! note
+::: tip
     Whitespace is used as option separator and `,` is used as value separator for the list.  
     The names of the options are case-insensitive.
+:::
 
 In compose file the entrypoint syntax is different:
 
@@ -160,7 +161,7 @@ Auth.Forward.TLS.InsecureSkipVerify:true
 
 ## Basic
 
-```toml
+```ini
 # Entrypoints definition
 #
 # Default:
@@ -177,7 +178,7 @@ Auth.Forward.TLS.InsecureSkipVerify:true
 
 To redirect an http entrypoint to an https entrypoint (with SNI support).
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -194,14 +195,15 @@ To redirect an http entrypoint to an https entrypoint (with SNI support).
       keyFile = "integration/fixtures/https/snitest.org.key"
 ```
 
-!!! note
+::: tip
     Please note that `regex` and `replacement` do not have to be set in the `redirect` structure if an entrypoint is defined for the redirection (they will not be used in this case).
+:::
 
 ## Rewriting URL
 
 To redirect an entrypoint rewriting the URL.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -210,8 +212,9 @@ To redirect an entrypoint rewriting the URL.
     replacement = "http://mydomain/$1"
 ```
 
-!!! note
+::: tip
     Please note that `regex` and `replacement` do not have to be set in the `redirect` structure if an `entrypoint` is defined for the redirection (they will not be used in this case).
+:::
 
 Care should be taken when defining replacement expand variables: `$1x` is equivalent to `${1x}`, not `${1}x` (see [Regexp.Expand](https://golang.org/pkg/regexp/#Regexp.Expand)), so use `${1}` syntax.
 
@@ -223,7 +226,7 @@ Regular expressions and replacements can be tested using online tools such as [G
 
 Define an entrypoint with SNI support.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -233,9 +236,9 @@ Define an entrypoint with SNI support.
       keyFile = "integration/fixtures/https/snitest.com.key"
 ```
 
-!!! note
+::: tip
     If an empty TLS configuration is provided, default self-signed certificates are generated.
-
+:::
 
 ### Dynamic Certificates
 
@@ -255,7 +258,7 @@ The requirement will apply to all server certs in the entrypoint.
 
 In the example below both `snitest.com` and `snitest.org` will require client certs
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -280,7 +283,7 @@ Passwords can be encoded in MD5, SHA1 and BCrypt: you can use `htpasswd` to gene
 Users can be specified directly in the TOML file, or indirectly by referencing an external file;
  if both are provided, the two are merged, with external file contents having precedence.
 
-```toml
+```ini
 # To enable basic auth on an entrypoint with 2 user/pass: test:test and test2:test2
 [entryPoints]
   [entryPoints.http]
@@ -294,7 +297,7 @@ Optionally, you can:
 
 - customize the realm
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -306,7 +309,7 @@ Optionally, you can:
 
 - pass authenticated user to application via headers
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -318,7 +321,7 @@ Optionally, you can:
 
 - remove the Authorization header
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -335,7 +338,7 @@ You can use `htdigest` to generate them.
 Users can be specified directly in the TOML file, or indirectly by referencing an external file;
  if both are provided, the two are merged, with external file contents having precedence
 
-```toml
+```ini
 # To enable digest auth on an entrypoint with 2 user/realm/pass: test:traefik:test and test2:traefik:test2
 [entryPoints]
   [entryPoints.http]
@@ -349,7 +352,7 @@ Optionally, you can!
 
 - pass authenticated user to application via headers.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -361,7 +364,7 @@ Optionally, you can!
 
 - remove the Authorization header.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -378,7 +381,7 @@ This configuration will first forward the request to `http://authserver.com/auth
 If the response code is 2XX, access is granted and the original request is performed.
 Otherwise, the response from the authentication server is returned.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
     # ...
@@ -415,7 +418,7 @@ Otherwise, the response from the authentication server is returned.
 
 To specify an https entry point with a minimum TLS version, and specifying an array of cipher suites (from [crypto/tls](https://godoc.org/crypto/tls#pkg-constants)).
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -437,7 +440,7 @@ To specify an https entry point with a minimum TLS version, and specifying an ar
 
 To enable strict SNI checking, so that connections cannot be made if a matching certificate does not exist.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -452,7 +455,7 @@ To enable strict SNI checking, so that connections cannot be made if a matching 
 
 To enable a default certificate to serve, so that connections without SNI or without a matching domain will be served this certificate.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -462,16 +465,17 @@ To enable a default certificate to serve, so that connections without SNI or wit
       keyFile = "integration/fixtures/https/snitest.com.key"
 ```
 
-!!! note
+::: tip
     There can only be one `defaultCertificate` set per entrypoint.
     Use a single set of square brackets `[ ]`, instead of the two needed for normal certificates.
     If no default certificate is provided, a self-signed certificate will be generated by Traefik, and used instead.
+:::
 
 ## Compression
 
 To enable compression support using gzip format.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -490,7 +494,7 @@ Traefik supports whitelisting to accept or refuse requests based on the client I
 
 The following example enables IP white listing and accepts requests from client IPs defined in `sourceRange`.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
     address = ":80"
@@ -505,7 +509,7 @@ By default, Traefik uses the client IP (see [ClientIPStrategy](/configuration/en
 
 If you want to use another IP than the one determined by `ClientIPStrategy` for the whitelisting, you can define the `IPStrategy` option:
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http.clientIPStrategy]
     depth = 4
@@ -529,7 +533,7 @@ There are several option available:
 ### Depth
 
 This option uses the `X-Forwarded-For` header and takes the IP located at the `depth` position (starting from the right).
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
     address = ":80"
@@ -537,7 +541,7 @@ This option uses the `X-Forwarded-For` header and takes the IP located at the `d
     [entryPoints.http.clientIPStrategy]
 ```
  
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
     address = ":80"
@@ -546,9 +550,10 @@ This option uses the `X-Forwarded-For` header and takes the IP located at the `d
       depth = 5
 ```
 
-!!! note
+::: tip
     - If `depth` is greater than the total number of IPs in `X-Forwarded-For`, then clientIP will be empty.
     - If `depth` is lesser than or equal to 0, then the option is ignored.
+:::
 
 Examples:
   
@@ -562,7 +567,7 @@ Examples:
 
 Traefik will scan the `X-Forwarded-For` header (from the right) and pick the first IP not in the `excludedIPs` list.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
     address = ":80"
@@ -571,9 +576,10 @@ Traefik will scan the `X-Forwarded-For` header (from the right) and pick the fir
       excludedIPs = ["127.0.0.1/32", "192.168.1.7"]
 ```
 
-!!! note
+::: tip
     If `depth` is specified, `excludedIPs` is ignored.
-   
+:::
+
 Examples:
 
 | `X-Forwarded-For`                       | `excludedIPs`         | clientIP     |
@@ -597,7 +603,7 @@ Only IPs in `trustedIPs` will lead to remote client address replacement: you sho
     When queuing Traefik behind another load-balancer, be sure to carefully configure Proxy Protocol on both sides.
     Otherwise, it could introduce a security risk in your system by forging requests.
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
     address = ":80"
@@ -623,7 +629,7 @@ Only IPs in `trustedIPs` will lead to remote client address replacement: you sho
 
 Only IPs in `trustedIPs` will be authorized to trust the client forwarded headers (`X-Forwarded-*`).
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
     address = ":80"

@@ -6,7 +6,7 @@ See also [Kubernetes user guide](/user-guide/kubernetes).
 
 ## Configuration
 
-```toml
+```ini
 ################################################################
 # Kubernetes Ingress Provider
 ################################################################
@@ -136,10 +136,11 @@ There are 3 ways to configure Traefik to use https to communicate with backend p
 
 If either of those configuration options exist, then the backend communication protocol is assumed to be TLS, and will connect via TLS automatically.
 
-!!! note
-    Please note that by enabling TLS communication between traefik and your pods, you will have to have trusted certificates that have the proper trust chain and IP subject name.
-    If this is not an option, you may need to skip TLS certificate verification.
-    See the [insecureSkipVerify](/configuration/commons/#main-section) setting for more details.
+::: tip
+Please note that by enabling TLS communication between traefik and your pods, you will have to have trusted certificates that have the proper trust chain and IP subject name.
+If this is not an option, you may need to skip TLS certificate verification.
+See the [insecureSkipVerify](/configuration/commons/#main-section) setting for more details.
+:::
 
 ## Annotations
 
@@ -251,8 +252,9 @@ A single service backend definition may be omitted; in this case, Traefik auto-c
 Conveniently, users need not bother to compute the percentage remainder for a main service backend.
 For instance, in the example above `service_backend3` does not need to be specified to be assigned 75%.
 
-!!! note
+::: tip
     For each service weight given, the Ingress specification must include a backend item with the corresponding `serviceName` and (if given) matching path.
+:::
 
 Currently, 3 decimal places for the weight are supported.
 An attempt to exceed the precision should be avoided as it may lead to percentage computation flaws and, in consequence, Ingress parsing errors.
@@ -270,8 +272,9 @@ Please note, you may have to set `service.spec.externalTrafficPolicy` to the val
 Please see [this link](https://kubernetes.io/docs/tutorials/services/source-ip/) for more information.
 
 
-!!! note
+::: tip
     Please note that `traefik.ingress.kubernetes.io/redirect-regex` and `traefik.ingress.kubernetes.io/redirect-replacement` do not have to be set if `traefik.ingress.kubernetes.io/redirect-entry-point` is defined for the redirection (they will not be used in this case).
+:::
 
 The following annotations are applicable on the Service object associated with a particular Ingress object:
 
@@ -296,9 +299,9 @@ memresponsebodybytes: 2097152
 retryexpression: IsNetworkError() && Attempts() <= 2
 ```
 
-!!! note
+::: tip
     `traefik.ingress.kubernetes.io/` and `ingress.kubernetes.io/` are supported prefixes.
-
+:::
 ### Custom Headers Annotations
 
 |                        Annotation                     |                                                                                             Description                                                                          |
@@ -362,9 +365,10 @@ The following limitations hold for basic/digest auth:
 TLS certificates can be managed in Secrets objects.
 More information are available in the  [User Guide](/user-guide/kubernetes/#add-a-tls-certificate-to-the-ingress).
 
-!!! note
+::: tip
     Only TLS certificates provided by users can be stored in Kubernetes Secrets.
     [Let's Encrypt](https://letsencrypt.org) certificates cannot be managed in Kubernets Secrets yet.
+:::
 
 ### Global Default Backend Ingresses
 
@@ -384,6 +388,7 @@ spec:
 This ingress follows the [Global Default Backend](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource) property of ingresses.
 This will allow users to create a "default backend" that will match all unmatched requests.
 
-!!! note
+::: tip
     Due to Traefik's use of priorities, you may have to set this ingress priority lower than other ingresses in your environment, to avoid this global ingress from satisfying requests that _could_ match other ingresses.
     To do this, use the `traefik.ingress.kubernetes.io/priority` annotation (as seen in [General Annotations](/configuration/backends/kubernetes/#general-annotations)) on your ingresses accordingly.
+:::

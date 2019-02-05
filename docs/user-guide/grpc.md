@@ -8,7 +8,7 @@ This section explains how to use Traefik as reverse proxy for gRPC application.
 
 At last, we configure our Traefik instance to use both self-signed certificates.
 
-```toml
+```ini
 defaultEntryPoints = ["https"]
 
 [entryPoints]
@@ -79,7 +79,7 @@ Common Name (e.g. server FQDN or YOUR name) []: frontend.local
 
 At last, we configure our Traefik instance to use both self-signed certificates.
 
-```toml
+```ini
 defaultEntryPoints = ["https"]
 
 # For secure connection on backend.local

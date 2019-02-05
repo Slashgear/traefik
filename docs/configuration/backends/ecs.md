@@ -4,7 +4,7 @@ Traefik can be configured to use Amazon ECS as a provider.
 
 ## Configuration
 
-```toml
+```ini
 ################################################################
 # ECS Provider
 ################################################################

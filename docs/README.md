@@ -49,18 +49,18 @@ _(But if you'd rather configure some of your routes manually, Traefik supports t
 
 ## Supported Providers
 
-- [Docker](/configuration/backends/docker/) / [Swarm mode](/configuration/backends/docker/#docker-swarm-mode)
-- [Kubernetes](/configuration/backends/kubernetes/)
-- [Mesos](/configuration/backends/mesos/) / [Marathon](/configuration/backends/marathon/)
-- [Rancher](/configuration/backends/rancher/) (API, Metadata)
-- [Azure Service Fabric](/configuration/backends/servicefabric/)
-- [Consul Catalog](/configuration/backends/consulcatalog/)
-- [Consul](/configuration/backends/consul/) / [Etcd](/configuration/backends/etcd/) / [Zookeeper](/configuration/backends/zookeeper/) / [BoltDB](/configuration/backends/boltdb/)
-- [Eureka](/configuration/backends/eureka/)
-- [Amazon ECS](/configuration/backends/ecs/)
-- [Amazon DynamoDB](/configuration/backends/dynamodb/)
-- [File](/configuration/backends/file/)
-- [Rest](/configuration/backends/rest/)
+- [Docker](/configuration/backends/docker.md) / [Swarm mode](/configuration/backends/docker.md#docker-swarm-mode)
+- [Kubernetes](/configuration/backends/kubernetes.md)
+- [Mesos](/configuration/backends/mesos.md) / [Marathon](/configuration/backends/marathon.md)
+- [Rancher](/configuration/backends/rancher.md) (API, Metadata)
+- [Azure Service Fabric](/configuration/backends/servicefabric.md)
+- [Consul Catalog](/configuration/backends/consulcatalog.md)
+- [Consul](/configuration/backends/consul.md) / [Etcd](/configuration/backends/etcd.md) / [Zookeeper](/configuration/backends/zookeeper.md) / [BoltDB](/configuration/backends/boltdb.md)
+- [Eureka](/configuration/backends/eureka.md)
+- [Amazon ECS](/configuration/backends/ecs.md)
+- [Amazon DynamoDB](/configuration/backends/dynamodb.md)
+- [File](/configuration/backends/file.md)
+- [Rest](/configuration/backends/rest.md)
 
 ## The Traefik Quickstart (Using Docker)
 
@@ -172,19 +172,19 @@ IP: 172.27.0.4
 Now that you have a basic understanding of how Traefik can automatically create the routes to your services and load balance them, it might be time to dive into [the documentation](/) and let Traefik work for you!
 Whatever your infrastructure is, there is probably [an available Traefik provider](/#supported-providers) that will do the job.
 
-Our recommendation would be to see for yourself how simple it is to enable HTTPS with [Traefik's let's encrypt integration](/user-guide/examples/#lets-encrypt-support) using the dedicated [user guide](/user-guide/docker-and-lets-encrypt/).
+Our recommendation would be to see for yourself how simple it is to enable HTTPS with [Traefik's let's encrypt integration](/user-guide/examples.md#lets-encrypt-support) using the dedicated [user guide](/user-guide/docker-and-lets-encrypt.md).
 
 ## Resources
 
 Here is a talk given by [Emile Vauge](https://github.com/emilevauge) at GopherCon 2017.
 You will learn Traefik basics in less than 10 minutes.
 
-[![Traefik GopherCon 2017](https://img.youtube.com/vi/RgudiksfL-k/0.jpg)](https://www.youtube.com/watch?v=RgudiksfL-k)
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/RgudiksfL-k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Here is a talk given by [Ed Robinson](https://github.com/errm) at [ContainerCamp UK](https://container.camp) conference.
 You will learn fundamental Traefik features and see some demos with Kubernetes.
 
-[![Traefik ContainerCamp UK](https://img.youtube.com/vi/aFtpIShV60I/0.jpg)](https://www.youtube.com/watch?v=aFtpIShV60I)
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/aFtpIShV60I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Downloads
 

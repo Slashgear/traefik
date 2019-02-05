@@ -15,8 +15,9 @@ Traefik tries to detect the configured mode and route traffic to the right IP ad
 Given the complexity of the subject, it is possible that the heuristic fails.
 Apart from filing an issue and waiting for the feature request / bug report to get addressed, one workaround for such situations is to customize the Marathon template file to the individual needs.
 
-!!! note
+::: tip
     This does _not_ require rebuilding Traefik but only to point the `filename` configuration parameter to a customized version of the `marathon.tmpl` file on Traefik startup.
+:::
 
 ## Port detection
 
@@ -69,9 +70,10 @@ As long as the check keeps failing, Marathon will not proceed with the deploymen
 
 Beginning with version 1.4, Traefik respects readiness check results if the Traefik option is set and checks are configured on the applications accordingly.
 
-!!! note
+::: tip
     Due to the way readiness check results are currently exposed by the Marathon API, ready tasks may be taken into rotation with a small delay.
     It is on the order of one readiness check timeout interval (as configured on the application specification) and guarantees that non-ready tasks do not receive traffic prematurely.
+:::
 
 If readiness checks are not possible, a current mitigation strategy is to enable [retries](/configuration/commons#retry-configuration) and make sure that a sufficient number of healthy application tasks exist so that one retry will likely hit one of those.
 Apart from its probabilistic nature, the workaround comes at the price of increased latency.

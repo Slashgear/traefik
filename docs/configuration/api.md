@@ -2,7 +2,7 @@
 
 ## Configuration
 
-```toml
+```ini
 # API definition
 # Warning: Enabling API will expose Traefik's configuration.
 # It is not recommended in production,
@@ -86,7 +86,7 @@ keeping it restricted over internal networks
 
 You can define a custom address/port like this:
 
-```toml
+```ini
 defaultEntryPoints = ["http"]
 
 [entryPoints]
@@ -119,7 +119,7 @@ Otherwise, you are likely to expose _all_ services via that entry point.
 
 You can define a custom path like this:
 
-```toml
+```ini
 defaultEntryPoints = ["http"]
 
 [entryPoints]
@@ -155,7 +155,7 @@ dashboard = true
 
 You can define the authentication like this:
 
-```toml
+```ini
 defaultEntryPoints = ["http"]
 
 [entryPoints]
@@ -326,7 +326,7 @@ curl -s "http://localhost:8080/health" | jq .
 
 You can enable Traefik to export internal metrics to different monitoring systems.
 
-```toml
+```ini
 [api]
   # ...
 

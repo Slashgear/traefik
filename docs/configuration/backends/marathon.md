@@ -7,7 +7,7 @@ See also [Marathon user guide](/user-guide/marathon).
 
 ## Configuration
 
-```toml
+```ini
 ################################################################
 # Mesos/Marathon Provider
 ################################################################

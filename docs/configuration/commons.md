@@ -2,7 +2,7 @@
 
 ## Main Section
 
-```toml
+```ini
 # Enable debug mode.
 # This will install HTTP handlers to expose Go expvars under /debug/vars and
 # pprof profiling data under /debug/pprof/.
@@ -85,12 +85,13 @@ Each frontend can specify its own entrypoints.
 
 - `keepTrailingSlash`: Tells Traefik whether it should keep the trailing slashes that might be present in the paths of incoming requests (true), or if it should redirect to the slashless version of the URL (default behavior: false) 
 
-!!! note 
+::: tip
     Beware that the value of `keepTrailingSlash` can have a significant impact on the way your frontend rules are interpreted.
     The table below tries to sum up several behaviors depending on requests/configurations. 
     The current default behavior is deprecated and kept for compatibility reasons. 
     As a consequence, we encourage you to set `keepTrailingSlash` to true.
-    
+:::
+
     | Incoming request     | keepTrailingSlash | Path:{value} | Behavior                              
     |----------------------|-------------------|--------------|----------------------------|
     | http://foo.com/path/ | false             | Path:/path/  | Proceeds with the request  |
@@ -115,7 +116,7 @@ Supported filters:
 
 ### Simple
 
-```toml
+```ini
 # Simple matching constraint
 constraints = ["tag==api"]
 
@@ -128,7 +129,7 @@ constraints = ["tag==us-*"]
 
 ### Multiple
 
-```toml
+```ini
 # Multiple constraints
 #   - "tag==" must match with at least one tag
 #   - "tag!=" must match with none of tags
@@ -150,7 +151,7 @@ Supported Providers:
 - Marathon
 - Kubernetes (using a provider-specific mechanism based on label selectors)
 
-```toml
+```ini
 # Provider-specific constraint
 [consulCatalog]
 # ...
@@ -169,10 +170,11 @@ Custom error pages can be returned, in lieu of the default, according to fronten
 
 In the example below, if a 503 status is returned from the frontend "website", the custom error page at http://2.3.4.5/503.html is returned with the actual status code set in the HTTP header.
 
-!!! note
+::: tip
     The `503.html` page itself is not hosted on Traefik, but some other infrastructure.
+:::
 
-```toml
+```ini
 [frontends]
   [frontends.website]
   backend = "website"
@@ -205,7 +207,7 @@ The configured status code ranges are inclusive; that is, in the above example, 
 Rate limiting can be configured per frontend.  
 Multiple sets of rates can be added to each frontend, but the time periods must be unique.
 
-```toml
+```ini
 [frontends]
     [frontends.frontend1]
       # ...
@@ -240,7 +242,7 @@ For more information please check [oxy/buffer](http://godoc.org/github.com/vulca
 
 Example configuration:
 
-```toml
+```ini
 [backends]
   [backends.backend1]
     [backends.backend1.buffering]
@@ -253,7 +255,7 @@ Example configuration:
 
 ## Retry Configuration
 
-```toml
+```ini
 # Enable retry sending request if network error
 [retry]
 
@@ -268,7 +270,7 @@ Example configuration:
 
 ## Health Check Configuration
 
-```toml
+```ini
 # Enable custom health check options.
 [healthcheck]
 
@@ -294,7 +296,7 @@ If no units are provided, the value is parsed assuming seconds.
 
 Controls the behavior of Traefik during the shutdown phase.
 
-```toml
+```ini
 [lifeCycle]
 
 # Duration to keep accepting requests prior to initiating the graceful
@@ -328,7 +330,7 @@ Controls the behavior of Traefik during the shutdown phase.
 
 `respondingTimeouts` are timeouts for incoming requests to the Traefik instance.
 
-```toml
+```ini
 [respondingTimeouts]
 
 # readTimeout is the maximum duration for reading the entire request, including the body.
@@ -373,7 +375,7 @@ If no units are provided, the value is parsed assuming seconds.
 
 `forwardingTimeouts` are timeouts for requests forwarded to the backend servers.
 
-```toml
+```ini
 [forwardingTimeouts]
 
 # dialTimeout is the amount of time to wait until a connection to a backend server can be established.
@@ -405,7 +407,7 @@ If no units are provided, the value is parsed assuming seconds.
 
 `hostResolver` are used for request host matching process.
 
-```toml
+```ini
 [hostResolver]
 
 # cnameFlattening is a trigger to flatten request host, assuming it is a CNAME record
@@ -441,7 +443,7 @@ Refer to [ACME configuration](/configuration/acme) for more information.
 
 Supported by all providers except: File Provider, Rest Provider and DynamoDB Provider.
 
-```toml
+```ini
 [provider_name]
 
 # Override default provider configuration template. For advanced users :)
@@ -461,7 +463,7 @@ debugLogGeneratedTemplate = true
 
 Example:
 
-```toml
+```ini
 [marathon]
 filename = "my_custom_config_template.tpml"
 ```
@@ -490,7 +492,7 @@ Example:
 
 ## Pass TLS Client Cert
 
-```toml
+```ini
 # Pass the escaped client cert infos selected below in a `X-Forwarded-Ssl-Client-Cert-Infos` header.
 [frontends.frontend1.passTLSClientCert]
         pem = true

@@ -36,7 +36,7 @@ They can be defined using:
 
 Here is an example of entrypoints definition:
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -57,7 +57,7 @@ Here is an example of entrypoints definition:
 
 And here is another example with client certificate authentication:
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -120,8 +120,9 @@ Following is the list of existing matcher rules along with examples:
 
 In order to use regular expressions with Host and Path matchers, you must declare an arbitrarily named variable followed by the colon-separated regular expression, all enclosed in curly braces. Any pattern supported by [Go's regexp package](https://golang.org/pkg/regexp/) may be used (example: `/posts/{id:[0-9]+}`).
 
-!!! note
-    The variable has no special meaning; however, it is required by the [gorilla/mux](https://github.com/gorilla/mux) dependency which embeds the regular expression and defines the syntax.
+::: tip
+The variable has no special meaning; however, it is required by the [gorilla/mux](https://github.com/gorilla/mux) dependency which embeds the regular expression and defines the syntax.
+:::
 
 You can optionally enable `passHostHeader` to forward client `Host` header to the backend.
 You can also optionally configure the `passTLSClientCert` option to pass the Client certificates to the backend in a specific header.
@@ -150,7 +151,7 @@ That way, namespacing of your backends happens on the basis of hosts in addition
 
 Here is an example of frontends definition:
 
-```toml
+```ini
 [frontends]
   [frontends.frontend1]
   backend = "backend2"
@@ -181,7 +182,7 @@ Here is an example of frontends definition:
 As seen in the previous example, you can combine multiple rules.
 In TOML file, you can use multiple routes:
 
-```toml
+```ini
   [frontends.frontend3]
   backend = "backend2"
     [frontends.frontend3.routes.test_1]
@@ -194,7 +195,7 @@ Here `frontend3` will forward the traffic to the `backend2` if the rules `Host:t
 
 You can also use the notation using a `;` separator, same result:
 
-```toml
+```ini
   [frontends.frontend3]
   backend = "backend2"
     [frontends.frontend3.routes.test_1]
@@ -203,7 +204,7 @@ You can also use the notation using a `;` separator, same result:
 
 Finally, you can create a rule to bind multiple domains or Path to a frontend, using the `,` separator:
 
-```toml
+```ini
  [frontends.frontend2]
     [frontends.frontend2.routes.test_1]
     rule = "Host:test1.localhost,test2.localhost"
@@ -240,7 +241,7 @@ By default, routes will be sorted (in descending order) using rules length (to a
 
 You can customize priority by frontend. The priority value override the rule length during sorting:
 
-```toml
+```ini
   [frontends]
     [frontends.frontend1]
     backend = "backend1"
@@ -267,7 +268,7 @@ This allows for setting headers such as `X-Script-Name` to be added to the reque
 
 In this example, all matches to the path `/cheese` will have the `X-Script-Name` header added to the proxied request and the `X-Custom-Response-Header` header added to the response.
 
-```toml
+```ini
 [frontends]
   [frontends.frontend1]
   backend = "backend1"
@@ -281,7 +282,7 @@ In this example, all matches to the path `/cheese` will have the `X-Script-Name`
 
 In this second  example, all matches to the path `/cheese` will have the `X-Script-Name` header added to the proxied request, the `X-Custom-Request-Header` header removed from the request, and the `X-Custom-Response-Header` header removed from the response.
 
-```toml
+```ini
 [frontends]
   [frontends.frontend1]
   backend = "backend1"
@@ -301,7 +302,7 @@ This functionality allows for some easy security features to quickly be set.
 
 An example of some of the security headers:
 
-```toml
+```ini
 [frontends]
   [frontends.frontend1]
   backend = "backend1"
@@ -319,8 +320,9 @@ An example of some of the security headers:
 
 In this example, traffic routed through the first frontend will have the `X-Frame-Options` header set to `DENY`, and the second will only allow HTTPS request through, otherwise will return a 301 HTTPS redirect.
 
-!!! note
-    The detailed documentation for those security headers can be found in [unrolled/secure](https://github.com/unrolled/secure#available-options).
+::: tip
+The detailed documentation for those security headers can be found in [unrolled/secure](https://github.com/unrolled/secure#available-options).
+:::
 
 ### Backends
 
@@ -330,12 +332,13 @@ A backend is responsible to load-balance the traffic coming from one or more fro
 
 Servers are simply defined using a `url`. You can also apply a custom `weight` to each server (this will be used by load-balancing).
 
-!!! note
-    Paths in `url` are ignored. Use `Modifier` to specify paths instead.
+::: tip
+Paths in `url` are ignored. Use `Modifier` to specify paths instead.
+:::
 
 Here is an example of backends and servers definition:
 
-```toml
+```ini
 [backends]
   [backends.backend1]
     # ...
@@ -394,7 +397,7 @@ For example:
 
 Here is an example of backends and servers definition:
 
-```toml
+```ini
 [backends]
   [backends.backend1]
     [backends.backend1.circuitbreaker]
@@ -417,7 +420,7 @@ To proactively prevent backends from being overwhelmed with high load, a maximum
 Maximum connections can be configured by specifying an integer value for `maxconn.amount` and `maxconn.extractorfunc` which is a strategy used to determine how to categorize requests in order to evaluate the maximum connections.
 
 For example:
-```toml
+```ini
 [backends]
   [backends.backend1]
     [backends.backend1.maxconn]
@@ -438,7 +441,7 @@ The default cookie name is an abbreviation of a sha1 (ex: `_1d52e`).
 On subsequent requests, the client will be directed to the backend stored in the cookie if it is still healthy.
 If not, a new backend will be assigned.
 
-```toml
+```ini
 [backends]
   [backends.backend1]
     # Enable sticky session
@@ -464,7 +467,7 @@ By default, the port of the backend server is used, however, this may be overrid
 A recovering backend returning `2xx` or `3xx` responses again is being returned to the LB rotation pool.
 
 For example:
-```toml
+```ini
 [backends]
   [backends.backend1]
     [backends.backend1.healthcheck]
@@ -474,7 +477,7 @@ For example:
 ```
 
 To use a different port for the health check:
-```toml
+```ini
 [backends]
   [backends.backend1]
     [backends.backend1.healthcheck]
@@ -486,7 +489,7 @@ To use a different port for the health check:
 
 
 To use a different scheme for the health check:
-```toml
+```ini
 [backends]
   [backends.backend1]
     [backends.backend1.healthcheck]
@@ -497,7 +500,7 @@ To use a different scheme for the health check:
 ```
 
 Additional http headers and hostname to health check request can be specified, for instance:
-```toml
+```ini
 [backends]
   [backends.backend1]
     [backends.backend1.healthcheck]
@@ -525,16 +528,17 @@ The static configuration is the global configuration which is setting up connect
 Traefik can be configured using many configuration sources with the following precedence order.
 Each item takes precedence over the item below it:
 
-- [Key-value store](/basics/#key-value-stores)
-- [Arguments](/basics/#arguments)
-- [Configuration file](/basics/#configuration-file)
+- [Key-value store](/basics.md#key-value-stores)
+- [Arguments](/basics.md#arguments)
+- [Configuration file](/basics.md#configuration-file)
 - Default
 
 It means that arguments override configuration file, and key-value store overrides arguments.
 
-!!! note
-    the provider-enabling argument parameters (e.g., `--docker`) set all default values for the specific provider.  
-    It must not be used if a configuration source with less precedence wants to set a non-default provider value.
+::: tip
+the provider-enabling argument parameters (e.g., `--docker`) set all default values for the specific provider.
+It must not be used if a configuration source with less precedence wants to set a non-default provider value.
+:::
 
 #### Configuration file
 
@@ -550,7 +554,7 @@ You can override this by setting a `configFile` argument:
 traefik --configFile=foo/bar/myconfigfile.toml
 ```
 
-Please refer to the [global configuration](/configuration/commons) section to get documentation on it.
+Please refer to the [global configuration](/configuration/commons.md) section to get documentation on it.
 
 #### Arguments
 
@@ -571,15 +575,15 @@ Traefik supports several Key-value stores:
 - [ZooKeeper](https://zookeeper.apache.org/)
 - [boltdb](https://github.com/boltdb/bolt)
 
-Please refer to the [User Guide Key-value store configuration](/user-guide/kv-config/) section to get documentation on it.
+Please refer to the [User Guide Key-value store configuration](/user-guide/kv-config.md) section to get documentation on it.
 
 ### Dynamic Traefik configuration
 
 The dynamic configuration concerns :
 
-- [Frontends](/basics/#frontends)
-- [Backends](/basics/#backends)
-- [Servers](/basics/#servers)
+- [Frontends](/basics.md#frontends)
+- [Backends](/basics.md#backends)
+- [Servers](/basics.md#servers)
 - HTTPS Certificates
 
 Traefik can hot-reload those rules which could be provided by [multiple configuration backends](/configuration/commons).
@@ -587,7 +591,7 @@ Traefik can hot-reload those rules which could be provided by [multiple configur
 We only need to enable `watch` option to make Traefik watch configuration backend changes and generate its configuration automatically.
 Routes to services will be created and updated instantly at any changes.
 
-Please refer to the [configuration backends](/configuration/commons) section to get documentation on it.
+Please refer to the [configuration backends](/configuration/commons.md) section to get documentation on it.
 
 ## Commands
 
@@ -601,7 +605,7 @@ traefik [command] [--flag=flag_argument]
 List of Traefik available commands with description :
 
 - `version` : Print version
-- `storeconfig` : Store the static Traefik configuration into a Key-value stores. Please refer to the [Store Traefik configuration](/user-guide/kv-config/#store-configuration-in-key-value-store) section to get documentation on it.
+- `storeconfig` : Store the static Traefik configuration into a Key-value stores. Please refer to the [Store Traefik configuration](/user-guide/kv-config.md#store-configuration-in-key-value-store) section to get documentation on it.
 - `bug`: The easiest way to submit a pre-filled issue.
 - `healthcheck`: Calls Traefik `/ping` to check health.
 
@@ -640,8 +644,9 @@ This command allows to check the health of Traefik. Its exit status is `0` if Tr
 
 This can be used with Docker [HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) instruction or any other health check orchestration mechanism.
 
-!!! note
-    The [`ping`](/configuration/ping) must be enabled to allow the `healthcheck` command to call `/ping`.
+::: tip
+The [`ping`](/configuration/ping) must be enabled to allow the `healthcheck` command to call `/ping`.
+:::
 
 ```bash
 traefik healthcheck
@@ -671,17 +676,19 @@ Once a day (the first call begins 10 minutes after the start of Traefik), we col
 - an **anonymous version** of the static configuration:
     - token, user name, password, URL, IP, domain, email, etc, are removed
 
-!!! note
-    We do not collect the dynamic configuration (frontends & backends).
+::: tip
+We do not collect the dynamic configuration (frontends & backends).
+:::
 
-!!! note
-    We do not collect data behind the scenes to run advertising programs or to sell such data to third-party.
+::: tip
+We do not collect data behind the scenes to run advertising programs or to sell such data to third-party.
+:::
 
 #### Here is an example
 
 - Source configuration:
 
-```toml
+```ini
 [entryPoints]
     [entryPoints.http]
        address = ":80"
@@ -711,7 +718,7 @@ Once a day (the first call begins 10 minutes after the start of Traefik), we col
 
 - Obfuscated and anonymous configuration:
 
-```toml
+```ini
 [entryPoints]
     [entryPoints.http]
        address = ":80"
@@ -751,7 +758,7 @@ You can enable the collecting system by:
 
 - adding this line in the configuration TOML file:
 
-```toml
+```ini
 # Send anonymous usage data
 #
 # Optional

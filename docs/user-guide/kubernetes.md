@@ -10,8 +10,9 @@ The config files used in this guide can be found in the [examples directory](htt
 
 1. A working Kubernetes cluster. If you want to follow along with this guide, you should setup [minikube](https://kubernetes.io/docs/getting-started-guides/minikube/) on your machine, as it is the quickest way to get a local Kubernetes cluster setup for experimentation and development.
 
-!!! note
+::: tip
     The guide is likely not fully adequate for a production-ready setup.
+:::
 
 2. The `kubectl` binary should be [installed on your workstation](https://kubernetes.io/docs/getting-started-guides/minikube/#download-kubectl).
 
@@ -23,8 +24,9 @@ If your cluster is configured with RBAC, you will need to authorize Traefik to u
 
 RoleBindings per namespace enable to restrict granted permissions to the very namespaces only that Traefik is watching over, thereby following the least-privileges principle. This is the preferred approach if Traefik is not supposed to watch all namespaces, and the set of namespaces does not change dynamically. Otherwise, a single ClusterRoleBinding must be employed.
 
-!!! note
+::: tip
     RoleBindings per namespace are available in Traefik 1.5 and later. Please use ClusterRoleBindings for older versions.
+:::
 
 For the sake of simplicity, this guide will use a ClusterRoleBinding:
 
@@ -150,8 +152,9 @@ spec:
 
 [examples/k8s/traefik-deployment.yaml](https://github.com/containous/traefik/tree/master/examples/k8s/traefik-deployment.yaml)
 
-!!! note
+::: tip
     The Service will expose two NodePorts which allow access to the ingress and the web interface.
+:::
 
 The DaemonSet objects looks not much different:
 
@@ -218,8 +221,9 @@ spec:
 
 [examples/k8s/traefik-ds.yaml](https://github.com/containous/traefik/tree/master/examples/k8s/traefik-ds.yaml)
 
-!!! note
+::: tip
     This will create a Daemonset that uses privileged ports 80/8080 on the host. This may not work on all providers, but illustrates the static (non-NodePort) hostPort binding. The `traefik-ingress-service` can still be used inside the cluster to access the DaemonSet pods.
+:::
 
 To deploy Traefik to your cluster start by submitting one of the YAML files to the cluster with `kubectl`:
 
@@ -259,10 +263,11 @@ traefik-ingress-controller-678226159-eqseo   1/1       Running   0          7m
 You should see that after submitting the Deployment or DaemonSet to Kubernetes it has launched a Pod, and it is now running.
 _It might take a few moments for Kubernetes to pull the Traefik image and start the container._
 
-!!! note
+::: tip
     You could also check the deployment with the Kubernetes dashboard, run
     `minikube dashboard` to open it in your browser, then choose the `kube-system`
     namespace from the menu at the top right of the screen.
+:::
 
 You should now be able to access Traefik on port 80 of your Minikube instance when using the DaemonSet:
 
@@ -284,15 +289,17 @@ curl $(minikube ip):<NODEPORT>
 404 page not found
 ```
 
-!!! note
+::: tip
     We expect to see a 404 response here as we haven't yet given Traefik any configuration.
+:::
 
 All further examples below assume a DaemonSet installation. Deployment users will need to append the NodePort when constructing requests.
 
 ## Deploy Traefik using Helm Chart
 
-!!! note
+::: tip
     The Helm Chart is maintained by the community, not the Traefik project maintainers.
+:::
 
 Instead of installing Traefik via Kubernetes object directly, you can also use the Traefik Helm chart.
 
@@ -371,9 +378,10 @@ We should now be able to visit [traefik-ui.minikube](http://traefik-ui.minikube)
 
 ### Add a TLS Certificate to the Ingress
 
-!!! note
+::: tip
     For this example to work you need a TLS entrypoint. You don't have to provide a TLS certificate at this point.
     For more details see [here](/configuration/entrypoints/).
+:::
 
 You can add a TLS entrypoint by adding the following `args` to the container spec:
 
@@ -415,17 +423,20 @@ kubectl -n kube-system create secret tls traefik-ui-tls-cert --key=tls.key --cer
 
 If there are any errors while loading the TLS section of an ingress, the whole ingress will be skipped.
 
-!!! note
+::: tip
     The secret must have two entries named `tls.key`and `tls.crt`.
     See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls) for more details.
+:::
 
-!!! note
+::: tip
     The TLS certificates will be added to all entrypoints defined by the ingress annotation `traefik.frontend.entryPoints`.
     If no such annotation is provided, the TLS certificates will be added to all TLS-enabled `defaultEntryPoints`.
+:::
 
-!!! note
+::: tip
     The field `hosts` in the TLS configuration is ignored. Instead, the domains provided by the certificate are used for this purpose.
     It is recommended to not use wildcard certificates as they will match globally.
+:::
 
 ## Basic Authentication
 
@@ -456,9 +467,9 @@ B. Now use `kubectl` to create a secret in the `monitoring` namespace using the 
 kubectl create secret generic mysecret --from-file auth --namespace=monitoring
 ```
 
-!!! note
+::: tip
     Secret must be in same namespace as the Ingress object.
-
+:::
 C. Attach the following annotations to the Ingress object:
 
 - `traefik.ingress.kubernetes.io/auth-type: "basic"`
@@ -633,8 +644,9 @@ spec:
     task: wensleydale
 ```
 
-!!! note
+::: tip
     We also set a [circuit breaker expression](/basics/#backends) for one of the backends by setting the `traefik.backend.circuitbreaker` annotation on the service.
+:::
 
 [examples/k8s/cheese-services.yaml](https://github.com/containous/traefik/tree/master/examples/k8s/cheese-services.yaml)
 
@@ -678,8 +690,9 @@ spec:
 
 [examples/k8s/cheese-ingress.yaml](https://github.com/containous/traefik/tree/master/examples/k8s/cheese-ingress.yaml)
 
-!!! note
+::: tip
     we list each hostname, and add a backend service.
+:::
 
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/cheese-ingress.yaml
@@ -733,8 +746,9 @@ spec:
 
 [examples/k8s/cheeses-ingress.yaml](https://github.com/containous/traefik/tree/master/examples/k8s/cheeses-ingress.yaml)
 
-!!! note
+::: tip
     We are configuring Traefik to strip the prefix from the url path with the `traefik.frontend.rule.type` annotation so that we can use the containers from the previous example without modification.
+:::
 
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/cheeses-ingress.yaml
@@ -782,12 +796,14 @@ spec:
 Traefik will now look for cheddar service endpoints (ports on healthy pods) in both the cheese and the default namespace.
 Deploying cheddar into the cheese namespace and afterwards shutting down cheddar in the default namespace is enough to migrate the traffic.
 
-!!! note
+::: tip
    The kubernetes documentation does not specify this merging behavior.
+:::
 
-!!! note
+::: tip
    Merging ingress definitions can cause problems if the annotations differ or if the services handle requests differently.
    Be careful and extra cautious when running multiple overlapping ingress definitions.
+:::
 
 ## Specifying Routing Priorities
 
@@ -845,7 +861,7 @@ However, there are times when you may not want this to be the case. For example,
 
 Add the following to your TOML configuration file:
 
-```toml
+```ini
 disablePassHostHeaders = true
 ```
 
@@ -891,9 +907,10 @@ spec:
 
 If you were to visit `example.com/static` the request would then be passed on to `static.otherdomain.com/static`, and `static.otherdomain.com` would receive the request with the Host header being `static.otherdomain.com`.
 
-!!! note
+::: tip
     The per-ingress annotation overrides whatever the global value is set to.
     So you could set `disablePassHostHeaders` to `true` in your TOML configuration file and then enable passing the host header per ingress if you wanted.
+:::
 
 ## Partitioning the Ingress object space
 
@@ -910,9 +927,10 @@ If the annotation is missing, contains an empty value, or the value `traefik`, t
 It is also possible to set the `ingressClass` option in Traefik to a particular value. Traefik will only process matching Ingress objects.
 For instance, setting the option to `traefik-internal` causes Traefik to process Ingress objects with the same `kubernetes.io/ingress.class` annotation value, ignoring all other objects (including those with a `traefik` value, empty value, and missing annotation).
 
-!!! note
+::: tip
     Letting multiple ingress controllers handle the same ingress objects can lead to unintended behavior.
     It is recommended to prefix all ingressClass values with `traefik` to avoid unintended collisions with other ingress implementations.
+:::
 
 ### Between multiple Traefik Deployments
 

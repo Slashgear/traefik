@@ -4,7 +4,7 @@
 
 ### TOML
 
-```toml
+```ini
 logLevel = "INFO"
 
 [traefikLog]
@@ -61,14 +61,14 @@ By default the Traefik log is written to stdout in text format.
 
 To write the logs into a log file specify the `filePath`:
 
-```toml
+```ini
 [traefikLog]
   filePath = "/path/to/traefik.log"
 ```
 
 To write JSON format logs, specify `json` as the format:
 
-```toml
+```ini
 [traefikLog]
   filePath = "/path/to/traefik.log"
   format   = "json"
@@ -76,7 +76,7 @@ To write JSON format logs, specify `json` as the format:
 
 To customize the log level:
 
-```toml
+```ini
 # Log level
 #
 # Optional
@@ -96,20 +96,20 @@ By default it will write to stdout and produce logs in the textual Common Log Fo
 
 To enable access logs using the default settings just add the `[accessLog]` entry:
 
-```toml
+```ini
 [accessLog]
 ```
 
 To write the logs into a log file specify the `filePath`:
 
-```toml
+```ini
 [accessLog]
 filePath = "/path/to/access.log"
 ```
 
 To write JSON format logs, specify `json` as the format:
 
-```toml
+```ini
 [accessLog]
 filePath = "/path/to/access.log"
 format = "json"
@@ -117,7 +117,7 @@ format = "json"
 
 To write the logs in async, specify `bufferingSize` as the format (must be >0):
 
-```toml
+```ini
 [accessLog]
 filePath = "/path/to/access.log"
 # Buffering Size
@@ -132,7 +132,7 @@ bufferingSize = 100
 
 To filter logs you can specify a set of filters which are logically "OR-connected". Thus, specifying multiple filters will keep more access logs than specifying only one:
 
-```toml
+```ini
 [accessLog]
 filePath = "/path/to/access.log"
 format = "json"
@@ -163,7 +163,7 @@ format = "json"
 
 To customize logs format:
 
-```toml
+```ini
 [accessLog]
 filePath = "/path/to/access.log"
 format = "json"
@@ -260,5 +260,6 @@ By default, Traefik use the CLF (`common`) as access log format.
 Traefik will close and reopen its log files, assuming they're configured, on receipt of a USR1 signal.
 This allows the logs to be rotated and processed by an external program, such as `logrotate`.
 
-!!! note
+::: tip
     This does not work on Windows due to the lack of USR signals.
+:::

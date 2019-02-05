@@ -4,7 +4,7 @@ Traefik can be configured to use Rancher as a provider.
 
 ## Global Configuration
 
-```toml
+```ini
 ################################################################
 # Rancher Provider
 ################################################################
@@ -68,7 +68,7 @@ To enable constraints see [provider-specific constraints section](/configuration
 
 ## Rancher Metadata Service
 
-```toml
+```ini
 # Enable Rancher metadata service provider instead of the API
 # provider.
 #
@@ -96,7 +96,7 @@ prefix = "/2016-07-29"
 
 ## Rancher API
 
-```toml
+```ini
 # Enable Rancher API provider.
 #
 # Optional
@@ -120,7 +120,7 @@ accessKey = "XXXXXXXXXXXXXXXXXXXX"
 secretKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
-!!! note
+::: tip
     If Traefik needs access to the Rancher API, you need to set the `endpoint`, `accesskey` and `secretkey` parameters.
 
     To enable Traefik to fetch information about the Environment it's deployed in only, you need to create an `Environment API Key`.
@@ -131,6 +131,7 @@ secretKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     io.rancher.container.agent.role: environment
     io.rancher.container.create_agent: true
     ```
+:::
 
 ## Labels: overriding default behavior
 

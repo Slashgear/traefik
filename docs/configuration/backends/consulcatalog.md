@@ -2,7 +2,7 @@
 
 Traefik can be configured to use service discovery catalog of Consul as a provider.
 
-```toml
+```ini
 ################################################################
 # Consul Catalog Provider
 ################################################################
@@ -91,9 +91,11 @@ To enable constraints see [provider-specific constraints section](/configuration
 
 Additional settings can be defined using Consul Catalog tags.
 
-!!! note
+::: tip
     The default prefix is `traefik`.
+:::
 
+::: v-pre
 | Label                                                                    | Description                                                                                                                                                                                                                   |
 |--------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `<prefix>.enable=false`                                                  | Disables this container in Traefik.                                                                                                                                                                                           |
@@ -173,6 +175,8 @@ Additional settings can be defined using Consul Catalog tags.
 | `<prefix>.frontend.whiteList.ipStrategy.depth=5`                         | See [whitelist](/configuration/entrypoints/#white-listing)                                                                                                                                                                    |
 | `<prefix>.frontend.whiteList.ipStrategy.excludedIPs=127.0.0.1`           | See [whitelist](/configuration/entrypoints/#white-listing)                                                                                                                                                                    |
 
+:::
+
 ### Multiple frontends for a single service
 
 If you need to support multiple frontends for a service, for example when having multiple `rules` that can't be combined, specify them as follows:
@@ -186,8 +190,9 @@ If you need to support multiple frontends for a service, for example when having
 
 ### Custom Headers
 
-!!! note
+::: tip
     The default prefix is `traefik`.
+:::
 
 | Label                                                  | Description                                                                                                                                                                         |
 |--------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -196,8 +201,9 @@ If you need to support multiple frontends for a service, for example when having
 
 ### Security Headers
 
-!!! note
+::: tip
     The default prefix is `traefik`.
+:::
 
 | Label                                                     | Description                                                                                                                                                                                         |
 |-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

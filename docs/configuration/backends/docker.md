@@ -5,7 +5,7 @@ Traefik can be configured to use Docker as a provider.
 
 ## Docker
 
-```toml
+```ini
 ################################################################
 # Docker Provider
 ################################################################
@@ -102,7 +102,7 @@ To enable constraints see [provider-specific constraints section](/configuration
 
 ## Docker Swarm Mode
 
-```toml
+```ini
 ################################################################
 # Docker Swarm Mode Provider
 ################################################################
@@ -504,12 +504,13 @@ Segment labels override the default behavior.
 | `traefik.<segment_name>.frontend.headers.STSIncludeSubdomains=true`     | Same as `traefik.frontend.headers.STSIncludeSubdomains=true` |
 | `traefik.<segment_name>.frontend.headers.STSPreload=true`               | Same as `traefik.frontend.headers.STSPreload=true`           |
 
-!!! note
+::: tip
     If a label is defined both as a `container label` and a `segment label` (for example `traefik.<segment_name>.port=PORT` and `traefik.port=PORT` ), the `segment label` is used to defined the `<segment_name>` property (`port` in the example).
 
     It's possible to mix `container labels` and `segment labels`, in this case `container labels` are used as default value for missing `segment labels` but no frontends are going to be created with the `container labels`.
 
     More details in this [example](/user-guide/docker-and-lets-encrypt/#labels).
+:::
 
 !!! warning
     When running inside a container, Traefik will need network access through:
@@ -535,5 +536,6 @@ Below is a recap of the behavior of `usebindportip` in different situations.
 | LblPort            | ExtIp:ExtPort:OtherPort                            | IntIp:LblPort  |
 | LblPort            | ExtIp1:ExtPort1:IntPort1 & ExtIp2:LblPort:IntPort2 | ExtIp2:LblPort |
 
-!!! note
+::: tip
     In the above table, ExtIp stands for "external IP found in the binding", IntIp stands for "internal network container's IP", ExtPort stands for "external Port found in the binding", and IntPort stands for "internal network container's port."
+:::

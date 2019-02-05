@@ -6,7 +6,7 @@ Traefik can be configured:
 
 ## Configuration
 
-```toml
+```ini
 # Enable REST Provider.
 [rest]
   # Name of the related entry point

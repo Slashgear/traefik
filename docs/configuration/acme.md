@@ -4,7 +4,7 @@ See [Let's Encrypt examples](/user-guide/examples/#lets-encrypt-support) and [Do
 
 ## Configuration
 
-```toml
+```ini
 # Sample entrypoint configuration when using ACME.
 [entryPoints]
   [entryPoints.http]
@@ -14,7 +14,7 @@ See [Let's Encrypt examples](/user-guide/examples/#lets-encrypt-support) and [Do
     [entryPoints.https.tls]
 ```
 
-```toml
+```ini
 # Enable ACME (Let's Encrypt): automatic SSL.
 [acme]
 
@@ -179,7 +179,7 @@ The CA server to use.
 
 This example shows the usage of Let's Encrypt's staging server:
 
-```toml
+```ini
 [acme]
 # ...
 caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
@@ -192,16 +192,17 @@ caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
 
 Use the `TLS-ALPN-01` challenge to generate and renew ACME certificates by provisioning a TLS certificate.
 
-```toml
+```ini
 [acme]
 # ...
 entryPoint = "https"
 [acme.tlsChallenge]
 ```
 
-!!! note
+::: tip
     If the `TLS-ALPN-01` challenge is used, `acme.entryPoint` has to be reachable by Let's Encrypt through port 443.
     This is a Let's Encrypt limitation as described on the [community forum](https://community.letsencrypt.org/t/support-for-ports-other-than-80-and-443/3419/72).
+:::
 
 #### `httpChallenge`
 
@@ -209,7 +210,7 @@ Use the `HTTP-01` challenge to generate and renew ACME certificates by provision
 
 Redirection is fully compatible with the `HTTP-01` challenge.
 
-```toml
+```ini
 [acme]
 # ...
 entryPoint = "https"
@@ -217,15 +218,16 @@ entryPoint = "https"
   entryPoint = "http"
 ```
 
-!!! note
+::: tip
     If the `HTTP-01` challenge is used, `acme.httpChallenge.entryPoint` has to be defined and reachable by Let's Encrypt through port 80.
     This is a Let's Encrypt limitation as described on the [community forum](https://community.letsencrypt.org/t/support-for-ports-other-than-80-and-443/3419/72).
+:::
 
 ##### `entryPoint`
 
 Specify the entryPoint to use during the challenges.
 
-```toml
+```ini
 defaultEntryPoints = ["http", "https"]
 
 [entryPoints]
@@ -243,14 +245,15 @@ defaultEntryPoints = ["http", "https"]
     entryPoint = "http"
 ```
 
-!!! note
+::: tip
     `acme.httpChallenge.entryPoint` has to be reachable through port 80. It's a Let's Encrypt limitation as described on the [community forum](https://community.letsencrypt.org/t/support-for-ports-other-than-80-and-443/3419/72).
+:::
 
 #### `dnsChallenge`
 
 Use the `DNS-01` challenge to generate and renew ACME certificates by provisioning a DNS record.
 
-```toml
+```ini
 [acme]
 # ...
 [acme.dnsChallenge]
@@ -266,8 +269,9 @@ If `delayBeforeCheck` is greater than zero, this check is delayed for the config
 
 Useful if internal networks block external DNS queries.
 
-!!! note
+::: tip
     A `provider` is mandatory.
+:::
 
 ##### `provider`
 
@@ -332,7 +336,7 @@ Here is a list of supported `provider`s, that can automate the DNS verification,
 
 Use custom DNS servers to resolve the FQDN authority.
 
-```toml
+```ini
 [acme]
 # ...
 [acme.dnsChallenge]
@@ -346,10 +350,11 @@ You can provide SANs (alternative domains) to each main domain.
 All domains must have A/AAAA records pointing to Traefik.
 Each domain & SAN will lead to a certificate request.
 
-!!! note
+::: tip
     The certificates for the domains listed in `acme.domains` are negotiated at traefik startup only.
+:::
 
-```toml
+```ini
 [acme]
 # ...
 [[acme.domains]]
@@ -366,15 +371,16 @@ Each domain & SAN will lead to a certificate request.
 !!! warning
     Take note that Let's Encrypt applies [rate limiting](https://letsencrypt.org/docs/rate-limits).
 
-!!! note
+::: tip
     Wildcard certificates can only be verified through a `DNS-01` challenge.
+:::
 
 #### Wildcard Domains
 
 [ACME V2](https://community.letsencrypt.org/t/acme-v2-and-wildcard-certificate-support-is-live/55579) allows wildcard certificate support.
 As described in [Let's Encrypt's post](https://community.letsencrypt.org/t/staging-endpoint-for-acme-v2/49605) wildcard certificates can only be generated through a [`DNS-01` challenge](/configuration/acme/#dnschallenge).
 
-```toml
+```ini
 [acme]
 # ...
 [[acme.domains]]
@@ -396,7 +402,7 @@ The [`provider` table](/configuration/acme/#provider) indicates if they allow ge
 !!! danger "DEPRECATED"
     This option is deprecated.
 
-```toml
+```ini
 [acme]
 # ...
 onDemand = true
@@ -415,7 +421,7 @@ This will request certificates from Let's Encrypt during the first TLS handshake
 
 ### `onHostRule`
 
-```toml
+```ini
 [acme]
 # ...
 onHostRule = true
@@ -436,7 +442,7 @@ For example, the rule `Host:test1.traefik.io,test2.traefik.io` will request a ce
 
 The `storage` option sets the location where your ACME certificates are saved to.
 
-```toml
+```ini
 [acme]
 # ...
 storage = "acme.json"
@@ -451,8 +457,9 @@ The value can refer to two kinds of storage:
 !!! danger "DEPRECATED"
     `storage` replaces `storageFile` which is deprecated.
 
-!!! note
+::: tip
     During migration to a KV store use both `storageFile` and `storage` to migrate ACME certificates too. See [`storeconfig` subcommand](/user-guide/kv-config/#store-configuration-in-key-value-store) for further information.
+:::
 
 #### As a File
 
@@ -474,14 +481,15 @@ docker run -v "/my/host/acme:/etc/traefik/acme" traefik
 
 ACME certificates can be stored in a KV Store entry. This kind of storage is **mandatory in cluster mode**.
 
-```toml
+```ini
 storage = "traefik/acme/account"
 ```
 
 Because KV stores (like Consul) have limited entry size the certificates list is compressed before it is saved as KV store entry.
 
-!!! note
+::: tip
     It is possible to store up to approximately 100 ACME certificates in Consul.
+:::
 
 #### ACME v2 Migration
 
@@ -489,9 +497,10 @@ During migration from ACME v1 to ACME v2, using a storage file, a backup of the 
 
 For example: if `acme.storage`'s value is `/etc/traefik/acme/acme.json`, the backup file will be `/etc/traefik/acme/acme.json.bak`.
 
-!!! note
+::: tip
     When Traefik is launched in a container, the storage file's parent directory needs to be mounted to be able to access the backup file on the host.
     Otherwise the backup file will be deleted when the container is stopped. Traefik will only generate it once!
+:::
 
 ### `dnsProvider` (Deprecated)
 
@@ -511,5 +520,6 @@ If Let's Encrypt is not reachable, these certificates will be used:
   1. Expired ACME certificates
   1. Provided certificates
 
-!!! note
+::: tip
     For new (sub)domains which need Let's Encrypt authentification, the default Traefik certificate will be used until Traefik is restarted.
+:::
