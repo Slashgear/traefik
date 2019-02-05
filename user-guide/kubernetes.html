@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kubernetes Ingress Controller | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/35.2c01db0b.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Configuration</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>User Guides</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/user-guide/examples.html" class="sidebar-link">Configuration Examples</a></li><li><a href="/user-guide/swarm-mode.html" class="sidebar-link">Swarm Mode Cluster</a></li><li><a href="/user-guide/swarm.html" class="sidebar-link">Swarm Cluster</a></li><li><a href="/user-guide/docker-and-lets-encrypt.html" class="sidebar-link">Let's Encrypt &amp; Docker</a></li><li><a href="/user-guide/kubernetes.html" class="active sidebar-link">Kubernetes</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#prerequisites" class="sidebar-link">Prerequisites</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#deploy-traefik-using-a-deployment-or-daemonset" class="sidebar-link">Deploy Traefik using a Deployment or DaemonSet</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#deploy-traefik-using-helm-chart" class="sidebar-link">Deploy Traefik using Helm Chart</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#submitting-an-ingress-to-the-cluster" class="sidebar-link">Submitting an Ingress to the Cluster</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#basic-authentication" class="sidebar-link">Basic Authentication</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#name-based-routing" class="sidebar-link">Name-based Routing</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#path-based-routing" class="sidebar-link">Path-based Routing</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#multiple-ingress-definitions-for-the-same-host-or-host-path" class="sidebar-link">Multiple Ingress Definitions for the Same Host (or Host+Path)</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#specifying-routing-priorities" class="sidebar-link">Specifying Routing Priorities</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#forwarding-to-externalnames" class="sidebar-link">Forwarding to ExternalNames</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#disable-passing-the-host-header" class="sidebar-link">Disable passing the Host Header</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#partitioning-the-ingress-object-space" class="sidebar-link">Partitioning the Ingress object space</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#traffic-splitting" class="sidebar-link">Traffic Splitting</a></li><li class="sidebar-sub-header"><a href="/user-guide/kubernetes.html#production-advice" class="sidebar-link">Production advice</a></li></ul></li><li><a href="/user-guide/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/user-guide/kv-config.html" class="sidebar-link">Key-value Store Configuration</a></li><li><a href="/user-guide/cluster.html" class="sidebar-link">Clustering/HA</a></li><li><a href="/user-guide/grpc.html" class="sidebar-link">gRPC Example</a></li><li><a href="/user-guide/cluster-docker-consul.html" class="sidebar-link">Traefik cluster example with Swarm</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="kubernetes-ingress-controller"><a href="#kubernetes-ingress-controller" aria-hidden="true" class="header-anchor">#</a> Kubernetes Ingress Controller</h1> <p>This guide explains how to use Traefik as an Ingress controller for a Kubernetes cluster.</p> <p>If you are not familiar with Ingresses in Kubernetes you might want to read the <a href="https://kubernetes.io/docs/concepts/services-networking/ingress/" target="_blank" rel="noopener noreferrer">Kubernetes user guide<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>The config files used in this guide can be found in the <a href="https://github.com/containous/traefik/tree/master/examples/k8s" target="_blank" rel="noopener noreferrer">examples directory<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="prerequisites"><a href="#prerequisites" aria-hidden="true" class="header-anchor">#</a> Prerequisites</h2> <ol><li>A working Kubernetes cluster. If you want to follow along with this guide, you should setup <a href="https://kubernetes.io/docs/getting-started-guides/minikube/" target="_blank" rel="noopener noreferrer">minikube<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> on your machine, as it is the quickest way to get a local Kubernetes cluster setup for experimentation and development.</li></ol> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>The guide is likely not fully adequate for a production-ready setup.
+</code></pre></div> <ol start="2"><li>The <code>kubectl</code> binary should be <a href="https://kubernetes.io/docs/getting-started-guides/minikube/#download-kubectl" target="_blank" rel="noopener noreferrer">installed on your workstation<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</li></ol> <h3 id="role-based-access-control-configuration-kubernetes-1-6-only"><a href="#role-based-access-control-configuration-kubernetes-1-6-only" aria-hidden="true" class="header-anchor">#</a> Role Based Access Control configuration (Kubernetes 1.6+ only)</h3> <p>Kubernetes introduces <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/" target="_blank" rel="noopener noreferrer">Role Based Access Control (RBAC)<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> in 1.6+ to allow fine-grained control of Kubernetes resources and API.</p> <p>If your cluster is configured with RBAC, you will need to authorize Traefik to use the Kubernetes API. There are two ways to set up the proper permission: Via namespace-specific RoleBindings or a single, global ClusterRoleBinding.</p> <p>RoleBindings per namespace enable to restrict granted permissions to the very namespaces only that Traefik is watching over, thereby following the least-privileges principle. This is the preferred approach if Traefik is not supposed to watch all namespaces, and the set of namespaces does not change dynamically. Otherwise, a single ClusterRoleBinding must be employed.</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>RoleBindings per namespace are available in Traefik 1.5 and later. Please use ClusterRoleBindings for older versions.
+</code></pre></div> <p>For the sake of simplicity, this guide will use a ClusterRoleBinding:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRole
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1beta1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+<span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">apiGroups</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;&quot;</span>
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> services
+      <span class="token punctuation">-</span> endpoints
+      <span class="token punctuation">-</span> secrets
+    <span class="token key atrule">verbs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> get
+      <span class="token punctuation">-</span> list
+      <span class="token punctuation">-</span> watch
+  <span class="token punctuation">-</span> <span class="token key atrule">apiGroups</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> extensions
+    <span class="token key atrule">resources</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ingresses
+    <span class="token key atrule">verbs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> get
+      <span class="token punctuation">-</span> list
+      <span class="token punctuation">-</span> watch
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRoleBinding
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1beta1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+<span class="token key atrule">roleRef</span><span class="token punctuation">:</span>
+  <span class="token key atrule">apiGroup</span><span class="token punctuation">:</span> rbac.authorization.k8s.io
+  <span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRole
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+<span class="token key atrule">subjects</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+</code></pre></div><p><a href="https://github.com/containous/traefik/tree/master/examples/k8s/traefik-rbac.yaml" target="_blank" rel="noopener noreferrer">examples/k8s/traefik-rbac.yaml<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-rbac.yaml
+</code></pre></div><p>For namespaced restrictions, one RoleBinding is required per watched namespace along with a corresponding configuration of Traefik's <code>kubernetes.namespaces</code> parameter.</p> <h2 id="deploy-traefik-using-a-deployment-or-daemonset"><a href="#deploy-traefik-using-a-deployment-or-daemonset" aria-hidden="true" class="header-anchor">#</a> Deploy Traefik using a Deployment or DaemonSet</h2> <p>It is possible to use Traefik with a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/" target="_blank" rel="noopener noreferrer">Deployment<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or a <a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/" target="_blank" rel="noopener noreferrer">DaemonSet<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> object,
+whereas both options have their own pros and cons:</p> <ul><li>The scalability can be much better when using a Deployment, because you will have a Single-Pod-per-Node model when using a DaemonSet, whereas you may need less replicas based on your environment when using a Deployment.</li> <li>DaemonSets automatically scale to new nodes, when the nodes join the cluster, whereas Deployment pods are only scheduled on new nodes if required.</li> <li>DaemonSets ensure that only one replica of pods run on any single node. Deployments require affinity settings if you want to ensure that two pods don't end up on the same node.</li> <li>DaemonSets can be run with the <code>NET_BIND_SERVICE</code> capability, which will allow it to bind to port 80/443/etc on each host. This will allow bypassing the kube-proxy, and reduce traffic hops. Note that this is against the Kubernetes Best Practices <a href="https://kubernetes.io/docs/concepts/configuration/overview/#services" target="_blank" rel="noopener noreferrer">Guidelines<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>, and raises the potential for scheduling/scaling issues. Despite potential issues, this remains the choice for most ingress controllers.</li> <li>If you are unsure which to choose, start with the Daemonset.</li></ul> <p>The Deployment objects looks like this:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">serviceAccountName</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+      <span class="token key atrule">terminationGracePeriodSeconds</span><span class="token punctuation">:</span> <span class="token number">60</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> traefik
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+          <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> admin
+          <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+        <span class="token key atrule">args</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>api
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubernetes
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>logLevel=INFO
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>service
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> web
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> admin
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> NodePort
+</code></pre></div><p><a href="https://github.com/containous/traefik/tree/master/examples/k8s/traefik-deployment.yaml" target="_blank" rel="noopener noreferrer">examples/k8s/traefik-deployment.yaml<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>The Service will expose two NodePorts which allow access to the ingress and the web interface.
+</code></pre></div> <p>The DaemonSet objects looks not much different:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> DaemonSet
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">serviceAccountName</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>controller
+      <span class="token key atrule">terminationGracePeriodSeconds</span><span class="token punctuation">:</span> <span class="token number">60</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">image</span><span class="token punctuation">:</span> traefik
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+          <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+          <span class="token key atrule">hostPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> admin
+          <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+        <span class="token key atrule">securityContext</span><span class="token punctuation">:</span>
+          <span class="token key atrule">capabilities</span><span class="token punctuation">:</span>
+            <span class="token key atrule">drop</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> ALL
+            <span class="token key atrule">add</span><span class="token punctuation">:</span>
+            <span class="token punctuation">-</span> NET_BIND_SERVICE
+        <span class="token key atrule">args</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>api
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubernetes
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>logLevel=INFO
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>service
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> web
+    <span class="token punctuation">-</span> <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+      <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> admin
+</code></pre></div><p><a href="https://github.com/containous/traefik/tree/master/examples/k8s/traefik-ds.yaml" target="_blank" rel="noopener noreferrer">examples/k8s/traefik-ds.yaml<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>This will create a Daemonset that uses privileged ports 80/8080 on the host. This may not work on all providers, but illustrates the static (non-NodePort) hostPort binding. The `traefik-ingress-service` can still be used inside the cluster to access the DaemonSet pods.
+</code></pre></div> <p>To deploy Traefik to your cluster start by submitting one of the YAML files to the cluster with <code>kubectl</code>:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-deployment.yaml
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/traefik-ds.yaml
+</code></pre></div><p>There are some significant differences between using Deployments and DaemonSets:</p> <ul><li>The Deployment has easier up and down scaling possibilities.
+It can implement full pod lifecycle and supports rolling updates from Kubernetes 1.2.
+At least one Pod is needed to run the Deployment.</li> <li>The DaemonSet automatically scales to all nodes that meets a specific selector and guarantees to fill nodes one at a time.
+Rolling updates are fully supported from Kubernetes 1.7 for DaemonSets as well.</li></ul> <h3 id="check-the-pods"><a href="#check-the-pods" aria-hidden="true" class="header-anchor">#</a> Check the Pods</h3> <p>Now lets check if our command was successful.</p> <p>Start by listing the pods in the <code>kube-system</code> namespace:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl --namespace<span class="token operator">=</span>kube-system get pods
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>NAME                                         READY     STATUS    RESTARTS   AGE
+kube-addon-manager-minikubevm                1/1       Running   0          4h
+kubernetes-dashboard-s8krj                   1/1       Running   0          4h
+traefik-ingress-controller-678226159-eqseo   1/1       Running   0          7m
+</code></pre></div><p>You should see that after submitting the Deployment or DaemonSet to Kubernetes it has launched a Pod, and it is now running.
+<em>It might take a few moments for Kubernetes to pull the Traefik image and start the container.</em></p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>You could also check the deployment with the Kubernetes dashboard, run
+`minikube dashboard` to open it in your browser, then choose the `kube-system`
+namespace from the menu at the top right of the screen.
+</code></pre></div> <p>You should now be able to access Traefik on port 80 of your Minikube instance when using the DaemonSet:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> <span class="token variable"><span class="token variable">$(</span>minikube ip<span class="token variable">)</span></span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>404 page not found
+</code></pre></div><p>If you decided to use the deployment, then you need to target the correct NodePort, which can be seen when you execute <code>kubectl get services --namespace=kube-system</code>.</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> <span class="token variable"><span class="token variable">$(</span>minikube ip<span class="token variable">)</span></span>:<span class="token operator">&lt;</span>NODEPORT<span class="token operator">&gt;</span>
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>404 page not found
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>We expect to see a 404 response here as we haven't yet given Traefik any configuration.
+</code></pre></div> <p>All further examples below assume a DaemonSet installation. Deployment users will need to append the NodePort when constructing requests.</p> <h2 id="deploy-traefik-using-helm-chart"><a href="#deploy-traefik-using-helm-chart" aria-hidden="true" class="header-anchor">#</a> Deploy Traefik using Helm Chart</h2> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>The Helm Chart is maintained by the community, not the Traefik project maintainers.
+</code></pre></div> <p>Instead of installing Traefik via Kubernetes object directly, you can also use the Traefik Helm chart.</p> <p>Install the Traefik chart by:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>helm <span class="token function">install</span> stable/traefik
+</code></pre></div><p>Install the Traefik chart using a values.yaml file.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>helm <span class="token function">install</span> --values values.yaml stable/traefik
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">dashboard</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">domain</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ui.minikube
+<span class="token key atrule">kubernetes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">namespaces</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> default
+    <span class="token punctuation">-</span> kube<span class="token punctuation">-</span>system
+</code></pre></div><p>For more information, check out <a href="https://github.com/kubernetes/charts/tree/master/stable/traefik" target="_blank" rel="noopener noreferrer">the documentation<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <h2 id="submitting-an-ingress-to-the-cluster"><a href="#submitting-an-ingress-to-the-cluster" aria-hidden="true" class="header-anchor">#</a> Submitting an Ingress to the Cluster</h2> <p>Lets start by creating a Service and an Ingress that will expose the <a href="https://github.com/containous/traefik#web-ui" target="_blank" rel="noopener noreferrer">Traefik Web UI<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>web<span class="token punctuation">-</span>ui
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ingress<span class="token punctuation">-</span>lb
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> web
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>web<span class="token punctuation">-</span>ui
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ui.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>web<span class="token punctuation">-</span>ui
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> web
+</code></pre></div><p><a href="https://github.com/containous/traefik/tree/master/examples/k8s/ui.yaml" target="_blank" rel="noopener noreferrer">examples/k8s/ui.yaml<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/ui.yaml
+</code></pre></div><p>Now lets setup an entry in our <code>/etc/hosts</code> file to route <code>traefik-ui.minikube</code> to our cluster.</p> <p>In production you would want to set up real DNS entries.
+You can get the IP address of your minikube instance by running <code>minikube ip</code>:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token keyword">echo</span> <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span>minikube ip<span class="token variable">)</span></span> traefik-ui.minikube&quot;</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> -a /etc/hosts
+</code></pre></div><p>We should now be able to visit <a href="http://traefik-ui.minikube" target="_blank" rel="noopener noreferrer">traefik-ui.minikube<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> in the browser and view the Traefik web UI.</p> <h3 id="add-a-tls-certificate-to-the-ingress"><a href="#add-a-tls-certificate-to-the-ingress" aria-hidden="true" class="header-anchor">#</a> Add a TLS Certificate to the Ingress</h3> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>For this example to work you need a TLS entrypoint. You don't have to provide a TLS certificate at this point.
+For more details see [here](/configuration/entrypoints/).
+</code></pre></div> <p>You can add a TLS entrypoint by adding the following <code>args</code> to the container spec:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code> <span class="token punctuation">-</span><span class="token punctuation">-</span>defaultentrypoints=http<span class="token punctuation">,</span>https
+ <span class="token punctuation">-</span><span class="token punctuation">-</span>entrypoints=Name<span class="token punctuation">:</span>https Address<span class="token punctuation">:</span><span class="token punctuation">:</span>443 TLS
+ <span class="token punctuation">-</span><span class="token punctuation">-</span>entrypoints=Name<span class="token punctuation">:</span>http Address<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token number">80</span>
+</code></pre></div><p>To setup an HTTPS-protected ingress, you can leverage the TLS feature of the ingress resource.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>web<span class="token punctuation">-</span>ui
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubernetes.io/ingress.class</span><span class="token punctuation">:</span> traefik
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ui.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>web<span class="token punctuation">-</span>ui
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token key atrule">tls</span><span class="token punctuation">:</span>
+   <span class="token punctuation">-</span> <span class="token key atrule">secretName</span><span class="token punctuation">:</span> traefik<span class="token punctuation">-</span>ui<span class="token punctuation">-</span>tls<span class="token punctuation">-</span>cert
+</code></pre></div><p>In addition to the modified ingress you need to provide the TLS certificate via a Kubernetes secret in the same namespace as the ingress.
+The following two commands will generate a new certificate and create a secret containing the key and cert files.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj <span class="token string">&quot;/CN=traefik-ui.minikube&quot;</span>
+kubectl -n kube-system create secret tls traefik-ui-tls-cert --key<span class="token operator">=</span>tls.key --cert<span class="token operator">=</span>tls.crt
+</code></pre></div><p>If there are any errors while loading the TLS section of an ingress, the whole ingress will be skipped.</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>The secret must have two entries named `tls.key`and `tls.crt`.
+See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls) for more details.
+</code></pre></div> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>The TLS certificates will be added to all entrypoints defined by the ingress annotation `traefik.frontend.entryPoints`.
+If no such annotation is provided, the TLS certificates will be added to all TLS-enabled `defaultEntryPoints`.
+</code></pre></div> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>The field `hosts` in the TLS configuration is ignored. Instead, the domains provided by the certificate are used for this purpose.
+It is recommended to not use wildcard certificates as they will match globally.
+</code></pre></div> <h2 id="basic-authentication"><a href="#basic-authentication" aria-hidden="true" class="header-anchor">#</a> Basic Authentication</h2> <p>It's possible to protect access to Traefik through basic authentication. (See the <a href="/configuration/backends/kubernetes">Kubernetes Ingress</a> configuration page for syntactical details and restrictions.)</p> <h3 id="creating-the-secret"><a href="#creating-the-secret" aria-hidden="true" class="header-anchor">#</a> Creating the Secret</h3> <p>A. Use <code>htpasswd</code> to create a file containing the username and the MD5-encoded password:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>htpasswd -c ./auth myusername
+</code></pre></div><p>You will be prompted for a password which you will have to enter twice.
+<code>htpasswd</code> will create a file with the following:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">cat</span> auth
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code>myusername:<span class="token variable">$apr1</span><span class="token variable">$78Jyn</span>/1K<span class="token variable">$ERHKVRPPlzAX8eBtLuvRZ0</span>
+</code></pre></div><p>B. Now use <code>kubectl</code> to create a secret in the <code>monitoring</code> namespace using the file created by <code>htpasswd</code>.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl create secret generic mysecret --from-file auth --namespace<span class="token operator">=</span>monitoring
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>Secret must be in same namespace as the Ingress object.
+</code></pre></div> <p>C. Attach the following annotations to the Ingress object:</p> <ul><li><code>traefik.ingress.kubernetes.io/auth-type: &quot;basic&quot;</code></li> <li><code>traefik.ingress.kubernetes.io/auth-secret: &quot;mysecret&quot;</code></li></ul> <p>They specify basic authentication and reference the Secret <code>mysecret</code> containing the credentials.</p> <p>Following is a full Ingress example based on Prometheus:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+ <span class="token key atrule">name</span><span class="token punctuation">:</span> prometheus<span class="token punctuation">-</span>dashboard
+ <span class="token key atrule">namespace</span><span class="token punctuation">:</span> monitoring
+ <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+   <span class="token key atrule">kubernetes.io/ingress.class</span><span class="token punctuation">:</span> traefik
+   <span class="token key atrule">traefik.ingress.kubernetes.io/auth-type</span><span class="token punctuation">:</span> <span class="token string">&quot;basic&quot;</span>
+   <span class="token key atrule">traefik.ingress.kubernetes.io/auth-secret</span><span class="token punctuation">:</span> <span class="token string">&quot;mysecret&quot;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+ <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+ <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> dashboard.prometheus.example.com
+   <span class="token key atrule">http</span><span class="token punctuation">:</span>
+     <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+     <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+         <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> prometheus
+         <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">9090</span>
+</code></pre></div><p>You can apply the example as following:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl create -f prometheus-ingress.yaml -n monitoring
+</code></pre></div><h2 id="name-based-routing"><a href="#name-based-routing" aria-hidden="true" class="header-anchor">#</a> Name-based Routing</h2> <p>In this example we are going to setup websites for three of the United Kingdoms best loved cheeses: Cheddar, Stilton, and Wensleydale.</p> <p>First lets start by launching the pods for the cheese websites.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> stilton
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+    <span class="token key atrule">cheese</span><span class="token punctuation">:</span> stilton
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">2</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+      <span class="token key atrule">task</span><span class="token punctuation">:</span> stilton
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+        <span class="token key atrule">task</span><span class="token punctuation">:</span> stilton
+        <span class="token key atrule">version</span><span class="token punctuation">:</span> v0.0.1
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> cheese
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> errm/cheese<span class="token punctuation">:</span>stilton
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> cheddar
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+    <span class="token key atrule">cheese</span><span class="token punctuation">:</span> cheddar
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">2</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+      <span class="token key atrule">task</span><span class="token punctuation">:</span> cheddar
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+        <span class="token key atrule">task</span><span class="token punctuation">:</span> cheddar
+        <span class="token key atrule">version</span><span class="token punctuation">:</span> v0.0.1
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> cheese
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> errm/cheese<span class="token punctuation">:</span>cheddar
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+<span class="token punctuation">---</span>
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> wensleydale
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+    <span class="token key atrule">cheese</span><span class="token punctuation">:</span> wensleydale
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">2</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+      <span class="token key atrule">task</span><span class="token punctuation">:</span> wensleydale
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+        <span class="token key atrule">task</span><span class="token punctuation">:</span> wensleydale
+        <span class="token key atrule">version</span><span class="token punctuation">:</span> v0.0.1
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> cheese
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> errm/cheese<span class="token punctuation">:</span>wensleydale
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+</code></pre></div><p><a href="https://github.com/containous/traefik/tree/master/examples/k8s/cheese-deployments.yaml" target="_blank" rel="noopener noreferrer">examples/k8s/cheese-deployments.yaml<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/cheese-deployments.yaml
+</code></pre></div><p>Next we need to setup a Service for each of the cheese pods.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> stilton
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+    <span class="token key atrule">task</span><span class="token punctuation">:</span> stilton
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> cheddar
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+    <span class="token key atrule">task</span><span class="token punctuation">:</span> cheddar
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> wensleydale
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">traefik.backend.circuitbreaker</span><span class="token punctuation">:</span> <span class="token string">&quot;NetworkErrorRatio() &gt; 0.5&quot;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> http
+    <span class="token key atrule">targetPort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">80</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">app</span><span class="token punctuation">:</span> cheese
+    <span class="token key atrule">task</span><span class="token punctuation">:</span> wensleydale
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>We also set a [circuit breaker expression](/basics/#backends) for one of the backends by setting the `traefik.backend.circuitbreaker` annotation on the service.
+</code></pre></div> <p><a href="https://github.com/containous/traefik/tree/master/examples/k8s/cheese-services.yaml" target="_blank" rel="noopener noreferrer">examples/k8s/cheese-services.yaml<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/cheese-services.yaml
+</code></pre></div><p>Now we can submit an ingress for the cheese websites.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> cheese
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubernetes.io/ingress.class</span><span class="token punctuation">:</span> traefik
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> stilton.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> stilton
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> cheddar.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> cheddar
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> wensleydale.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> wensleydale
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+</code></pre></div><p><a href="https://github.com/containous/traefik/tree/master/examples/k8s/cheese-ingress.yaml" target="_blank" rel="noopener noreferrer">examples/k8s/cheese-ingress.yaml<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>we list each hostname, and add a backend service.
+</code></pre></div> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/cheese-ingress.yaml
+</code></pre></div><p>Now visit the <a href="http://traefik-ui.minikube/" target="_blank" rel="noopener noreferrer">Traefik dashboard<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> and you should see a frontend for each host.
+Along with a backend listing for each service with a server set up for each pod.</p> <p>If you edit your <code>/etc/hosts</code> again you should be able to access the cheese websites in your browser.</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token keyword">echo</span> <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span>minikube ip<span class="token variable">)</span></span> stilton.minikube cheddar.minikube wensleydale.minikube&quot;</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> -a /etc/hosts
+</code></pre></div><ul><li><a href="http://stilton.minikube/" target="_blank" rel="noopener noreferrer">Stilton<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="http://cheddar.minikube/" target="_blank" rel="noopener noreferrer">Cheddar<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="http://wensleydale.minikube/" target="_blank" rel="noopener noreferrer">Wensleydale<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul> <h2 id="path-based-routing"><a href="#path-based-routing" aria-hidden="true" class="header-anchor">#</a> Path-based Routing</h2> <p>Now lets suppose that our fictional client has decided that while they are super happy about our cheesy web design, when they asked for 3 websites they had not really bargained on having to buy 3 domain names.</p> <p>No problem, we say, why don't we reconfigure the sites to host all 3 under one domain.</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> cheeses
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubernetes.io/ingress.class</span><span class="token punctuation">:</span> traefik
+    <span class="token key atrule">traefik.frontend.rule.type</span><span class="token punctuation">:</span> PathPrefixStrip
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> cheeses.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /stilton
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> stilton
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /cheddar
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> cheddar
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /wensleydale
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> wensleydale
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+</code></pre></div><p><a href="https://github.com/containous/traefik/tree/master/examples/k8s/cheeses-ingress.yaml" target="_blank" rel="noopener noreferrer">examples/k8s/cheeses-ingress.yaml<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>We are configuring Traefik to strip the prefix from the url path with the `traefik.frontend.rule.type` annotation so that we can use the containers from the previous example without modification.
+</code></pre></div> <div class="language-shell extra-class"><pre class="language-shell"><code>kubectl apply -f https://raw.githubusercontent.com/containous/traefik/master/examples/k8s/cheeses-ingress.yaml
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token keyword">echo</span> <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span>minikube ip<span class="token variable">)</span></span> cheeses.minikube&quot;</span> <span class="token operator">|</span> <span class="token function">sudo</span> <span class="token function">tee</span> -a /etc/hosts
+</code></pre></div><p>You should now be able to visit the websites in your browser.</p> <ul><li><a href="http://cheeses.minikube/stilton/" target="_blank" rel="noopener noreferrer">cheeses.minikube/stilton<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="http://cheeses.minikube/cheddar/" target="_blank" rel="noopener noreferrer">cheeses.minikube/cheddar<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="http://cheeses.minikube/wensleydale/" target="_blank" rel="noopener noreferrer">cheeses.minikube/wensleydale<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul> <h2 id="multiple-ingress-definitions-for-the-same-host-or-host-path"><a href="#multiple-ingress-definitions-for-the-same-host-or-host-path" aria-hidden="true" class="header-anchor">#</a> Multiple Ingress Definitions for the Same Host (or Host+Path)</h2> <p>Traefik will merge multiple Ingress definitions for the same host/path pair into one definition.</p> <p>Let's say the number of cheese services is growing.
+It is now time to move the cheese services to a dedicated cheese namespace to simplify the managements of cheese and non-cheese services.</p> <p>Simply deploy a new Ingress Object with the same host an path into the cheese namespace:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> cheese
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> cheese
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubernetes.io/ingress.class</span><span class="token punctuation">:</span> traefik
+    <span class="token key atrule">traefik.frontend.rule.type</span><span class="token punctuation">:</span> PathPrefixStrip
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> cheese.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /cheddar
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> cheddar
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+</code></pre></div><p>Traefik will now look for cheddar service endpoints (ports on healthy pods) in both the cheese and the default namespace.
+Deploying cheddar into the cheese namespace and afterwards shutting down cheddar in the default namespace is enough to migrate the traffic.</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>The kubernetes documentation does not specify this merging behavior.</p></div> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>Merging ingress definitions can cause problems if the annotations differ or if the services handle requests differently.
+Be careful and extra cautious when running multiple overlapping ingress definitions.</p></div> <h2 id="specifying-routing-priorities"><a href="#specifying-routing-priorities" aria-hidden="true" class="header-anchor">#</a> Specifying Routing Priorities</h2> <p>Sometimes you need to specify priority for ingress routes, especially when handling wildcard routes.
+This can be done by adding the <code>traefik.frontend.priority</code> annotation, i.e.:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> wildcard<span class="token punctuation">-</span>cheeses
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">traefik.frontend.priority</span><span class="token punctuation">:</span> <span class="token string">&quot;1&quot;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> *.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> stilton
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> specific<span class="token punctuation">-</span>cheeses
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">traefik.frontend.priority</span><span class="token punctuation">:</span> <span class="token string">&quot;2&quot;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> specific.minikube
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> stilton
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> http
+</code></pre></div><p>Note that priority values must be quoted to avoid numeric interpretation (which are illegal for annotations).</p> <h2 id="forwarding-to-externalnames"><a href="#forwarding-to-externalnames" aria-hidden="true" class="header-anchor">#</a> Forwarding to ExternalNames</h2> <p>When specifying an <a href="https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors" target="_blank" rel="noopener noreferrer">ExternalName<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>,
+Traefik will forward requests to the given host accordingly and use HTTPS when the Service port matches 443.
+This still requires setting up a proper port mapping on the Service from the Ingress port to the (external) Service port.</p> <h2 id="disable-passing-the-host-header"><a href="#disable-passing-the-host-header" aria-hidden="true" class="header-anchor">#</a> Disable passing the Host Header</h2> <p>By default Traefik will pass the incoming Host header to the upstream resource.</p> <p>However, there are times when you may not want this to be the case. For example, if your service is of the ExternalName type.</p> <h3 id="disable-globally"><a href="#disable-globally" aria-hidden="true" class="header-anchor">#</a> Disable globally</h3> <p>Add the following to your TOML configuration file:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">disablePassHostHeaders</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+</code></pre></div><h3 id="disable-per-ingress"><a href="#disable-per-ingress" aria-hidden="true" class="header-anchor">#</a> Disable per Ingress</h3> <p>To disable passing the Host header per ingress resource set the <code>traefik.frontend.passHostHeader</code> annotation on your ingress to <code>&quot;false&quot;</code>.</p> <p>Here is an example definition:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> example
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubernetes.io/ingress.class</span><span class="token punctuation">:</span> traefik
+    <span class="token key atrule">traefik.frontend.passHostHeader</span><span class="token punctuation">:</span> <span class="token string">&quot;false&quot;</span>
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">host</span><span class="token punctuation">:</span> example.com
+    <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">path</span><span class="token punctuation">:</span> /static
+        <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> static
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> https
+</code></pre></div><p>And an example service definition:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> static
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> https
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
+  <span class="token key atrule">type</span><span class="token punctuation">:</span> ExternalName
+  <span class="token key atrule">externalName</span><span class="token punctuation">:</span> static.otherdomain.com
+</code></pre></div><p>If you were to visit <code>example.com/static</code> the request would then be passed on to <code>static.otherdomain.com/static</code>, and <code>static.otherdomain.com</code> would receive the request with the Host header being <code>static.otherdomain.com</code>.</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>The per-ingress annotation overrides whatever the global value is set to.
+So you could set `disablePassHostHeaders` to `true` in your TOML configuration file and then enable passing the host header per ingress if you wanted.
+</code></pre></div> <h2 id="partitioning-the-ingress-object-space"><a href="#partitioning-the-ingress-object-space" aria-hidden="true" class="header-anchor">#</a> Partitioning the Ingress object space</h2> <p>By default, Traefik processes every Ingress objects it observes. At times, however, it may be desirable to ignore certain objects. The following sub-sections describe common use cases and how they can be handled with Traefik.</p> <h3 id="between-traefik-and-other-ingress-controller-implementations"><a href="#between-traefik-and-other-ingress-controller-implementations" aria-hidden="true" class="header-anchor">#</a> Between Traefik and other Ingress controller implementations</h3> <p>Sometimes Traefik runs along other Ingress controller implementations. One such example is when both Traefik and a cloud provider Ingress controller are active.</p> <p>The <code>kubernetes.io/ingress.class</code> annotation can be attached to any Ingress object in order to control whether Traefik should handle it.</p> <p>If the annotation is missing, contains an empty value, or the value <code>traefik</code>, then the Traefik controller will take responsibility and process the associated Ingress object.</p> <p>It is also possible to set the <code>ingressClass</code> option in Traefik to a particular value. Traefik will only process matching Ingress objects.
+For instance, setting the option to <code>traefik-internal</code> causes Traefik to process Ingress objects with the same <code>kubernetes.io/ingress.class</code> annotation value, ignoring all other objects (including those with a <code>traefik</code> value, empty value, and missing annotation).</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>Letting multiple ingress controllers handle the same ingress objects can lead to unintended behavior.
+It is recommended to prefix all ingressClass values with `traefik` to avoid unintended collisions with other ingress implementations.
+</code></pre></div> <h3 id="between-multiple-traefik-deployments"><a href="#between-multiple-traefik-deployments" aria-hidden="true" class="header-anchor">#</a> Between multiple Traefik Deployments</h3> <p>Sometimes multiple Traefik Deployments are supposed to run concurrently.
+For instance, it is conceivable to have one Deployment deal with internal and another one with external traffic.</p> <p>For such cases, it is advisable to classify Ingress objects through a label and configure the <code>labelSelector</code> option per each Traefik Deployment accordingly.
+To stick with the internal/external example above, all Ingress objects meant for internal traffic could receive a <code>traffic-type: internal</code> label while objects designated for external traffic receive a <code>traffic-type: external</code> label.
+The label selectors on the Traefik Deployments would then be <code>traffic-type=internal</code> and <code>traffic-type=external</code>, respectively.</p> <h2 id="traffic-splitting"><a href="#traffic-splitting" aria-hidden="true" class="header-anchor">#</a> Traffic Splitting</h2> <p>It is possible to split Ingress traffic in a fine-grained manner between multiple deployments using <em>service weights</em>.</p> <p>One canonical use case is canary releases where a deployment representing a newer release is to receive an initially small but ever-increasing fraction of the requests over time.
+The way this can be done in Traefik is to specify a percentage of requests that should go into each deployment.</p> <p>For instance, say that an application <code>my-app</code> runs in version 1.
+A newer version 2 is about to be released, but confidence in the robustness and reliability of new version running in production can only be gained gradually.
+Thus, a new deployment <code>my-app-canary</code> is created and scaled to a replica count that suffices for a 1% traffic share.
+Along with it, a Service object is created as usual.</p> <p>The Ingress specification would look like this:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">traefik.ingress.kubernetes.io/service-weights</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+      my-app: 99%
+      my-app-canary: 1%</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>app
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>app
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+      <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>app<span class="token punctuation">-</span>canary
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+</code></pre></div><p>Take note of the <code>traefik.ingress.kubernetes.io/service-weights</code> annotation: It specifies the distribution of requests among the referenced backend services, <code>my-app</code> and <code>my-app-canary</code>.
+With this definition, Traefik will route 99% of the requests to the pods backed by the <code>my-app</code> deployment, and 1% to those backed by <code>my-app-canary</code>.
+Over time, the ratio may slowly shift towards the canary deployment until it is deemed to replace the previous main application, in steps such as 5%/95%, 10%/90%, 50%/50%, and finally 100%/0%.</p> <p>A few conditions must hold for service weights to be applied correctly:</p> <ul><li>The associated service backends must share the same path and host.</li> <li>The total percentage shared across all service backends must yield 100% (see the section on <a href="#omitting-the-final-service">omitting the final service</a>, however).</li> <li>The percentage values are interpreted as floating point numbers to a supported precision as defined in the <a href="/configuration/backends/kubernetes#general-annotations">annotation documentation</a>.</li></ul> <h3 id="omitting-the-final-service"><a href="#omitting-the-final-service" aria-hidden="true" class="header-anchor">#</a> Omitting the Final Service</h3> <p>When specifying service weights, it is possible to omit exactly one service for convenience reasons.</p> <p>For instance, the following definition shows how to split requests in a scenario where a canary release is accompanied by a baseline deployment for easier metrics comparison or automated canary analysis:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> extensions/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Ingress
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">annotations</span><span class="token punctuation">:</span>
+    <span class="token key atrule">traefik.ingress.kubernetes.io/service-weights</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+      my-app-canary: 10%
+      my-app-baseline: 10%</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> app
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">rules</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">http</span><span class="token punctuation">:</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>app<span class="token punctuation">-</span>canary
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+      <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>app<span class="token punctuation">-</span>baseline
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+      <span class="token punctuation">-</span> <span class="token key atrule">backend</span><span class="token punctuation">:</span>
+          <span class="token key atrule">serviceName</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>app<span class="token punctuation">-</span>main
+          <span class="token key atrule">servicePort</span><span class="token punctuation">:</span> <span class="token number">80</span>
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> /
+</code></pre></div><p>This configuration assigns 80% of traffic to <code>my-app-main</code> automatically, thus freeing the user from having to complete percentage values manually.
+This becomes handy when increasing shares for canary releases continuously.</p> <h2 id="production-advice"><a href="#production-advice" aria-hidden="true" class="header-anchor">#</a> Production advice</h2> <h3 id="resource-limitations"><a href="#resource-limitations" aria-hidden="true" class="header-anchor">#</a> Resource limitations</h3> <p>The examples shown deliberately do not specify any <a href="https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/" target="_blank" rel="noopener noreferrer">resource limitations<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> as there is no one size fits all.</p> <p>In a production environment, however, it is important to set proper bounds, especially with regards to CPU:</p> <ul><li>too strict and Traefik will be throttled while serving requests (as Kubernetes imposes hard quotas)</li> <li>too loose and Traefik may waste resources not available for other containers</li></ul> <p>When in doubt, you should measure your resource needs, and adjust requests and limits accordingly.</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/user-guide/docker-and-lets-encrypt.html" class="prev">
+          Let's Encrypt &amp; Docker
+        </a></span> <span class="next"><a href="/user-guide/marathon.html">
+          Marathon
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/35.2c01db0b.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Docker Swarm (mode) cluster | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/38.9377ad2b.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Configuration</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>User Guides</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/user-guide/examples.html" class="sidebar-link">Configuration Examples</a></li><li><a href="/user-guide/swarm-mode.html" class="active sidebar-link">Swarm Mode Cluster</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/swarm-mode.html#prerequisites" class="sidebar-link">Prerequisites</a></li><li class="sidebar-sub-header"><a href="/user-guide/swarm-mode.html#cluster-provisioning" class="sidebar-link">Cluster provisioning</a></li><li class="sidebar-sub-header"><a href="/user-guide/swarm-mode.html#deploy-traefik" class="sidebar-link">Deploy Traefik</a></li><li class="sidebar-sub-header"><a href="/user-guide/swarm-mode.html#deploy-your-apps" class="sidebar-link">Deploy your apps</a></li><li class="sidebar-sub-header"><a href="/user-guide/swarm-mode.html#access-to-your-apps-through-traefik" class="sidebar-link">Access to your apps through Traefik</a></li><li class="sidebar-sub-header"><a href="/user-guide/swarm-mode.html#scale-both-services" class="sidebar-link">Scale both services</a></li><li class="sidebar-sub-header"><a href="/user-guide/swarm-mode.html#access-to-your-whoami0-through-traefik-multiple-times" class="sidebar-link">Access to your whoami0 through Traefik multiple times.</a></li></ul></li><li><a href="/user-guide/swarm.html" class="sidebar-link">Swarm Cluster</a></li><li><a href="/user-guide/docker-and-lets-encrypt.html" class="sidebar-link">Let's Encrypt &amp; Docker</a></li><li><a href="/user-guide/kubernetes.html" class="sidebar-link">Kubernetes</a></li><li><a href="/user-guide/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/user-guide/kv-config.html" class="sidebar-link">Key-value Store Configuration</a></li><li><a href="/user-guide/cluster.html" class="sidebar-link">Clustering/HA</a></li><li><a href="/user-guide/grpc.html" class="sidebar-link">gRPC Example</a></li><li><a href="/user-guide/cluster-docker-consul.html" class="sidebar-link">Traefik cluster example with Swarm</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="docker-swarm-mode-cluster"><a href="#docker-swarm-mode-cluster" aria-hidden="true" class="header-anchor">#</a> Docker Swarm (mode) cluster</h1> <p>This section explains how to create a multi-host docker cluster with swarm mode using <a href="https://docs.docker.com/machine" target="_blank" rel="noopener noreferrer">docker-machine<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> and how to deploy Traefik on it.</p> <p>The cluster consists of:</p> <ul><li>3 servers</li> <li>1 manager</li> <li>2 workers</li> <li>1 <a href="https://docs.docker.com/network/overlay/" target="_blank" rel="noopener noreferrer">overlay<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> network (multi-host networking)</li></ul> <h2 id="prerequisites"><a href="#prerequisites" aria-hidden="true" class="header-anchor">#</a> Prerequisites</h2> <ol><li>You will need to install <a href="https://docs.docker.com/machine/" target="_blank" rel="noopener noreferrer">docker-machine<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li>You will need the latest <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener noreferrer">VirtualBox<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ol> <h2 id="cluster-provisioning"><a href="#cluster-provisioning" aria-hidden="true" class="header-anchor">#</a> Cluster provisioning</h2> <p>First, let's create all the required nodes.
+It's a shorter version of the <a href="https://docs.docker.com/engine/swarm/swarm-tutorial/" target="_blank" rel="noopener noreferrer">swarm tutorial<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine create -d virtualbox manager
+docker-machine create -d virtualbox worker1
+docker-machine create -d virtualbox worker2
+</code></pre></div><p>Then, let's setup the cluster, in order:</p> <ol><li>initialize the cluster</li> <li>get the token for other host to join</li> <li>on both workers, join the cluster with the token</li></ol> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker swarm init \
+	--listen-addr <span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span> \
+	--advertise-addr <span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span>&quot;</span>
+
+<span class="token function">export</span> worker_token<span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker swarm \
+join-token worker -q&quot;</span><span class="token variable">)</span></span>
+
+docker-machine <span class="token function">ssh</span> worker1 <span class="token string">&quot;docker swarm join \
+	--token=<span class="token variable">${worker_token}</span> \
+	--listen-addr <span class="token variable"><span class="token variable">$(</span>docker-machine ip worker1<span class="token variable">)</span></span> \
+	--advertise-addr <span class="token variable"><span class="token variable">$(</span>docker-machine ip worker1<span class="token variable">)</span></span> \
+	<span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span>&quot;</span>
+
+docker-machine <span class="token function">ssh</span> worker2 <span class="token string">&quot;docker swarm join \
+	--token=<span class="token variable">${worker_token}</span> \
+	--listen-addr <span class="token variable"><span class="token variable">$(</span>docker-machine ip worker2<span class="token variable">)</span></span> \
+	--advertise-addr <span class="token variable"><span class="token variable">$(</span>docker-machine ip worker2<span class="token variable">)</span></span> \
+	<span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span>&quot;</span>
+</code></pre></div><p>Let's validate the cluster is up and running.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine <span class="token function">ssh</span> manager docker node <span class="token function">ls</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>ID                           HOSTNAME  STATUS  AVAILABILITY  MANAGER STATUS
+013v16l1sbuwjqcn7ucbu4jwt    worker1   Ready   Active
+8buzkquycd17jqjber0mo2gn8    worker2   Ready   Active
+fnpj8ozfc85zvahx2r540xfcf *  manager   Ready   Active        Leader
+</code></pre></div><p>Finally, let's create a network for Traefik to use.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker network create --driver=overlay traefik-net&quot;</span>
+</code></pre></div><h2 id="deploy-traefik"><a href="#deploy-traefik" aria-hidden="true" class="header-anchor">#</a> Deploy Traefik</h2> <p>Let's deploy Traefik as a docker service in our cluster.
+The only requirement for Traefik to work with swarm mode is that it needs to run on a manager node - we are going to use a <a href="https://docs.docker.com/engine/reference/commandline/service_create/#specify-service-constraints---constraint" target="_blank" rel="noopener noreferrer">constraint<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for that.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker service create \
+	--name traefik \
+	--constraint=node.role==manager \
+	--publish 80:80 --publish 8080:8080 \
+	--mount	type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
+	--network traefik-net \
+	traefik \
+	--docker \
+	--docker.swarmMode \
+	--docker.domain=traefik \
+	--docker.watch \
+	--api&quot;</span>
+</code></pre></div><p>Let's explain this command:</p> <table><thead><tr><th>Option</th> <th>Description</th></tr></thead> <tbody><tr><td><code>--publish 80:80 --publish 8080:8080</code></td> <td>we publish port <code>80</code> and <code>8080</code> on the cluster.</td></tr> <tr><td><code>--constraint=node.role==manager</code></td> <td>we ask docker to schedule Traefik on a manager node.</td></tr> <tr><td><code>--mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock</code></td> <td>we bind mount the docker socket where Traefik is scheduled to be able to speak to the daemon.</td></tr> <tr><td><code>--network traefik-net</code></td> <td>we attach the Traefik service (and thus the underlying container) to the <code>traefik-net</code> network.</td></tr> <tr><td><code>--docker</code></td> <td>enable docker provider, and <code>--docker.swarmMode</code> to enable the swarm mode on Traefik.</td></tr> <tr><td><code>--api</code></td> <td>activate the webUI on port 8080</td></tr></tbody></table> <h2 id="deploy-your-apps"><a href="#deploy-your-apps" aria-hidden="true" class="header-anchor">#</a> Deploy your apps</h2> <p>We can now deploy our app on the cluster, here <a href="https://github.com/containous/whoami" target="_blank" rel="noopener noreferrer">whoami<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>, a simple web server in Go.
+We start 2 services, on the <code>traefik-net</code> network.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker service create \
+	--name whoami0 \
+	--label traefik.port=80 \
+	--network traefik-net \
+	containous/whoami&quot;</span>
+
+docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker service create \
+	--name whoami1 \
+	--label traefik.port=80 \
+	--network traefik-net \
+	containous/whoami&quot;</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>We set `whoami1` to use sticky sessions (`--label traefik.backend.loadbalancer.stickiness=true`).
+We'll demonstrate that later.
+</code></pre></div> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>If using `docker stack deploy`, there is [a specific way that the labels must be defined in the docker-compose file](https://github.com/containous/traefik/issues/994#issuecomment-269095109).
+</code></pre></div> <p>Check that everything is scheduled and started:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker service ls&quot;</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>ID            NAME     MODE        REPLICAS  IMAGE                     PORTS
+moq3dq4xqv6t  traefik  replicated  1/1       traefik:latest            *:80-&gt;80/tcp,*:8080-&gt;8080/tcp
+ysil6oto1wim  whoami0  replicated  1/1       containous/whoami:latest
+z9re2mnl34k4  whoami1  replicated  1/1       containous/whoami:latest
+</code></pre></div><h2 id="access-to-your-apps-through-traefik"><a href="#access-to-your-apps-through-traefik" aria-hidden="true" class="header-anchor">#</a> Access to your apps through Traefik</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> -H Host:whoami0.traefik http://<span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">Hostname</span><span class="token punctuation">:</span> 5b0b3d148359
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 127.0.0.1
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.8
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.4
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 172.18.0.5
+GET / HTTP/1.1
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> whoami0.traefik
+<span class="token key atrule">User-Agent</span><span class="token punctuation">:</span> curl/7.55.1
+<span class="token key atrule">Accept</span><span class="token punctuation">:</span> */*
+<span class="token key atrule">Accept-Encoding</span><span class="token punctuation">:</span> gzip
+<span class="token key atrule">X-Forwarded-For</span><span class="token punctuation">:</span> 10.255.0.2
+<span class="token key atrule">X-Forwarded-Host</span><span class="token punctuation">:</span> whoami0.traefik
+<span class="token key atrule">X-Forwarded-Proto</span><span class="token punctuation">:</span> http
+<span class="token key atrule">X-Forwarded-Server</span><span class="token punctuation">:</span> 77fc29c69fe4
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> -H Host:whoami1.traefik http://<span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">Hostname</span><span class="token punctuation">:</span> 3633163970f6
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 127.0.0.1
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.14
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.6
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 172.18.0.5
+GET / HTTP/1.1
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> whoami1.traefik
+<span class="token key atrule">User-Agent</span><span class="token punctuation">:</span> curl/7.55.1
+<span class="token key atrule">Accept</span><span class="token punctuation">:</span> */*
+<span class="token key atrule">Accept-Encoding</span><span class="token punctuation">:</span> gzip
+<span class="token key atrule">X-Forwarded-For</span><span class="token punctuation">:</span> 10.255.0.2
+<span class="token key atrule">X-Forwarded-Host</span><span class="token punctuation">:</span> whoami1.traefik
+<span class="token key atrule">X-Forwarded-Proto</span><span class="token punctuation">:</span> http
+<span class="token key atrule">X-Forwarded-Server</span><span class="token punctuation">:</span> 77fc29c69fe4
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>As Traefik is published, you can access it from any machine and not only the manager.
+</code></pre></div> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> -H Host:whoami0.traefik http://<span class="token variable"><span class="token variable">$(</span>docker-machine ip worker1<span class="token variable">)</span></span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">Hostname</span><span class="token punctuation">:</span> 5b0b3d148359
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 127.0.0.1
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.8
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.4
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 172.18.0.5
+GET / HTTP/1.1
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> whoami0.traefik
+<span class="token key atrule">User-Agent</span><span class="token punctuation">:</span> curl/7.55.1
+<span class="token key atrule">Accept</span><span class="token punctuation">:</span> */*
+<span class="token key atrule">Accept-Encoding</span><span class="token punctuation">:</span> gzip
+<span class="token key atrule">X-Forwarded-For</span><span class="token punctuation">:</span> 10.255.0.3
+<span class="token key atrule">X-Forwarded-Host</span><span class="token punctuation">:</span> whoami0.traefik
+<span class="token key atrule">X-Forwarded-Proto</span><span class="token punctuation">:</span> http
+<span class="token key atrule">X-Forwarded-Server</span><span class="token punctuation">:</span> 77fc29c69fe4
+</code></pre></div><div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> -H Host:whoami1.traefik http://<span class="token variable"><span class="token variable">$(</span>docker-machine ip worker2<span class="token variable">)</span></span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">Hostname</span><span class="token punctuation">:</span> 3633163970f6
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 127.0.0.1
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.14
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.6
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 172.18.0.5
+GET / HTTP/1.1
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> whoami1.traefik
+<span class="token key atrule">User-Agent</span><span class="token punctuation">:</span> curl/7.55.1
+<span class="token key atrule">Accept</span><span class="token punctuation">:</span> */*
+<span class="token key atrule">Accept-Encoding</span><span class="token punctuation">:</span> gzip
+<span class="token key atrule">X-Forwarded-For</span><span class="token punctuation">:</span> 10.255.0.4
+<span class="token key atrule">X-Forwarded-Host</span><span class="token punctuation">:</span> whoami1.traefik
+<span class="token key atrule">X-Forwarded-Proto</span><span class="token punctuation">:</span> http
+<span class="token key atrule">X-Forwarded-Server</span><span class="token punctuation">:</span> 77fc29c69fe4
+</code></pre></div><h2 id="scale-both-services"><a href="#scale-both-services" aria-hidden="true" class="header-anchor">#</a> Scale both services</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker service scale whoami0=5&quot;</span>
+docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker service scale whoami1=5&quot;</span>
+</code></pre></div><p>Check that we now have 5 replicas of each <code>whoami</code> service:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker-machine <span class="token function">ssh</span> manager <span class="token string">&quot;docker service ls&quot;</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>ID            NAME     MODE        REPLICAS  IMAGE                     PORTS
+moq3dq4xqv6t  traefik  replicated  1/1       traefik:latest            *:80-&gt;80/tcp,*:8080-&gt;8080/tcp
+ysil6oto1wim  whoami0  replicated  5/5       containous/whoami:latest
+z9re2mnl34k4  whoami1  replicated  5/5       containous/whoami:latest
+</code></pre></div><h2 id="access-to-your-whoami0-through-traefik-multiple-times"><a href="#access-to-your-whoami0-through-traefik-multiple-times" aria-hidden="true" class="header-anchor">#</a> Access to your <code>whoami0</code> through Traefik multiple times.</h2> <p>Repeat the following command multiple times and note that the Hostname changes each time as Traefik load balances each request against the 5 tasks:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> -H Host:whoami0.traefik http://<span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">Hostname</span><span class="token punctuation">:</span> f3138d15b567
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 127.0.0.1
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.5
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.4
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 172.18.0.3
+GET / HTTP/1.1
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> whoami0.traefik
+<span class="token key atrule">User-Agent</span><span class="token punctuation">:</span> curl/7.55.1
+<span class="token key atrule">Accept</span><span class="token punctuation">:</span> */*
+<span class="token key atrule">Accept-Encoding</span><span class="token punctuation">:</span> gzip
+<span class="token key atrule">X-Forwarded-For</span><span class="token punctuation">:</span> 10.255.0.2
+<span class="token key atrule">X-Forwarded-Host</span><span class="token punctuation">:</span> whoami0.traefik
+<span class="token key atrule">X-Forwarded-Proto</span><span class="token punctuation">:</span> http
+<span class="token key atrule">X-Forwarded-Server</span><span class="token punctuation">:</span> 77fc29c69fe4
+</code></pre></div><p>Do the same against <code>whoami1</code>:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> -c cookies.txt -H Host:whoami1.traefik http://<span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">Hostname</span><span class="token punctuation">:</span> 348e2f7bf432
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 127.0.0.1
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.15
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.6
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 172.18.0.6
+GET / HTTP/1.1
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> whoami1.traefik
+<span class="token key atrule">User-Agent</span><span class="token punctuation">:</span> curl/7.55.1
+<span class="token key atrule">Accept</span><span class="token punctuation">:</span> */*
+<span class="token key atrule">Accept-Encoding</span><span class="token punctuation">:</span> gzip
+<span class="token key atrule">X-Forwarded-For</span><span class="token punctuation">:</span> 10.255.0.2
+<span class="token key atrule">X-Forwarded-Host</span><span class="token punctuation">:</span> whoami1.traefik
+<span class="token key atrule">X-Forwarded-Proto</span><span class="token punctuation">:</span> http
+<span class="token key atrule">X-Forwarded-Server</span><span class="token punctuation">:</span> 77fc29c69fe4
+</code></pre></div><p>Because the sticky sessions require cookies to work, we used the <code>-c cookies.txt</code> option to store the cookie into a file.
+The cookie contains the IP of the container to which the session sticks:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">cat</span> ./cookies.txt
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code># Netscape HTTP Cookie File
+# https://curl.haxx.se/docs/http-cookies.html
+# This file was generated by libcurl! Edit at your own risk.
+
+whoami1.traefik FALSE  /  FALSE  0  _TRAEFIK_BACKEND  http://10.0.0.15:80
+</code></pre></div><p>If you load the cookies file (<code>-b cookies.txt</code>) for the next request, you will see that stickiness is maintained:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">curl</span> -b cookies.txt -H Host:whoami1.traefik http://<span class="token variable"><span class="token variable">$(</span>docker-machine ip manager<span class="token variable">)</span></span>
+</code></pre></div><div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">Hostname</span><span class="token punctuation">:</span> 348e2f7bf432
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 127.0.0.1
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.15
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 10.0.0.6
+<span class="token key atrule">IP</span><span class="token punctuation">:</span> 172.18.0.6
+GET / HTTP/1.1
+<span class="token key atrule">Host</span><span class="token punctuation">:</span> whoami1.traefik
+<span class="token key atrule">User-Agent</span><span class="token punctuation">:</span> curl/7.55.1
+<span class="token key atrule">Accept</span><span class="token punctuation">:</span> */*
+<span class="token key atrule">Accept-Encoding</span><span class="token punctuation">:</span> gzip
+<span class="token key atrule">Cookie</span><span class="token punctuation">:</span> _TRAEFIK_BACKEND=http<span class="token punctuation">:</span>//10.0.0.15<span class="token punctuation">:</span><span class="token number">80</span>
+<span class="token key atrule">X-Forwarded-For</span><span class="token punctuation">:</span> 10.255.0.2
+<span class="token key atrule">X-Forwarded-Host</span><span class="token punctuation">:</span> whoami1.traefik
+<span class="token key atrule">X-Forwarded-Proto</span><span class="token punctuation">:</span> http
+<span class="token key atrule">X-Forwarded-Server</span><span class="token punctuation">:</span> 77fc29c69fe4
+</code></pre></div><p><img src="https://i.giphy.com/ujUdrdpX7Ok5W.gif" alt="GIF Magica"></p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/user-guide/examples.html" class="prev">
+          Configuration Examples
+        </a></span> <span class="next"><a href="/user-guide/swarm.html">
+          Swarm Cluster
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/38.9377ad2b.js" defer></script>
+  </body>
+</html>

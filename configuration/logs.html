@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Logs Definition | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/26.6b0b7881.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Configuration</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/configuration/commons.html" class="sidebar-link">Commons</a></li><li><a href="/configuration/logs.html" class="active sidebar-link">Logs</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/configuration/logs.html#reference" class="sidebar-link">Reference</a></li><li class="sidebar-sub-header"><a href="/configuration/logs.html#traefik-logs" class="sidebar-link">Traefik Logs</a></li><li class="sidebar-sub-header"><a href="/configuration/logs.html#access-logs" class="sidebar-link">Access Logs</a></li><li class="sidebar-sub-header"><a href="/configuration/logs.html#log-rotation" class="sidebar-link">Log Rotation</a></li></ul></li><li><a href="/configuration/entrypoints.html" class="sidebar-link">EntryPoints</a></li><li><a href="/configuration/acme.html" class="sidebar-link">Let's Encrypt</a></li><li><a href="/configuration/api.html" class="sidebar-link">API / Dashboard</a></li><li><a href="/configuration/backends/boltdb.html" class="sidebar-link">BoltDB</a></li><li><a href="/configuration/backends/consul.html" class="sidebar-link">Consul</a></li><li><a href="/configuration/backends/consulcatalog.html" class="sidebar-link">Consul Catalog</a></li><li><a href="/configuration/backends/docker.html" class="sidebar-link">Docker</a></li><li><a href="/configuration/backends/dynamodb.html" class="sidebar-link">DynamoDB</a></li><li><a href="/configuration/backends/ecs.html" class="sidebar-link">ECS</a></li><li><a href="/configuration/backends/etcd.html" class="sidebar-link">Etcd</a></li><li><a href="/configuration/backends/eureka.html" class="sidebar-link">Eureka</a></li><li><a href="/configuration/backends/file.html" class="sidebar-link">File</a></li><li><a href="/configuration/backends/kubernetes.html" class="sidebar-link">Kubernetes Ingress</a></li><li><a href="/configuration/backends/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/configuration/backends/mesos.html" class="sidebar-link">Mesos</a></li><li><a href="/configuration/backends/rancher.html" class="sidebar-link">Rancher</a></li><li><a href="/configuration/backends/rest.html" class="sidebar-link">Rest</a></li><li><a href="/configuration/backends/servicefabric.html" class="sidebar-link">Azure Service Fabric</a></li><li><a href="/configuration/backends/zookeeper.html" class="sidebar-link">Zookeeper</a></li><li><a href="/configuration/ping.html" class="sidebar-link">Ping</a></li><li><a href="/configuration/metrics.html" class="sidebar-link">Metrics</a></li><li><a href="/configuration/tracing.html" class="sidebar-link">Tracing</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>User Guides</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="logs-definition"><a href="#logs-definition" aria-hidden="true" class="header-anchor">#</a> Logs Definition</h1> <h2 id="reference"><a href="#reference" aria-hidden="true" class="header-anchor">#</a> Reference</h2> <h3 id="toml"><a href="#toml" aria-hidden="true" class="header-anchor">#</a> TOML</h3> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">logLevel</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;INFO&quot;</span>
+
+<span class="token selector">[traefikLog]</span>
+<span class="token constant">  filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/traefik.log&quot;</span>
+<span class="token constant">  format</span>   <span class="token attr-value"><span class="token punctuation">=</span> &quot;json&quot;</span>
+
+<span class="token selector">[accessLog]</span>
+<span class="token constant">  filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/access.log&quot;</span>
+<span class="token constant">  format</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;json&quot;</span>
+
+<span class="token selector">  [accessLog.filters]</span>
+<span class="token constant">    statusCodes</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;200&quot;, &quot;300-302&quot;]</span>
+<span class="token constant">    retryAttempts</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">    minDuration</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;10ms&quot;</span>
+
+<span class="token selector">  [accessLog.fields]</span>
+<span class="token constant">    defaultMode</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;keep&quot;</span>
+<span class="token selector">    [accessLog.fields.names]</span>
+<span class="token constant">      &quot;ClientUsername&quot;</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;drop&quot;</span>
+      # ...
+
+<span class="token selector">    [accessLog.fields.headers]</span>
+<span class="token constant">      defaultMode</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;keep&quot;</span>
+<span class="token selector">      [accessLog.fields.headers.names]</span>
+<span class="token constant">        &quot;User-Agent&quot;</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;redact&quot;</span>
+<span class="token constant">        &quot;Authorization&quot;</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;drop&quot;</span>
+<span class="token constant">        &quot;Content-Type&quot;</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;keep&quot;</span>
+        # ...
+</code></pre></div><h3 id="cli"><a href="#cli" aria-hidden="true" class="header-anchor">#</a> CLI</h3> <p>For more information about the CLI, see the documentation about <a href="/basics/#traefik">Traefik command</a>.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>--logLevel<span class="token operator">=</span><span class="token string">&quot;DEBUG&quot;</span>
+--traefikLog.filePath<span class="token operator">=</span><span class="token string">&quot;/path/to/traefik.log&quot;</span>
+--traefikLog.format<span class="token operator">=</span><span class="token string">&quot;json&quot;</span>
+--accessLog.filePath<span class="token operator">=</span><span class="token string">&quot;/path/to/access.log&quot;</span>
+--accessLog.format<span class="token operator">=</span><span class="token string">&quot;json&quot;</span>
+--accessLog.filters.statusCodes<span class="token operator">=</span><span class="token string">&quot;200,300-302&quot;</span>
+--accessLog.filters.retryAttempts<span class="token operator">=</span><span class="token string">&quot;true&quot;</span>
+--accessLog.filters.minDuration<span class="token operator">=</span><span class="token string">&quot;10ms&quot;</span>
+--accessLog.fields.defaultMode<span class="token operator">=</span><span class="token string">&quot;keep&quot;</span>
+--accessLog.fields.names<span class="token operator">=</span><span class="token string">&quot;Username=drop Hostname=drop&quot;</span>
+--accessLog.fields.headers.defaultMode<span class="token operator">=</span><span class="token string">&quot;keep&quot;</span>
+--accessLog.fields.headers.names<span class="token operator">=</span><span class="token string">&quot;User-Agent=redact Authorization=drop Content-Type=keep&quot;</span>
+</code></pre></div><h2 id="traefik-logs"><a href="#traefik-logs" aria-hidden="true" class="header-anchor">#</a> Traefik Logs</h2> <p>By default the Traefik log is written to stdout in text format.</p> <p>To write the logs into a log file specify the <code>filePath</code>:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[traefikLog]</span>
+<span class="token constant">  filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/traefik.log&quot;</span>
+</code></pre></div><p>To write JSON format logs, specify <code>json</code> as the format:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[traefikLog]</span>
+<span class="token constant">  filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/traefik.log&quot;</span>
+<span class="token constant">  format</span>   <span class="token attr-value"><span class="token punctuation">=</span> &quot;json&quot;</span>
+</code></pre></div><p>To customize the log level:</p> <div class="language-ini extra-class"><pre class="language-ini"><code># Log level
+#
+# Optional
+# Default: &quot;ERROR&quot;
+#
+# Accepted values, in order of severity: &quot;DEBUG&quot;, &quot;INFO&quot;, &quot;WARN&quot;, &quot;ERROR&quot;, &quot;FATAL&quot;, &quot;PANIC&quot;
+# Messages at and above the selected level will be logged.
+#
+<span class="token constant">logLevel</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;ERROR&quot;</span>
+</code></pre></div><h2 id="access-logs"><a href="#access-logs" aria-hidden="true" class="header-anchor">#</a> Access Logs</h2> <p>Access logs are written when <code>[accessLog]</code> is defined.
+By default it will write to stdout and produce logs in the textual Common Log Format (CLF), extended with additional fields.</p> <p>To enable access logs using the default settings just add the <code>[accessLog]</code> entry:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[accessLog]</span>
+</code></pre></div><p>To write the logs into a log file specify the <code>filePath</code>:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[accessLog]</span>
+<span class="token constant">filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/access.log&quot;</span>
+</code></pre></div><p>To write JSON format logs, specify <code>json</code> as the format:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[accessLog]</span>
+<span class="token constant">filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/access.log&quot;</span>
+<span class="token constant">format</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;json&quot;</span>
+</code></pre></div><p>To write the logs in async, specify <code>bufferingSize</code> as the format (must be &gt;0):</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[accessLog]</span>
+<span class="token constant">filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/access.log&quot;</span>
+# Buffering Size
+#
+# Optional
+# Default: 0
+#
+# Number of access log lines to process in a buffered way.
+#
+<span class="token constant">bufferingSize</span> <span class="token attr-value"><span class="token punctuation">=</span> 100</span>
+</code></pre></div><p>To filter logs you can specify a set of filters which are logically &quot;OR-connected&quot;. Thus, specifying multiple filters will keep more access logs than specifying only one:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[accessLog]</span>
+<span class="token constant">filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/access.log&quot;</span>
+<span class="token constant">format</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;json&quot;</span>
+
+<span class="token selector">  [accessLog.filters]</span>
+
+  # statusCodes: keep access logs with status codes in the specified range
+  #
+  # Optional
+  # Default: []
+  #
+<span class="token constant">  statusCodes</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;200&quot;, &quot;300-302&quot;]</span>
+
+  # retryAttempts: keep access logs when at least one retry happened
+  #
+  # Optional
+  # Default: false
+  #
+<span class="token constant">  retryAttempts</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+  # minDuration: keep access logs when request took longer than the specified duration
+  #
+  # Optional
+  # Default: 0
+  #
+<span class="token constant">  minDuration</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;10ms&quot;</span>
+</code></pre></div><p>To customize logs format:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[accessLog]</span>
+<span class="token constant">filePath</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/access.log&quot;</span>
+<span class="token constant">format</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;json&quot;</span>
+
+<span class="token selector">  [accessLog.filters]</span>
+
+  # statusCodes keep only access logs with status codes in the specified range
+  #
+  # Optional
+  # Default: []
+  #
+<span class="token constant">  statusCodes</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;200&quot;, &quot;300-302&quot;]</span>
+
+<span class="token selector">  [accessLog.fields]</span>
+
+  # defaultMode
+  #
+  # Optional
+  # Default: &quot;keep&quot;
+  #
+  # Accepted values &quot;keep&quot;, &quot;drop&quot;
+  #
+<span class="token constant">  defaultMode</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;keep&quot;</span>
+
+  # Fields map which is used to override fields defaultMode
+<span class="token selector">  [accessLog.fields.names]</span>
+<span class="token constant">    &quot;ClientUsername&quot;</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;drop&quot;</span>
+    # ...
+
+<span class="token selector">  [accessLog.fields.headers]</span>
+    # defaultMode
+    #
+    # Optional
+    # Default: &quot;keep&quot;
+    #
+    # Accepted values &quot;keep&quot;, &quot;drop&quot;, &quot;redact&quot;
+    #
+<span class="token constant">    defaultMode</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;keep&quot;</span>
+    # Fields map which is used to override headers defaultMode
+<span class="token selector">    [accessLog.fields.headers.names]</span>
+<span class="token constant">      &quot;User-Agent&quot;</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;redact&quot;</span>
+<span class="token constant">      &quot;Authorization&quot;</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;drop&quot;</span>
+<span class="token constant">      &quot;Content-Type&quot;</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;keep&quot;</span>
+      # ...
+</code></pre></div><h3 id="list-of-all-available-fields"><a href="#list-of-all-available-fields" aria-hidden="true" class="header-anchor">#</a> List of all available fields</h3> <div class="language-ini extra-class"><pre class="language-ini"><code>StartUTC
+StartLocal
+Duration
+FrontendName
+BackendName
+BackendURL
+BackendAddr
+ClientAddr
+ClientHost
+ClientPort
+ClientUsername
+RequestAddr
+RequestHost
+RequestPort
+RequestMethod
+RequestPath
+RequestProtocol
+RequestLine
+RequestContentSize
+OriginDuration
+OriginContentSize
+OriginStatus
+OriginStatusLine
+DownstreamStatus
+DownstreamStatusLine
+DownstreamContentSize
+RequestCount
+GzipRatio
+Overhead
+RetryAttempts
+</code></pre></div><h3 id="clf-common-log-format"><a href="#clf-common-log-format" aria-hidden="true" class="header-anchor">#</a> CLF - Common Log Format</h3> <p>By default, Traefik use the CLF (<code>common</code>) as access log format.</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>remote_IP_address</span><span class="token punctuation">&gt;</span></span> - <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>client_user_name_if_available</span><span class="token punctuation">&gt;</span></span> [<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>timestamp</span><span class="token punctuation">&gt;</span></span>] &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>request_method</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>request_path</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>request_protocol</span><span class="token punctuation">&gt;</span></span>&quot; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>origin_server_HTTP_status</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>origin_server_content_size</span><span class="token punctuation">&gt;</span></span> &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>request_referrer</span><span class="token punctuation">&gt;</span></span>&quot; &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>request_user_agent</span><span class="token punctuation">&gt;</span></span>&quot; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>number_of_requests_received_since_Traefik_started</span><span class="token punctuation">&gt;</span></span> &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Traefik_frontend_name</span><span class="token punctuation">&gt;</span></span>&quot; &quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Traefik_backend_URL</span><span class="token punctuation">&gt;</span></span>&quot; <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>request_duration_in_ms</span><span class="token punctuation">&gt;</span></span>ms 
+</code></pre></div><h2 id="log-rotation"><a href="#log-rotation" aria-hidden="true" class="header-anchor">#</a> Log Rotation</h2> <p>Traefik will close and reopen its log files, assuming they're configured, on receipt of a USR1 signal.
+This allows the logs to be rotated and processed by an external program, such as <code>logrotate</code>.</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>This does not work on Windows due to the lack of USR signals.
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/configuration/commons.html" class="prev">
+          Commons
+        </a></span> <span class="next"><a href="/configuration/entrypoints.html">
+          EntryPoints
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/26.6b0b7881.js" defer></script>
+  </body>
+</html>

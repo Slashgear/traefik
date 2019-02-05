@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Global Configuration | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/24.e91ab9c9.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Configuration</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/configuration/commons.html" class="active sidebar-link">Commons</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/configuration/commons.html#main-section" class="sidebar-link">Main Section</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#constraints" class="sidebar-link">Constraints</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#custom-error-pages" class="sidebar-link">Custom Error pages</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#rate-limiting" class="sidebar-link">Rate limiting</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#buffering" class="sidebar-link">Buffering</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#retry-configuration" class="sidebar-link">Retry Configuration</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#health-check-configuration" class="sidebar-link">Health Check Configuration</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#life-cycle" class="sidebar-link">Life Cycle</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#timeouts" class="sidebar-link">Timeouts</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#host-resolver" class="sidebar-link">Host Resolver</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#override-default-configuration-template" class="sidebar-link">Override Default Configuration Template</a></li><li class="sidebar-sub-header"><a href="/configuration/commons.html#pass-tls-client-cert" class="sidebar-link">Pass TLS Client Cert</a></li></ul></li><li><a href="/configuration/logs.html" class="sidebar-link">Logs</a></li><li><a href="/configuration/entrypoints.html" class="sidebar-link">EntryPoints</a></li><li><a href="/configuration/acme.html" class="sidebar-link">Let's Encrypt</a></li><li><a href="/configuration/api.html" class="sidebar-link">API / Dashboard</a></li><li><a href="/configuration/backends/boltdb.html" class="sidebar-link">BoltDB</a></li><li><a href="/configuration/backends/consul.html" class="sidebar-link">Consul</a></li><li><a href="/configuration/backends/consulcatalog.html" class="sidebar-link">Consul Catalog</a></li><li><a href="/configuration/backends/docker.html" class="sidebar-link">Docker</a></li><li><a href="/configuration/backends/dynamodb.html" class="sidebar-link">DynamoDB</a></li><li><a href="/configuration/backends/ecs.html" class="sidebar-link">ECS</a></li><li><a href="/configuration/backends/etcd.html" class="sidebar-link">Etcd</a></li><li><a href="/configuration/backends/eureka.html" class="sidebar-link">Eureka</a></li><li><a href="/configuration/backends/file.html" class="sidebar-link">File</a></li><li><a href="/configuration/backends/kubernetes.html" class="sidebar-link">Kubernetes Ingress</a></li><li><a href="/configuration/backends/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/configuration/backends/mesos.html" class="sidebar-link">Mesos</a></li><li><a href="/configuration/backends/rancher.html" class="sidebar-link">Rancher</a></li><li><a href="/configuration/backends/rest.html" class="sidebar-link">Rest</a></li><li><a href="/configuration/backends/servicefabric.html" class="sidebar-link">Azure Service Fabric</a></li><li><a href="/configuration/backends/zookeeper.html" class="sidebar-link">Zookeeper</a></li><li><a href="/configuration/ping.html" class="sidebar-link">Ping</a></li><li><a href="/configuration/metrics.html" class="sidebar-link">Metrics</a></li><li><a href="/configuration/tracing.html" class="sidebar-link">Tracing</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>User Guides</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="global-configuration"><a href="#global-configuration" aria-hidden="true" class="header-anchor">#</a> Global Configuration</h1> <h2 id="main-section"><a href="#main-section" aria-hidden="true" class="header-anchor">#</a> Main Section</h2> <div class="language-ini extra-class"><pre class="language-ini"><code># Enable debug mode.
+# This will install HTTP handlers to expose Go expvars under /debug/vars and
+# pprof profiling data under /debug/pprof/.
+# The log level will be set to DEBUG unless `logLevel` is specified.
+#
+# Optional
+# Default: false
+#
+# debug <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+# Periodically check if a new version has been released.
+#
+# Optional
+# Default: true
+#
+# checkNewVersion <span class="token attr-value"><span class="token punctuation">=</span> false</span>
+
+# Tells traefik whether it should keep the trailing slashes in the paths (e.g. /paths/) or redirect to the no trailing slash paths instead (/paths).
+#
+# Optional
+# Default: false
+#
+# keepTrailingSlash <span class="token attr-value"><span class="token punctuation">=</span> false</span>
+
+# Providers throttle duration.
+#
+# Optional
+# Default: &quot;2s&quot;
+#
+# providersThrottleDuration <span class="token attr-value"><span class="token punctuation">=</span> &quot;2s&quot;</span>
+
+# Controls the maximum idle (keep-alive) connections to keep per-host.
+#
+# Optional
+# Default: 200
+#
+# maxIdleConnsPerHost <span class="token attr-value"><span class="token punctuation">=</span> 200</span>
+
+# If set to true invalid SSL certificates are accepted for backends.
+# This disables detection of man-in-the-middle attacks so should only be used on secure backend networks.
+#
+# Optional
+# Default: false
+#
+# insecureSkipVerify <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+# Register Certificates in the rootCA.
+#
+# Optional
+# Default: []
+#
+# rootCAs <span class="token attr-value"><span class="token punctuation">=</span> [ &quot;/mycert.cert&quot; ]</span>
+
+# Entrypoints to be used by frontends that do not specify any entrypoint.
+# Each frontend can specify its own entrypoints.
+#
+# Optional
+# Default: [&quot;http&quot;]
+#
+# defaultEntryPoints <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;, &quot;https&quot;]</span>
+</code></pre></div><ul><li><p><code>providersThrottleDuration</code>: Providers throttle duration: minimum duration in seconds between 2 events from providers before applying a new configuration.
+It avoids unnecessary reloads if multiples events are sent in a short amount of time.<br>
+Can be provided in a format supported by <a href="https://golang.org/pkg/time/#ParseDuration" target="_blank" rel="noopener noreferrer">time.ParseDuration<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or as raw values (digits).
+If no units are provided, the value is parsed assuming seconds.</p></li> <li><p><code>maxIdleConnsPerHost</code>: Controls the maximum idle (keep-alive) connections to keep per-host.<br>
+If zero, <code>DefaultMaxIdleConnsPerHost</code> from the Go standard library net/http module is used.
+If you encounter 'too many open files' errors, you can either increase this value or change the <code>ulimit</code>.</p></li> <li><p><code>insecureSkipVerify</code> : If set to true invalid SSL certificates are accepted for backends.<br> <strong>Note:</strong> This disables detection of man-in-the-middle attacks so should only be used on secure backend networks.</p></li> <li><p><code>rootCAs</code>: Register Certificates in the RootCA. This certificates will be use for backends calls.<br> <strong>Note</strong> You can use file path or cert content directly</p></li> <li><p><code>defaultEntryPoints</code>: Entrypoints to be used by frontends that do not specify any entrypoint.<br>
+Each frontend can specify its own entrypoints.</p></li> <li><p><code>keepTrailingSlash</code>: Tells Traefik whether it should keep the trailing slashes that might be present in the paths of incoming requests (true), or if it should redirect to the slashless version of the URL (default behavior: false)</p></li></ul> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>Beware that the value of `keepTrailingSlash` can have a significant impact on the way your frontend rules are interpreted.
+The table below tries to sum up several behaviors depending on requests/configurations. 
+The current default behavior is deprecated and kept for compatibility reasons. 
+As a consequence, we encourage you to set `keepTrailingSlash` to true.
+</code></pre></div> <pre><code>| Incoming request     | keepTrailingSlash | Path:{value} | Behavior                              
+|----------------------|-------------------|--------------|----------------------------|
+| http://foo.com/path/ | false             | Path:/path/  | Proceeds with the request  |
+| http://foo.com/path/ | false             | Path:/path   | 301 to http://foo.com/path |           
+| http://foo.com/path  | false             | Path:/path/  | Proceeds with the request  |
+| http://foo.com/path  | false             | Path:/path   | Proceeds with the request  |
+| http://foo.com/path/ | true              | Path:/path/  | Proceeds with the request  |
+| http://foo.com/path/ | true              | Path:/path   | 404                        |
+| http://foo.com/path  | true              | Path:/path/  | 404                        |
+| http://foo.com/path  | true              | Path:/path   | Proceeds with the request  |
+</code></pre> <h2 id="constraints"><a href="#constraints" aria-hidden="true" class="header-anchor">#</a> Constraints</h2> <p>In a micro-service architecture, with a central service discovery, setting constraints limits Traefik scope to a smaller number of routes.</p> <p>Traefik filters services according to service attributes/tags set in your providers.</p> <p>Supported filters:</p> <ul><li><code>tag</code></li></ul> <h3 id="simple"><a href="#simple" aria-hidden="true" class="header-anchor">#</a> Simple</h3> <div class="language-ini extra-class"><pre class="language-ini"><code># Simple matching constraint
+<span class="token constant">constraints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;tag==api&quot;]</span>
+
+# Simple mismatching constraint
+<span class="token constant">constraints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;tag!=api&quot;]</span>
+
+# Globbing
+<span class="token constant">constraints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;tag==us-*&quot;]</span>
+</code></pre></div><h3 id="multiple"><a href="#multiple" aria-hidden="true" class="header-anchor">#</a> Multiple</h3> <div class="language-ini extra-class"><pre class="language-ini"><code># Multiple constraints
+#   - &quot;tag<span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">=</span>&quot; must match with at least one tag</span>
+#   - &quot;tag!<span class="token attr-value"><span class="token punctuation">=</span>&quot; must match with none of tags</span>
+<span class="token constant">constraints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;tag!=us-*&quot;, &quot;tag!=asia-*&quot;]</span>
+</code></pre></div><h3 id="provider-specific"><a href="#provider-specific" aria-hidden="true" class="header-anchor">#</a> provider-specific</h3> <p>Supported Providers:</p> <ul><li>Docker</li> <li>Consul K/V</li> <li>BoltDB</li> <li>Zookeeper</li> <li>ECS</li> <li>Etcd</li> <li>Consul Catalog</li> <li>Rancher</li> <li>Marathon</li> <li>Kubernetes (using a provider-specific mechanism based on label selectors)</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code># Provider-specific constraint
+<span class="token selector">[consulCatalog]</span>
+# ...
+<span class="token constant">constraints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;tag==api&quot;]</span>
+
+# Provider-specific constraint
+<span class="token selector">[marathon]</span>
+# ...
+<span class="token constant">constraints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;tag==api&quot;, &quot;tag!=v*-beta&quot;]</span>
+</code></pre></div><h2 id="custom-error-pages"><a href="#custom-error-pages" aria-hidden="true" class="header-anchor">#</a> Custom Error pages</h2> <p>Custom error pages can be returned, in lieu of the default, according to frontend-configured ranges of HTTP Status codes.</p> <p>In the example below, if a 503 status is returned from the frontend &quot;website&quot;, the custom error page at http://2.3.4.5/503.html is returned with the actual status code set in the HTTP header.</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>The `503.html` page itself is not hosted on Traefik, but some other infrastructure.
+</code></pre></div> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[frontends]</span>
+<span class="token selector">  [frontends.website]</span>
+<span class="token constant">  backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;website&quot;</span>
+<span class="token selector">  [frontends.website.errors]</span>
+<span class="token selector">    [frontends.website.errors.network]</span>
+<span class="token constant">    status</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;500-599&quot;]</span>
+<span class="token constant">    backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;error&quot;</span>
+<span class="token constant">    query</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/{status}.html&quot;</span>
+<span class="token selector">  [frontends.website.routes.website]</span>
+<span class="token constant">  rule</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Host: website.mydomain.com&quot;</span>
+
+<span class="token selector">[backends]</span>
+<span class="token selector">  [backends.website]</span>
+<span class="token selector">    [backends.website.servers.website]</span>
+<span class="token constant">    url</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://1.2.3.4&quot;</span>
+<span class="token selector">  [backends.error]</span>
+<span class="token selector">    [backends.error.servers.error]</span>
+<span class="token constant">    url</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://2.3.4.5&quot;</span>
+</code></pre></div><p>In the above example, the error page rendered was based on the status code.
+Instead, the query parameter can also be set to some generic error page like so: <code>query = &quot;/500s.html&quot;</code></p> <p>Now the <code>500s.html</code> error page is returned for the configured code range.
+The configured status code ranges are inclusive; that is, in the above example, the <code>500s.html</code> page will be returned for status codes <code>500</code> through, and including, <code>599</code>.</p> <h2 id="rate-limiting"><a href="#rate-limiting" aria-hidden="true" class="header-anchor">#</a> Rate limiting</h2> <p>Rate limiting can be configured per frontend.<br>
+Multiple sets of rates can be added to each frontend, but the time periods must be unique.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[frontends]</span>
+<span class="token selector">    [frontends.frontend1]</span>
+      # ...
+<span class="token selector">      [frontends.frontend1.ratelimit]</span>
+<span class="token constant">        extractorfunc</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;client.ip&quot;</span>
+<span class="token selector">          [frontends.frontend1.ratelimit.rateset.rateset1]</span>
+<span class="token constant">            period</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;10s&quot;</span>
+<span class="token constant">            average</span> <span class="token attr-value"><span class="token punctuation">=</span> 100</span>
+<span class="token constant">            burst</span> <span class="token attr-value"><span class="token punctuation">=</span> 200</span>
+<span class="token selector">          [frontends.frontend1.ratelimit.rateset.rateset2]</span>
+<span class="token constant">            period</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;3s&quot;</span>
+<span class="token constant">            average</span> <span class="token attr-value"><span class="token punctuation">=</span> 5</span>
+<span class="token constant">            burst</span> <span class="token attr-value"><span class="token punctuation">=</span> 10</span>
+</code></pre></div><p>In the above example, frontend1 is configured to limit requests by the client's ip address.<br>
+An average of 5 requests every 3 seconds is allowed and an average of 100 requests every 10 seconds.<br>
+These can &quot;burst&quot; up to 10 and 200 in each period respectively.</p> <p>Valid values for <code>extractorfunc</code> are:</p> <ul><li><code>client.ip</code></li> <li><code>request.host</code></li> <li><code>request.header.&lt;header name&gt;</code></li></ul> <h2 id="buffering"><a href="#buffering" aria-hidden="true" class="header-anchor">#</a> Buffering</h2> <p>In some cases request/buffering can be enabled for a specific backend.
+By enabling this, Traefik will read the entire request into memory (possibly buffering large requests into disk) and will reject requests that are over a specified limit.
+This may help services deal with large data (multipart/form-data for example) more efficiently and should minimise time spent when sending data to a backend server.</p> <p>For more information please check <a href="http://godoc.org/github.com/vulcand/oxy/buffer" target="_blank" rel="noopener noreferrer">oxy/buffer<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> documentation.</p> <p>Example configuration:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[backends]</span>
+<span class="token selector">  [backends.backend1]</span>
+<span class="token selector">    [backends.backend1.buffering]</span>
+<span class="token constant">      maxRequestBodyBytes</span> <span class="token attr-value"><span class="token punctuation">=</span> 10485760  </span>
+<span class="token constant">      memRequestBodyBytes</span> <span class="token attr-value"><span class="token punctuation">=</span> 2097152  </span>
+<span class="token constant">      maxResponseBodyBytes</span> <span class="token attr-value"><span class="token punctuation">=</span> 10485760</span>
+<span class="token constant">      memResponseBodyBytes</span> <span class="token attr-value"><span class="token punctuation">=</span> 2097152</span>
+<span class="token constant">      retryExpression</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;IsNetworkError() &amp;&amp; Attempts() &lt;= 2&quot;</span>
+</code></pre></div><h2 id="retry-configuration"><a href="#retry-configuration" aria-hidden="true" class="header-anchor">#</a> Retry Configuration</h2> <div class="language-ini extra-class"><pre class="language-ini"><code># Enable retry sending request if network error
+<span class="token selector">[retry]</span>
+
+# Number of attempts
+#
+# Optional
+# Default: (number servers in backend) -1
+#
+# attempts <span class="token attr-value"><span class="token punctuation">=</span> 3</span>
+</code></pre></div><h2 id="health-check-configuration"><a href="#health-check-configuration" aria-hidden="true" class="header-anchor">#</a> Health Check Configuration</h2> <div class="language-ini extra-class"><pre class="language-ini"><code># Enable custom health check options.
+<span class="token selector">[healthcheck]</span>
+
+# Set the default health check interval and timeout.
+#
+# Optional
+# Default: &quot;30s&quot;
+#
+# interval <span class="token attr-value"><span class="token punctuation">=</span> &quot;30s&quot;</span>
+# timeout <span class="token attr-value"><span class="token punctuation">=</span> &quot;5s&quot;</span>
+</code></pre></div><ul><li><code>interval</code> sets the default health check interval.</li> <li><code>timeout</code> sets the default health check request timeout.</li></ul> <p>These options will only be effective if health check paths are defined.
+Given provider-specific support, the value may be overridden on a per-backend basis.
+Can be provided in a format supported by <a href="https://golang.org/pkg/time/#ParseDuration" target="_blank" rel="noopener noreferrer">time.ParseDuration<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or as raw values (digits).
+If no units are provided, the value is parsed assuming seconds.
+<strong>Note:</strong> the interval must be greater than the timeout. If configuration doesn't reflect this, the interval will be set to timeout + 1 second.</p> <h2 id="life-cycle"><a href="#life-cycle" aria-hidden="true" class="header-anchor">#</a> Life Cycle</h2> <p>Controls the behavior of Traefik during the shutdown phase.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[lifeCycle]</span>
+
+# Duration to keep accepting requests prior to initiating the graceful
+# termination period (as defined by the `graceTimeOut` option). This
+# option is meant to give downstream load-balancers sufficient time to
+# take Traefik out of rotation.
+# Can be provided in a format supported by [time.ParseDuration](https://golang.org/pkg/time/#ParseDuration) or as raw values (digits).
+# If no units are provided, the value is parsed assuming seconds.
+# The zero duration disables the request accepting grace period, i.e.,
+# Traefik will immediately proceed to the grace period.
+#
+# Optional
+# Default: 0
+#
+# requestAcceptGraceTimeout <span class="token attr-value"><span class="token punctuation">=</span> &quot;10s&quot;</span>
+
+# Duration to give active requests a chance to finish before Traefik stops.
+# Can be provided in a format supported by [time.ParseDuration](https://golang.org/pkg/time/#ParseDuration) or as raw values (digits).
+# If no units are provided, the value is parsed assuming seconds.
+# Note: in this time frame no new requests are accepted.
+#
+# Optional
+# Default: &quot;10s&quot;
+#
+# graceTimeOut <span class="token attr-value"><span class="token punctuation">=</span> &quot;10s&quot;</span>
+</code></pre></div><h2 id="timeouts"><a href="#timeouts" aria-hidden="true" class="header-anchor">#</a> Timeouts</h2> <h3 id="responding-timeouts"><a href="#responding-timeouts" aria-hidden="true" class="header-anchor">#</a> Responding Timeouts</h3> <p><code>respondingTimeouts</code> are timeouts for incoming requests to the Traefik instance.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[respondingTimeouts]</span>
+
+# readTimeout is the maximum duration for reading the entire request, including the body.
+#
+# Optional
+# Default: &quot;0s&quot;
+#
+# readTimeout <span class="token attr-value"><span class="token punctuation">=</span> &quot;5s&quot;</span>
+
+# writeTimeout is the maximum duration before timing out writes of the response.
+#
+# Optional
+# Default: &quot;0s&quot;
+#
+# writeTimeout <span class="token attr-value"><span class="token punctuation">=</span> &quot;5s&quot;</span>
+
+# idleTimeout is the maximum duration an idle (keep-alive) connection will remain idle before closing itself.
+#
+# Optional
+# Default: &quot;180s&quot;
+#
+# idleTimeout <span class="token attr-value"><span class="token punctuation">=</span> &quot;360s&quot;</span>
+</code></pre></div><ul><li><p><code>readTimeout</code> is the maximum duration for reading the entire request, including the body.<br>
+If zero, no timeout exists.<br>
+Can be provided in a format supported by <a href="https://golang.org/pkg/time/#ParseDuration" target="_blank" rel="noopener noreferrer">time.ParseDuration<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or as raw values (digits).
+If no units are provided, the value is parsed assuming seconds.</p></li> <li><p><code>writeTimeout</code> is the maximum duration before timing out writes of the response.<br>
+It covers the time from the end of the request header read to the end of the response write.
+If zero, no timeout exists.<br>
+Can be provided in a format supported by <a href="https://golang.org/pkg/time/#ParseDuration" target="_blank" rel="noopener noreferrer">time.ParseDuration<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or as raw values (digits).
+If no units are provided, the value is parsed assuming seconds.</p></li> <li><p><code>idleTimeout</code> is the maximum duration an idle (keep-alive) connection will remain idle before closing itself.<br>
+If zero, no timeout exists.<br>
+Can be provided in a format supported by <a href="https://golang.org/pkg/time/#ParseDuration" target="_blank" rel="noopener noreferrer">time.ParseDuration<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or as raw values (digits).
+If no units are provided, the value is parsed assuming seconds.</p></li></ul> <h3 id="forwarding-timeouts"><a href="#forwarding-timeouts" aria-hidden="true" class="header-anchor">#</a> Forwarding Timeouts</h3> <p><code>forwardingTimeouts</code> are timeouts for requests forwarded to the backend servers.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[forwardingTimeouts]</span>
+
+# dialTimeout is the amount of time to wait until a connection to a backend server can be established.
+#
+# Optional
+# Default: &quot;30s&quot;
+#
+# dialTimeout <span class="token attr-value"><span class="token punctuation">=</span> &quot;30s&quot;</span>
+
+# responseHeaderTimeout is the amount of time to wait for a server's response headers after fully writing the request (including its body, if any).
+#
+# Optional
+# Default: &quot;0s&quot;
+#
+# responseHeaderTimeout <span class="token attr-value"><span class="token punctuation">=</span> &quot;0s&quot;</span>
+</code></pre></div><ul><li><p><code>dialTimeout</code> is the amount of time to wait until a connection to a backend server can be established.<br>
+If zero, no timeout exists.<br>
+Can be provided in a format supported by <a href="https://golang.org/pkg/time/#ParseDuration" target="_blank" rel="noopener noreferrer">time.ParseDuration<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or as raw values (digits).
+If no units are provided, the value is parsed assuming seconds.</p></li> <li><p><code>responseHeaderTimeout</code> is the amount of time to wait for a server's response headers after fully writing the request (including its body, if any).<br>
+If zero, no timeout exists.<br>
+Can be provided in a format supported by <a href="https://golang.org/pkg/time/#ParseDuration" target="_blank" rel="noopener noreferrer">time.ParseDuration<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or as raw values (digits).
+If no units are provided, the value is parsed assuming seconds.</p></li></ul> <h2 id="host-resolver"><a href="#host-resolver" aria-hidden="true" class="header-anchor">#</a> Host Resolver</h2> <p><code>hostResolver</code> are used for request host matching process.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[hostResolver]</span>
+
+# cnameFlattening is a trigger to flatten request host, assuming it is a CNAME record
+#
+# Optional
+# Default : false
+#
+<span class="token constant">cnameFlattening</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+# resolvConf is dns resolving configuration file, the default is /etc/resolv.conf
+#
+# Optional
+# Default : &quot;/etc/resolv.conf&quot;
+#
+# resolvConf <span class="token attr-value"><span class="token punctuation">=</span> &quot;/etc/resolv.conf&quot;</span>
+
+# resolvDepth is the maximum CNAME recursive lookup
+#
+# Optional
+# Default : 5
+#
+# resolvDepth <span class="token attr-value"><span class="token punctuation">=</span> 5</span>
+</code></pre></div><ul><li>To allow serving secure https request and generate the SSL using ACME while <code>cnameFlattening</code> is active.
+The <code>acme</code> configuration for <code>HTTP-01</code> challenge and <code>onDemand</code> is mandatory.
+Refer to <a href="/configuration/acme">ACME configuration</a> for more information.</li></ul> <h2 id="override-default-configuration-template"><a href="#override-default-configuration-template" aria-hidden="true" class="header-anchor">#</a> Override Default Configuration Template</h2> <p>!!! warning
+For advanced users only.</p> <p>Supported by all providers except: File Provider, Rest Provider and DynamoDB Provider.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[provider_name]</span>
+
+# Override default provider configuration template. For advanced users :)
+#
+# Optional
+# Default: &quot;&quot;
+#
+<span class="token constant">filename</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;custom_config_template.tpml&quot;</span>
+
+# Enable debug logging of generated configuration template.
+#
+# Optional
+# Default: false
+#
+<span class="token constant">debugLogGeneratedTemplate</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+</code></pre></div><p>Example:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[marathon]</span>
+<span class="token constant">filename</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;my_custom_config_template.tpml&quot;</span>
+</code></pre></div><p>The template files can be written using functions provided by:</p> <ul><li><a href="https://golang.org/pkg/text/template/" target="_blank" rel="noopener noreferrer">go template<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://masterminds.github.io/sprig/" target="_blank" rel="noopener noreferrer">sprig library<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul> <p>Example:</p> <div class="language-tmpl extra-class"><pre class="language-text"><code>[backends]
+  [backends.backend1]
+  url = &quot;http://firstserver&quot;
+  [backends.backend2]
+  url = &quot;http://secondserver&quot;
+
+{{$frontends := dict &quot;frontend1&quot; &quot;backend1&quot; &quot;frontend2&quot; &quot;backend2&quot;}}
+[frontends]
+{{range $frontend, $backend := $frontends}}
+  [frontends.{{$frontend}}]
+  backend = &quot;{{$backend}}&quot;
+{{end}}
+</code></pre></div><h2 id="pass-tls-client-cert"><a href="#pass-tls-client-cert" aria-hidden="true" class="header-anchor">#</a> Pass TLS Client Cert</h2> <div class="language-ini extra-class"><pre class="language-ini"><code># Pass the escaped client cert infos selected below in a `X-Forwarded-Ssl-Client-Cert-Infos` header.
+<span class="token selector">[frontends.frontend1.passTLSClientCert]</span>
+<span class="token constant">        pem</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">        [frontends.frontend1.passTLSClientCert.infos]</span>
+<span class="token constant">            notBefore</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">            notAfter</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">            [frontends.frontend1.passTLSClientCert.infos.subject]</span>
+<span class="token constant">                country</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                domainComponent</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                province</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                locality</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                organization</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                commonName</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                serialNumber</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">            [frontends.frontend1.passTLSClientCert.infos.issuer]</span>
+<span class="token constant">                country</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                domainComponent</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                province</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                locality</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                organization</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                commonName</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                serialNumber</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+</code></pre></div><p>Pass TLS Client Cert <code>pem</code> defines if the escaped pem is added to a <code>X-Forwarded-Ssl-Client-Cert</code> header.<br>
+Pass TLS Client Cert <code>infos</code> defines how the certificate data are added to a <code>X-Forwarded-Ssl-Client-Cert-Infos</code> header.</p> <p>The following example shows an unescaped result that uses all the available fields:
+If there are more than one certificate, they are separated by a <code>;</code></p> <div class="language- extra-class"><pre class="language-text"><code>Subject=&quot;DC=org,DC=cheese,C=FR,C=US,ST=Cheese org state,ST=Cheese com state,L=TOULOUSE,L=LYON,O=Cheese,O=Cheese 2,CN=*.cheese.com&quot;,Issuer=&quot;DC=org,DC=cheese,C=FR,C=US,ST=Signing State,ST=Signing State 2,L=TOULOUSE,L=LYON,O=Cheese,O=Cheese 2,CN=Simple Signing CA 2&quot;,NB=1544094616,NA=1607166616,SAN=*.cheese.org,*.cheese.net,*.cheese.com,test@cheese.org,test@cheese.net,10.0.1.0,10.0.1.2
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/basics.html" class="prev">
+          Basics
+        </a></span> <span class="next"><a href="/configuration/logs.html">
+          Logs
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/24.e91ab9c9.js" defer></script>
+  </body>
+</html>

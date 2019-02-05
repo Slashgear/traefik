@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>gRPC examples | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/34.bbe37568.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Configuration</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>User Guides</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/user-guide/examples.html" class="sidebar-link">Configuration Examples</a></li><li><a href="/user-guide/swarm-mode.html" class="sidebar-link">Swarm Mode Cluster</a></li><li><a href="/user-guide/swarm.html" class="sidebar-link">Swarm Cluster</a></li><li><a href="/user-guide/docker-and-lets-encrypt.html" class="sidebar-link">Let's Encrypt &amp; Docker</a></li><li><a href="/user-guide/kubernetes.html" class="sidebar-link">Kubernetes</a></li><li><a href="/user-guide/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/user-guide/kv-config.html" class="sidebar-link">Key-value Store Configuration</a></li><li><a href="/user-guide/cluster.html" class="sidebar-link">Clustering/HA</a></li><li><a href="/user-guide/grpc.html" class="active sidebar-link">gRPC Example</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/grpc.html#with-http-h2c" class="sidebar-link">With HTTP (h2c)</a></li><li class="sidebar-sub-header"><a href="/user-guide/grpc.html#with-https" class="sidebar-link">With HTTPS</a></li></ul></li><li><a href="/user-guide/cluster-docker-consul.html" class="sidebar-link">Traefik cluster example with Swarm</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="grpc-examples"><a href="#grpc-examples" aria-hidden="true" class="header-anchor">#</a> gRPC examples</h1> <h2 id="with-http-h2c"><a href="#with-http-h2c" aria-hidden="true" class="header-anchor">#</a> With HTTP (h2c)</h2> <p>This section explains how to use Traefik as reverse proxy for gRPC application.</p> <h3 id="traefik-configuration"><a href="#traefik-configuration" aria-hidden="true" class="header-anchor">#</a> Traefik configuration</h3> <p>At last, we configure our Traefik instance to use both self-signed certificates.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;https&quot;]</span>
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">    [entryPoints.http]</span>
+
+<span class="token selector">[api]</span>
+
+<span class="token selector">[file]</span>
+
+<span class="token selector">[backends]</span>
+<span class="token selector">  [backends.backend1]</span>
+<span class="token selector">    [backends.backend1.servers.server1]</span>
+    # Access on backend with h2c
+<span class="token constant">    url</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;h2c://backend.local:8080&quot;</span>
+
+
+<span class="token selector">[frontends]</span>
+<span class="token selector">  [frontends.frontend1]</span>
+<span class="token constant">  backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;backend1&quot;</span>
+<span class="token selector">    [frontends.frontend1.routes.test_1]</span>
+<span class="token constant">    rule</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Host:frontend.local&quot;</span>
+</code></pre></div><p>!!! warning
+For provider with label, you will have to specify the <code>traefik.protocol=h2c</code></p> <h3 id="conclusion"><a href="#conclusion" aria-hidden="true" class="header-anchor">#</a> Conclusion</h3> <p>We don't need specific configuration to use gRPC in Traefik, we just need to use <code>h2c</code> protocol, or use HTTPS communications to have HTTP2 with the backend.</p> <h2 id="with-https"><a href="#with-https" aria-hidden="true" class="header-anchor">#</a> With HTTPS</h2> <p>This section explains how to use Traefik as reverse proxy for gRPC application with self-signed certificates.</p> <p><img src="/img/grpc.svg" alt="gRPC architecture"></p> <h3 id="grpc-server-certificate"><a href="#grpc-server-certificate" aria-hidden="true" class="header-anchor">#</a> gRPC Server certificate</h3> <p>In order to secure the gRPC server, we generate a self-signed certificate for backend url:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./backend.key -out ./backend.cert
+</code></pre></div><p>That will prompt for information, the important answer is:</p> <div class="language- extra-class"><pre class="language-text"><code>Common Name (e.g. server FQDN or YOUR name) []: backend.local
+</code></pre></div><h3 id="grpc-client-certificate"><a href="#grpc-client-certificate" aria-hidden="true" class="header-anchor">#</a> gRPC Client certificate</h3> <p>Generate your self-signed certificate for frontend url:</p> <div class="language-bash extra-class"><pre class="language-bash"><code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./frontend.key -out ./frontend.cert
+</code></pre></div><p>with</p> <div class="language- extra-class"><pre class="language-text"><code>Common Name (e.g. server FQDN or YOUR name) []: frontend.local
+</code></pre></div><h3 id="traefik-configuration-2"><a href="#traefik-configuration-2" aria-hidden="true" class="header-anchor">#</a> Traefik configuration</h3> <p>At last, we configure our Traefik instance to use both self-signed certificates.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;https&quot;]</span>
+
+# For secure connection on backend.local
+<span class="token constant">rootCAs</span> <span class="token attr-value"><span class="token punctuation">=</span> [ &quot;./backend.cert&quot; ]</span>
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:4443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+     # For secure connection on frontend.local
+<span class="token selector">     [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">     certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;./frontend.cert&quot;</span>
+<span class="token constant">     keyFile</span>  <span class="token attr-value"><span class="token punctuation">=</span> &quot;./frontend.key&quot;</span>
+
+
+<span class="token selector">[api]</span>
+
+<span class="token selector">[file]</span>
+
+<span class="token selector">[backends]</span>
+<span class="token selector">  [backends.backend1]</span>
+<span class="token selector">    [backends.backend1.servers.server1]</span>
+    # Access on backend with HTTPS
+<span class="token constant">    url</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://backend.local:8080&quot;</span>
+
+
+<span class="token selector">[frontends]</span>
+<span class="token selector">  [frontends.frontend1]</span>
+<span class="token constant">  backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;backend1&quot;</span>
+<span class="token selector">    [frontends.frontend1.routes.test_1]</span>
+<span class="token constant">    rule</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Host:frontend.local&quot;</span>
+</code></pre></div><p>!!! warning
+With some backends, the server URLs use the IP, so you may need to configure <code>insecureSkipVerify</code> instead of the <code>rootCAS</code> to activate HTTPS without hostname verification.</p> <h3 id="a-grpc-example-in-go-modify-for-https"><a href="#a-grpc-example-in-go-modify-for-https" aria-hidden="true" class="header-anchor">#</a> A gRPC example in go (modify for https)</h3> <p>We use the gRPC greeter example in <a href="https://github.com/grpc/grpc-go/tree/master/examples/helloworld" target="_blank" rel="noopener noreferrer">grpc-go<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>!!! warning
+In order to use this gRPC example, we need to modify it to use HTTPS</p> <p>So we modify the &quot;gRPC server example&quot; to use our own self-signed certificate:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// ...</span>
+
+<span class="token comment">// Read cert and key file</span>
+BackendCert<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> ioutil<span class="token punctuation">.</span><span class="token function">ReadFile</span><span class="token punctuation">(</span><span class="token string">&quot;./backend.cert&quot;</span><span class="token punctuation">)</span>
+BackendKey<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> ioutil<span class="token punctuation">.</span><span class="token function">ReadFile</span><span class="token punctuation">(</span><span class="token string">&quot;./backend.key&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Generate Certificate struct</span>
+cert<span class="token punctuation">,</span> err <span class="token operator">:=</span> tls<span class="token punctuation">.</span><span class="token function">X509KeyPair</span><span class="token punctuation">(</span>BackendCert<span class="token punctuation">,</span> BackendKey<span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;failed to parse certificate: %v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Create credentials</span>
+creds <span class="token operator">:=</span> credentials<span class="token punctuation">.</span><span class="token function">NewServerTLSFromCert</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>cert<span class="token punctuation">)</span>
+
+<span class="token comment">// Use Credentials in gRPC server options</span>
+serverOption <span class="token operator">:=</span> grpc<span class="token punctuation">.</span><span class="token function">Creds</span><span class="token punctuation">(</span>creds<span class="token punctuation">)</span>
+<span class="token keyword">var</span> s <span class="token operator">*</span>grpc<span class="token punctuation">.</span>Server <span class="token operator">=</span> grpc<span class="token punctuation">.</span><span class="token function">NewServer</span><span class="token punctuation">(</span>serverOption<span class="token punctuation">)</span>
+<span class="token keyword">defer</span> s<span class="token punctuation">.</span><span class="token function">Stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+pb<span class="token punctuation">.</span><span class="token function">RegisterGreeterServer</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token operator">&amp;</span>server<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+err <span class="token operator">:=</span> s<span class="token punctuation">.</span><span class="token function">Serve</span><span class="token punctuation">(</span>lis<span class="token punctuation">)</span>
+
+<span class="token comment">// ...</span>
+</code></pre></div><p>Next we will modify gRPC Client to use our Traefik self-signed certificate:</p> <div class="language-go extra-class"><pre class="language-go"><code><span class="token comment">// ...</span>
+
+<span class="token comment">// Read cert file</span>
+FrontendCert<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> ioutil<span class="token punctuation">.</span><span class="token function">ReadFile</span><span class="token punctuation">(</span><span class="token string">&quot;./frontend.cert&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Create CertPool</span>
+roots <span class="token operator">:=</span> x509<span class="token punctuation">.</span><span class="token function">NewCertPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+roots<span class="token punctuation">.</span><span class="token function">AppendCertsFromPEM</span><span class="token punctuation">(</span>FrontendCert<span class="token punctuation">)</span>
+
+<span class="token comment">// Create credentials</span>
+credsClient <span class="token operator">:=</span> credentials<span class="token punctuation">.</span><span class="token function">NewClientTLSFromCert</span><span class="token punctuation">(</span>roots<span class="token punctuation">,</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Dial with specific Transport (with credentials)</span>
+conn<span class="token punctuation">,</span> err <span class="token operator">:=</span> grpc<span class="token punctuation">.</span><span class="token function">Dial</span><span class="token punctuation">(</span><span class="token string">&quot;frontend.local:4443&quot;</span><span class="token punctuation">,</span> grpc<span class="token punctuation">.</span><span class="token function">WithTransportCredentials</span><span class="token punctuation">(</span>credsClient<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    log<span class="token punctuation">.</span><span class="token function">Fatalf</span><span class="token punctuation">(</span><span class="token string">&quot;did not connect: %v&quot;</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">defer</span> conn<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+client <span class="token operator">:=</span> pb<span class="token punctuation">.</span><span class="token function">NewGreeterClient</span><span class="token punctuation">(</span>conn<span class="token punctuation">)</span>
+
+name <span class="token operator">:=</span> <span class="token string">&quot;World&quot;</span>
+r<span class="token punctuation">,</span> err <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">SayHello</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">Background</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>pb<span class="token punctuation">.</span>HelloRequest<span class="token punctuation">{</span>Name<span class="token punctuation">:</span> name<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// ...</span>
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/user-guide/cluster.html" class="prev">
+          Clustering/HA
+        </a></span> <span class="next"><a href="/user-guide/cluster-docker-consul.html">
+          Traefik cluster example with Swarm
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/34.bbe37568.js" defer></script>
+  </body>
+</html>

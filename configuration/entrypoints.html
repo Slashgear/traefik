@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Entry Points Definition | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/25.6d2905c1.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Configuration</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/configuration/commons.html" class="sidebar-link">Commons</a></li><li><a href="/configuration/logs.html" class="sidebar-link">Logs</a></li><li><a href="/configuration/entrypoints.html" class="active sidebar-link">EntryPoints</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#reference" class="sidebar-link">Reference</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#basic" class="sidebar-link">Basic</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#redirect-http-to-https" class="sidebar-link">Redirect HTTP to HTTPS</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#rewriting-url" class="sidebar-link">Rewriting URL</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#tls" class="sidebar-link">TLS</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#tls-mutual-authentication" class="sidebar-link">TLS Mutual Authentication</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#authentication" class="sidebar-link">Authentication</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#specify-minimum-tls-version" class="sidebar-link">Specify Minimum TLS Version</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#strict-sni-checking" class="sidebar-link">Strict SNI Checking</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#default-certificate" class="sidebar-link">Default Certificate</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#compression" class="sidebar-link">Compression</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#white-listing" class="sidebar-link">White Listing</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#clientipstrategy" class="sidebar-link">ClientIPStrategy</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#proxyprotocol" class="sidebar-link">ProxyProtocol</a></li><li class="sidebar-sub-header"><a href="/configuration/entrypoints.html#forwarded-header" class="sidebar-link">Forwarded Header</a></li></ul></li><li><a href="/configuration/acme.html" class="sidebar-link">Let's Encrypt</a></li><li><a href="/configuration/api.html" class="sidebar-link">API / Dashboard</a></li><li><a href="/configuration/backends/boltdb.html" class="sidebar-link">BoltDB</a></li><li><a href="/configuration/backends/consul.html" class="sidebar-link">Consul</a></li><li><a href="/configuration/backends/consulcatalog.html" class="sidebar-link">Consul Catalog</a></li><li><a href="/configuration/backends/docker.html" class="sidebar-link">Docker</a></li><li><a href="/configuration/backends/dynamodb.html" class="sidebar-link">DynamoDB</a></li><li><a href="/configuration/backends/ecs.html" class="sidebar-link">ECS</a></li><li><a href="/configuration/backends/etcd.html" class="sidebar-link">Etcd</a></li><li><a href="/configuration/backends/eureka.html" class="sidebar-link">Eureka</a></li><li><a href="/configuration/backends/file.html" class="sidebar-link">File</a></li><li><a href="/configuration/backends/kubernetes.html" class="sidebar-link">Kubernetes Ingress</a></li><li><a href="/configuration/backends/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/configuration/backends/mesos.html" class="sidebar-link">Mesos</a></li><li><a href="/configuration/backends/rancher.html" class="sidebar-link">Rancher</a></li><li><a href="/configuration/backends/rest.html" class="sidebar-link">Rest</a></li><li><a href="/configuration/backends/servicefabric.html" class="sidebar-link">Azure Service Fabric</a></li><li><a href="/configuration/backends/zookeeper.html" class="sidebar-link">Zookeeper</a></li><li><a href="/configuration/ping.html" class="sidebar-link">Ping</a></li><li><a href="/configuration/metrics.html" class="sidebar-link">Metrics</a></li><li><a href="/configuration/tracing.html" class="sidebar-link">Tracing</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>User Guides</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="entry-points-definition"><a href="#entry-points-definition" aria-hidden="true" class="header-anchor">#</a> Entry Points Definition</h1> <h2 id="reference"><a href="#reference" aria-hidden="true" class="header-anchor">#</a> Reference</h2> <h3 id="toml"><a href="#toml" aria-hidden="true" class="header-anchor">#</a> TOML</h3> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;, &quot;https&quot;]</span>
+
+# ...
+# ...
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">    [entryPoints.http.compress]</span>
+    
+<span class="token selector">    [entryPoints.http.clientIPStrategy]</span>
+<span class="token constant">      depth</span> <span class="token attr-value"><span class="token punctuation">=</span> 5</span>
+<span class="token constant">      excludedIPs</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;127.0.0.1/32&quot;, &quot;192.168.1.7&quot;]</span>
+
+<span class="token selector">    [entryPoints.http.whitelist]</span>
+<span class="token constant">      sourceRange</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;10.42.0.0/16&quot;, &quot;152.89.1.33/32&quot;, &quot;afed:be44::/16&quot;]</span>
+<span class="token selector">      [entryPoints.http.whitelist.IPStrategy]</span>
+<span class="token constant">        depth</span> <span class="token attr-value"><span class="token punctuation">=</span> 5</span>
+<span class="token constant">        excludedIPs</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;127.0.0.1/32&quot;, &quot;192.168.1.7&quot;]</span>
+          
+<span class="token selector">    [entryPoints.http.tls]</span>
+<span class="token constant">      minVersion</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;VersionTLS12&quot;</span>
+<span class="token constant">      cipherSuites</span> <span class="token attr-value"><span class="token punctuation">=</span> [</span>
+        &quot;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&quot;,
+        &quot;TLS_RSA_WITH_AES_256_GCM_SHA384&quot;
+       ]
+<span class="token selector">      [[entryPoints.http.tls.certificates]</span>]
+<span class="token constant">        certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/my.cert&quot;</span>
+<span class="token constant">        keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/my.key&quot;</span>
+<span class="token selector">      [[entryPoints.http.tls.certificates]</span>]
+<span class="token constant">        certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/other.cert&quot;</span>
+<span class="token constant">        keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/other.key&quot;</span>
+      # ...
+<span class="token selector">      [entryPoints.http.tls.clientCA]</span>
+<span class="token constant">        files</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;path/to/ca1.crt&quot;, &quot;path/to/ca2.crt&quot;]</span>
+<span class="token constant">        optional</span> <span class="token attr-value"><span class="token punctuation">=</span> false</span>
+
+<span class="token selector">    [entryPoints.http.redirect]</span>
+<span class="token constant">      entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token constant">      regex</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;^http://localhost/(.*)&quot;</span>
+<span class="token constant">      replacement</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://mydomain/$1&quot;</span>
+<span class="token constant">      permanent</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+<span class="token selector">    [entryPoints.http.auth]</span>
+<span class="token constant">      headerField</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;X-WebAuth-User&quot;</span>
+<span class="token selector">      [entryPoints.http.auth.basic]</span>
+<span class="token constant">        removeHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">        realm</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Your realm&quot;</span>
+<span class="token constant">        users</span> <span class="token attr-value"><span class="token punctuation">=</span> [</span>
+          &quot;test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/&quot;,
+          &quot;test2:$apr1$d9hr9HBB$4HxwgUir3HP4EsggP/QNo0&quot;,
+        ]
+<span class="token constant">        usersFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/.htpasswd&quot;</span>
+<span class="token selector">      [entryPoints.http.auth.digest]</span>
+<span class="token constant">        removeHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">        users</span> <span class="token attr-value"><span class="token punctuation">=</span> [</span>
+          &quot;test:traefik:a2688e031edb4be6a3797f3882655c05&quot;,
+          &quot;test2:traefik:518845800f9e2bfb1f1f740ec24f074e&quot;,
+        ]
+<span class="token constant">        usersFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/.htdigest&quot;</span>
+<span class="token selector">      [entryPoints.http.auth.forward]</span>
+<span class="token constant">        address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://authserver.com/auth&quot;</span>
+<span class="token constant">        trustForwardHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">        authResponseHeaders</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;X-Auth-User&quot;]</span>
+<span class="token selector">        [entryPoints.http.auth.forward.tls]</span>
+<span class="token constant">          ca</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/local.crt&quot;</span>
+<span class="token constant">          caOptional</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">          cert</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/foo.cert&quot;</span>
+<span class="token constant">          key</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/foo.key&quot;</span>
+<span class="token constant">          insecureSkipVerify</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+<span class="token selector">    [entryPoints.http.proxyProtocol]</span>
+<span class="token constant">      insecure</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      trustedIPs</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;10.10.10.1&quot;, &quot;10.10.10.2&quot;]</span>
+
+<span class="token selector">    [entryPoints.http.forwardedHeaders]</span>
+<span class="token constant">      trustedIPs</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;10.10.10.1&quot;, &quot;10.10.10.2&quot;]</span>
+<span class="token constant">      insecure</span> <span class="token attr-value"><span class="token punctuation">=</span> false</span>
+
+<span class="token selector">  [entryPoints.https]</span>
+    # ...
+</code></pre></div><h3 id="cli"><a href="#cli" aria-hidden="true" class="header-anchor">#</a> CLI</h3> <p>For more information about the CLI, see the documentation about <a href="/basics/#traefik">Traefik command</a>.</p> <div class="language-shell extra-class"><pre class="language-shell"><code>--entryPoints<span class="token operator">=</span><span class="token string">'Name:http Address::80'</span>
+--entryPoints<span class="token operator">=</span><span class="token string">'Name:https Address::443 TLS'</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>Whitespace is used as option separator and `,` is used as value separator for the list.  
+The names of the options are case-insensitive.
+</code></pre></div> <p>In compose file the entrypoint syntax is different:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">traefik</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> traefik
+    <span class="token key atrule">command</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>defaultentrypoints=powpow
+        <span class="token punctuation">-</span> <span class="token string">&quot;--entryPoints=Name:powpow Address::42 Compress:true&quot;</span>
+</code></pre></div><p>or</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">traefik</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> traefik
+    <span class="token key atrule">command</span><span class="token punctuation">:</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>defaultentrypoints=powpow <span class="token punctuation">-</span><span class="token punctuation">-</span>entryPoints='Name<span class="token punctuation">:</span>powpow Address<span class="token punctuation">:</span><span class="token punctuation">:</span>42 Compress<span class="token punctuation">:</span>true'
+</code></pre></div><h4 id="all-available-options"><a href="#all-available-options" aria-hidden="true" class="header-anchor">#</a> All available options:</h4> <div class="language-ini extra-class"><pre class="language-ini"><code>Name:foo
+Address::80
+TLS:/my/path/foo.cert,/my/path/foo.key;/my/path/goo.cert,/my/path/goo.key;/my/path/hoo.cert,/my/path/hoo.key
+TLS
+TLS.MinVersion:VersionTLS11
+TLS.CipherSuites:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA384
+TLS.SniStrict:true
+TLS.DefaultCertificate.Cert:path/to/foo.cert
+TLS.DefaultCertificate.Key:path/to/foo.key
+CA:car
+CA.Optional:true
+Redirect.EntryPoint:https
+Redirect.Regex:http://localhost/(.*)
+Redirect.Replacement:http://mydomain/$1
+Redirect.Permanent:true
+Compress:true
+WhiteList.SourceRange:10.42.0.0/16,152.89.1.33/32,afed:be44::/16
+WhiteList.IPStrategy.depth:3
+WhiteList.IPStrategy.ExcludedIPs:10.0.0.3/24,20.0.0.3/24
+ProxyProtocol.TrustedIPs:192.168.0.1
+ProxyProtocol.Insecure:true
+ForwardedHeaders.TrustedIPs:10.0.0.3/24,20.0.0.3/24
+Auth.Basic.Users:test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/,test2:$apr1$d9hr9HBB$4HxwgUir3HP4EsggP/QNo0
+Auth.Basic.Removeheader:true
+Auth.Basic.Realm:traefik
+Auth.Digest.Users:test:traefik:a2688e031edb4be6a3797f3882655c05,test2:traefik:518845800f9e2bfb1f1f740ec24f074e
+Auth.Digest.Removeheader:true
+Auth.HeaderField:X-WebAuth-User
+Auth.Forward.Address:https://authserver.com/auth
+Auth.Forward.AuthResponseHeaders:X-Auth,X-Test,X-Secret
+Auth.Forward.TrustForwardHeader:true
+Auth.Forward.TLS.CA:path/to/local.crt
+Auth.Forward.TLS.CAOptional:true
+Auth.Forward.TLS.Cert:path/to/foo.cert
+Auth.Forward.TLS.Key:path/to/foo.key
+Auth.Forward.TLS.InsecureSkipVerify:true
+</code></pre></div><h2 id="basic"><a href="#basic" aria-hidden="true" class="header-anchor">#</a> Basic</h2> <div class="language-ini extra-class"><pre class="language-ini"><code># Entrypoints definition
+#
+# Default:
+# [entryPoints]
+#   [entryPoints.http]
+#   address <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+#
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+</code></pre></div><h2 id="redirect-http-to-https"><a href="#redirect-http-to-https" aria-hidden="true" class="header-anchor">#</a> Redirect HTTP to HTTPS</h2> <p>To redirect an http entrypoint to an https entrypoint (with SNI support).</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">    [entryPoints.http.redirect]</span>
+<span class="token constant">    entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.key&quot;</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.org.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.org.key&quot;</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>Please note that `regex` and `replacement` do not have to be set in the `redirect` structure if an entrypoint is defined for the redirection (they will not be used in this case).
+</code></pre></div> <h2 id="rewriting-url"><a href="#rewriting-url" aria-hidden="true" class="header-anchor">#</a> Rewriting URL</h2> <p>To redirect an entrypoint rewriting the URL.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">    [entryPoints.http.redirect]</span>
+<span class="token constant">    regex</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;^http://localhost/(.*)&quot;</span>
+<span class="token constant">    replacement</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://mydomain/$1&quot;</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>Please note that `regex` and `replacement` do not have to be set in the `redirect` structure if an `entrypoint` is defined for the redirection (they will not be used in this case).
+</code></pre></div> <p>Care should be taken when defining replacement expand variables: <code>$1x</code> is equivalent to <code>${1x}</code>, not <code>${1}x</code> (see <a href="https://golang.org/pkg/regexp/#Regexp.Expand" target="_blank" rel="noopener noreferrer">Regexp.Expand<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>), so use <code>${1}</code> syntax.</p> <p>Regular expressions and replacements can be tested using online tools such as <a href="https://play.golang.org/p/mWU9p-wk2ru" target="_blank" rel="noopener noreferrer">Go Playground<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> or the <a href="https://regex101.com/r/58sIgx/2" target="_blank" rel="noopener noreferrer">Regex101<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>.</p> <h2 id="tls"><a href="#tls" aria-hidden="true" class="header-anchor">#</a> TLS</h2> <h3 id="static-certificates"><a href="#static-certificates" aria-hidden="true" class="header-anchor">#</a> Static Certificates</h3> <p>Define an entrypoint with SNI support.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.key&quot;</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>If an empty TLS configuration is provided, default self-signed certificates are generated.
+</code></pre></div> <h3 id="dynamic-certificates"><a href="#dynamic-certificates" aria-hidden="true" class="header-anchor">#</a> Dynamic Certificates</h3> <p>If you need to add or remove TLS certificates while Traefik is started, Dynamic TLS certificates are supported using the <a href="/configuration/backends/file">file provider</a>.</p> <h2 id="tls-mutual-authentication"><a href="#tls-mutual-authentication" aria-hidden="true" class="header-anchor">#</a> TLS Mutual Authentication</h2> <p>TLS Mutual Authentication can be <code>optional</code> or not.
+If it's <code>optional</code>, Traefik will authorize connection with certificates not signed by a specified Certificate Authority (CA).
+Otherwise, Traefik will only accept clients that present a certificate signed by a specified Certificate Authority (CA).
+<code>ClientCA.files</code> can be configured with multiple <code>CA:s</code> in the same file or use multiple files containing one or several <code>CA:s</code>.
+The <code>CA:s</code> has to be in PEM format.</p> <p>By default, <code>ClientCA.files</code> is not optional, all clients will be required to present a valid cert.
+The requirement will apply to all server certs in the entrypoint.</p> <p>In the example below both <code>snitest.com</code> and <code>snitest.org</code> will require client certs</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">  [entryPoints.https.tls]</span>
+<span class="token selector">    [entryPoints.https.tls.ClientCA]</span>
+<span class="token constant">    files</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;tests/clientca1.crt&quot;, &quot;tests/clientca2.crt&quot;]</span>
+<span class="token constant">    optional</span> <span class="token attr-value"><span class="token punctuation">=</span> false</span>
+<span class="token selector">    [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">    certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.cert&quot;</span>
+<span class="token constant">    keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.key&quot;</span>
+<span class="token selector">    [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">    certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.org.cert&quot;</span>
+<span class="token constant">    keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.org.key&quot;</span>
+</code></pre></div><h2 id="authentication"><a href="#authentication" aria-hidden="true" class="header-anchor">#</a> Authentication</h2> <h3 id="basic-authentication"><a href="#basic-authentication" aria-hidden="true" class="header-anchor">#</a> Basic Authentication</h3> <p>Passwords can be encoded in MD5, SHA1 and BCrypt: you can use <code>htpasswd</code> to generate them.</p> <p>Users can be specified directly in the TOML file, or indirectly by referencing an external file;
+if both are provided, the two are merged, with external file contents having precedence.</p> <div class="language-ini extra-class"><pre class="language-ini"><code># To enable basic auth on an entrypoint with 2 user/pass: test:test and test2:test2
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.http.auth.basic]</span>
+<span class="token constant">  users</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/&quot;, &quot;test2:$apr1$d9hr9HBB$4HxwgUir3HP4EsggP/QNo0&quot;]</span>
+<span class="token constant">  usersFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/.htpasswd&quot;</span>
+</code></pre></div><p>Optionally, you can:</p> <ul><li>customize the realm</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.http.auth]</span>
+<span class="token selector">    [entryPoints.http.auth.basic]</span>
+<span class="token constant">    realm</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Your realm&quot;</span>
+<span class="token constant">    users</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/&quot;, &quot;test2:$apr1$d9hr9HBB$4HxwgUir3HP4EsggP/QNo0&quot;]</span>
+</code></pre></div><ul><li>pass authenticated user to application via headers</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.http.auth]</span>
+<span class="token constant">    headerField</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;X-WebAuth-User&quot; # &lt;-- header for the authenticated user</span>
+<span class="token selector">    [entryPoints.http.auth.basic]</span>
+<span class="token constant">    users</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/&quot;, &quot;test2:$apr1$d9hr9HBB$4HxwgUir3HP4EsggP/QNo0&quot;]</span>
+</code></pre></div><ul><li>remove the Authorization header</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.http.auth]</span>
+<span class="token selector">    [entryPoints.http.auth.basic]</span>
+<span class="token constant">    removeHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true # &lt;-- remove the Authorization header</span>
+<span class="token constant">    users</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/&quot;, &quot;test2:$apr1$d9hr9HBB$4HxwgUir3HP4EsggP/QNo0&quot;]</span>
+</code></pre></div><h3 id="digest-authentication"><a href="#digest-authentication" aria-hidden="true" class="header-anchor">#</a> Digest Authentication</h3> <p>You can use <code>htdigest</code> to generate them.</p> <p>Users can be specified directly in the TOML file, or indirectly by referencing an external file;
+if both are provided, the two are merged, with external file contents having precedence</p> <div class="language-ini extra-class"><pre class="language-ini"><code># To enable digest auth on an entrypoint with 2 user/realm/pass: test:traefik:test and test2:traefik:test2
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.http.auth.digest]</span>
+<span class="token constant">  users</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test:traefik:a2688e031edb4be6a3797f3882655c05&quot;, &quot;test2:traefik:518845800f9e2bfb1f1f740ec24f074e&quot;]</span>
+<span class="token constant">  usersFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/.htdigest&quot;</span>
+</code></pre></div><p>Optionally, you can!</p> <ul><li>pass authenticated user to application via headers.</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.http.auth]</span>
+<span class="token constant">    headerField</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;X-WebAuth-User&quot; # &lt;-- header for the authenticated user</span>
+<span class="token selector">    [entryPoints.http.auth.digest]</span>
+<span class="token constant">    users</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test:traefik:a2688e031edb4be6a3797f3882655c05&quot;, &quot;test2:traefik:518845800f9e2bfb1f1f740ec24f074e&quot;]</span>
+</code></pre></div><ul><li>remove the Authorization header.</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.http.auth]</span>
+<span class="token selector">    [entryPoints.http.auth.digest]</span>
+<span class="token constant">    removeHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true # &lt;-- remove the Authorization header</span>
+<span class="token constant">    users</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test:traefik:a2688e031edb4be6a3797f3882655c05&quot;, &quot;test2:traefik:518845800f9e2bfb1f1f740ec24f074e&quot;]</span>
+</code></pre></div><h3 id="forward-authentication"><a href="#forward-authentication" aria-hidden="true" class="header-anchor">#</a> Forward Authentication</h3> <p>This configuration will first forward the request to <code>http://authserver.com/auth</code>.</p> <p>If the response code is 2XX, access is granted and the original request is performed.
+Otherwise, the response from the authentication server is returned.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+    # ...
+    # To enable forward auth on an entrypoint
+<span class="token selector">    [entryPoints.http.auth.forward]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://authserver.com/auth&quot;</span>
+
+    # Trust existing X-Forwarded-* headers.
+    # Useful with another reverse proxy in front of Traefik.
+    #
+    # Optional
+    # Default: false
+    #
+<span class="token constant">    trustForwardHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+    # Copy headers from the authentication server to the request.
+    #
+    # Optional
+    #
+<span class="token constant">    authResponseHeaders</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;X-Auth-User&quot;, &quot;X-Secret&quot;]</span>
+
+      # Enable forward auth TLS connection.
+      #
+      # Optional
+      #
+<span class="token selector">      [entryPoints.http.auth.forward.tls]</span>
+<span class="token constant">      ca</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/local.crt&quot;</span>
+<span class="token constant">      caOptional</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      cert</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/foo.cert&quot;</span>
+<span class="token constant">      key</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/foo.key&quot;</span>
+</code></pre></div><h2 id="specify-minimum-tls-version"><a href="#specify-minimum-tls-version" aria-hidden="true" class="header-anchor">#</a> Specify Minimum TLS Version</h2> <p>To specify an https entry point with a minimum TLS version, and specifying an array of cipher suites (from <a href="https://godoc.org/crypto/tls#pkg-constants" target="_blank" rel="noopener noreferrer">crypto/tls<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>).</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+<span class="token constant">    minVersion</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;VersionTLS12&quot;</span>
+<span class="token constant">    cipherSuites</span> <span class="token attr-value"><span class="token punctuation">=</span> [</span>
+      &quot;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&quot;,
+      &quot;TLS_RSA_WITH_AES_256_GCM_SHA384&quot;
+    ]
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.key&quot;</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.org.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.org.key&quot;</span>
+</code></pre></div><h2 id="strict-sni-checking"><a href="#strict-sni-checking" aria-hidden="true" class="header-anchor">#</a> Strict SNI Checking</h2> <p>To enable strict SNI checking, so that connections cannot be made if a matching certificate does not exist.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+<span class="token constant">    sniStrict</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.key&quot;</span>
+</code></pre></div><h2 id="default-certificate"><a href="#default-certificate" aria-hidden="true" class="header-anchor">#</a> Default Certificate</h2> <p>To enable a default certificate to serve, so that connections without SNI or without a matching domain will be served this certificate.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+<span class="token selector">    [entryPoints.https.tls.defaultCertificate]</span>
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.key&quot;</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>There can only be one `defaultCertificate` set per entrypoint.
+Use a single set of square brackets `[ ]`, instead of the two needed for normal certificates.
+If no default certificate is provided, a self-signed certificate will be generated by Traefik, and used instead.
+</code></pre></div> <h2 id="compression"><a href="#compression" aria-hidden="true" class="header-anchor">#</a> Compression</h2> <p>To enable compression support using gzip format.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.http.compress]</span>
+</code></pre></div><p>Responses are compressed when:</p> <ul><li>The response body is larger than <code>512</code> bytes</li> <li>And the <code>Accept-Encoding</code> request header contains <code>gzip</code></li> <li>And the response is not already compressed, i.e. the <code>Content-Encoding</code> response header is not already set.</li></ul> <h2 id="white-listing"><a href="#white-listing" aria-hidden="true" class="header-anchor">#</a> White Listing</h2> <p>Traefik supports whitelisting to accept or refuse requests based on the client IP.</p> <p>The following example enables IP white listing and accepts requests from client IPs defined in <code>sourceRange</code>.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+
+<span class="token selector">    [entryPoints.http.whiteList]</span>
+<span class="token constant">      sourceRange</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;127.0.0.1/32&quot;, &quot;192.168.1.7&quot;]</span>
+      # [entryPoints.http.whiteList.IPStrategy]
+      # Override the clientIPStrategy
+</code></pre></div><p>By default, Traefik uses the client IP (see <a href="/configuration/entrypoints/#clientipstrategy">ClientIPStrategy</a>) for the whitelisting.</p> <p>If you want to use another IP than the one determined by <code>ClientIPStrategy</code> for the whitelisting, you can define the <code>IPStrategy</code> option:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http.clientIPStrategy]</span>
+<span class="token constant">    depth</span> <span class="token attr-value"><span class="token punctuation">=</span> 4</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+
+<span class="token selector">    [entryPoints.http.whiteList]</span>
+<span class="token constant">      sourceRange</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;127.0.0.1/32&quot;, &quot;192.168.1.7&quot;]</span>
+<span class="token selector">      [entryPoints.http.whiteList.IPStrategy]</span>
+<span class="token constant">      depth</span> <span class="token attr-value"><span class="token punctuation">=</span> 2</span>
+</code></pre></div><p>In the above example, if the value of the <code>X-Forwarded-For</code> header was <code>&quot;10.0.0.1,11.0.0.1,12.0.0.1,13.0.0.1&quot;</code> then the client IP would be <code>&quot;10.0.0.1&quot;</code> (<code>clientIPStrategy.depth=4</code>) but the IP used for the whitelisting would be <code>&quot;12.0.0.1&quot;</code> (<code>whitelist.IPStrategy.depth=2</code>).</p> <h2 id="clientipstrategy"><a href="#clientipstrategy" aria-hidden="true" class="header-anchor">#</a> ClientIPStrategy</h2> <p>The <code>clientIPStrategy</code> defines how you want Traefik to determine the client IP (used for whitelisting for example).</p> <p>There are several option available:</p> <h3 id="depth"><a href="#depth" aria-hidden="true" class="header-anchor">#</a> Depth</h3> <p>This option uses the <code>X-Forwarded-For</code> header and takes the IP located at the <code>depth</code> position (starting from the right).</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+
+<span class="token selector">    [entryPoints.http.clientIPStrategy]</span>
+</code></pre></div><div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+
+<span class="token selector">    [entryPoints.http.clientIPStrategy]</span>
+<span class="token constant">      depth</span> <span class="token attr-value"><span class="token punctuation">=</span> 5</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>- If `depth` is greater than the total number of IPs in `X-Forwarded-For`, then clientIP will be empty.
+- If `depth` is lesser than or equal to 0, then the option is ignored.
+</code></pre></div> <p>Examples:</p> <table><thead><tr><th><code>X-Forwarded-For</code></th> <th><code>depth</code></th> <th>clientIP</th></tr></thead> <tbody><tr><td><code>&quot;10.0.0.1,11.0.0.1,12.0.0.1,13.0.0.1&quot;</code></td> <td><code>1</code></td> <td><code>&quot;13.0.0.1&quot;</code></td></tr> <tr><td><code>&quot;10.0.0.1,11.0.0.1,12.0.0.1,13.0.0.1&quot;</code></td> <td><code>3</code></td> <td><code>&quot;11.0.0.1&quot;</code></td></tr> <tr><td><code>&quot;10.0.0.1,11.0.0.1,12.0.0.1,13.0.0.1&quot;</code></td> <td><code>5</code></td> <td><code>&quot;&quot;</code></td></tr></tbody></table> <h3 id="excluded-ips"><a href="#excluded-ips" aria-hidden="true" class="header-anchor">#</a> Excluded IPs</h3> <p>Traefik will scan the <code>X-Forwarded-For</code> header (from the right) and pick the first IP not in the <code>excludedIPs</code> list.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+
+<span class="token selector">    [entryPoints.http.clientIPStrategy]</span>
+<span class="token constant">      excludedIPs</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;127.0.0.1/32&quot;, &quot;192.168.1.7&quot;]</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>If `depth` is specified, `excludedIPs` is ignored.
+</code></pre></div> <p>Examples:</p> <table><thead><tr><th><code>X-Forwarded-For</code></th> <th><code>excludedIPs</code></th> <th>clientIP</th></tr></thead> <tbody><tr><td><code>&quot;10.0.0.1,11.0.0.1,12.0.0.1,13.0.0.1&quot;</code></td> <td><code>&quot;12.0.0.1,13.0.0.1&quot;</code></td> <td><code>&quot;11.0.0.1&quot;</code></td></tr> <tr><td><code>&quot;10.0.0.1,11.0.0.1,12.0.0.1,13.0.0.1&quot;</code></td> <td><code>&quot;15.0.0.1,13.0.0.1&quot;</code></td> <td><code>&quot;12.0.0.1&quot;</code></td></tr> <tr><td><code>&quot;10.0.0.1,11.0.0.1,12.0.0.1,13.0.0.1&quot;</code></td> <td><code>&quot;10.0.0.1,13.0.0.1&quot;</code></td> <td><code>&quot;12.0.0.1&quot;</code></td></tr> <tr><td><code>&quot;10.0.0.1,11.0.0.1,12.0.0.1,13.0.0.1&quot;</code></td> <td><code>&quot;15.0.0.1,16.0.0.1&quot;</code></td> <td><code>&quot;13.0.0.1&quot;</code></td></tr> <tr><td><code>&quot;10.0.0.1,11.0.0.1&quot;</code></td> <td><code>&quot;10.0.0.1,11.0.0.1&quot;</code></td> <td><code>&quot;&quot;</code></td></tr></tbody></table> <h3 id="default"><a href="#default" aria-hidden="true" class="header-anchor">#</a> Default</h3> <p>If there are no <code>depth</code> or <code>excludedIPs</code>, then the client IP is the IP of the computer that initiated the connection with the Traefik server (the remote address).</p> <h2 id="proxyprotocol"><a href="#proxyprotocol" aria-hidden="true" class="header-anchor">#</a> ProxyProtocol</h2> <p>To enable <a href="https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt" target="_blank" rel="noopener noreferrer">ProxyProtocol<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> support.
+Only IPs in <code>trustedIPs</code> will lead to remote client address replacement: you should declare your load-balancer IP or CIDR range here (in testing environment, you can trust everyone using <code>insecure = true</code>).</p> <p>!!! danger
+When queuing Traefik behind another load-balancer, be sure to carefully configure Proxy Protocol on both sides.
+Otherwise, it could introduce a security risk in your system by forging requests.</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+
+    # Enable ProxyProtocol
+<span class="token selector">    [entryPoints.http.proxyProtocol]</span>
+      # List of trusted IPs
+      #
+      # Required
+      # Default: []
+      #
+<span class="token constant">      trustedIPs</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;127.0.0.1/32&quot;, &quot;192.168.1.7&quot;]</span>
+
+      # Insecure mode FOR TESTING ENVIRONNEMENT ONLY
+      #
+      # Optional
+      # Default: false
+      #
+      # insecure <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+</code></pre></div><h2 id="forwarded-header"><a href="#forwarded-header" aria-hidden="true" class="header-anchor">#</a> Forwarded Header</h2> <p>Only IPs in <code>trustedIPs</code> will be authorized to trust the client forwarded headers (<code>X-Forwarded-*</code>).</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">    address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+
+    # Enable Forwarded Headers
+<span class="token selector">    [entryPoints.http.forwardedHeaders]</span>
+      # List of trusted IPs
+      #
+      # Required
+      # Default: []
+      #
+<span class="token constant">      trustedIPs</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;127.0.0.1/32&quot;, &quot;192.168.1.7&quot;]</span>
+      
+      # Insecure mode
+      #
+      # Optional
+      # Default: false
+      #
+      # insecure <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/configuration/logs.html" class="prev">
+          Logs
+        </a></span> <span class="next"><a href="/configuration/acme.html">
+          Let's Encrypt
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/25.6d2905c1.js" defer></script>
+  </body>
+</html>

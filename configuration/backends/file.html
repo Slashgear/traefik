@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>File Provider | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/16.f386789a.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Configuration</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/configuration/commons.html" class="sidebar-link">Commons</a></li><li><a href="/configuration/logs.html" class="sidebar-link">Logs</a></li><li><a href="/configuration/entrypoints.html" class="sidebar-link">EntryPoints</a></li><li><a href="/configuration/acme.html" class="sidebar-link">Let's Encrypt</a></li><li><a href="/configuration/api.html" class="sidebar-link">API / Dashboard</a></li><li><a href="/configuration/backends/boltdb.html" class="sidebar-link">BoltDB</a></li><li><a href="/configuration/backends/consul.html" class="sidebar-link">Consul</a></li><li><a href="/configuration/backends/consulcatalog.html" class="sidebar-link">Consul Catalog</a></li><li><a href="/configuration/backends/docker.html" class="sidebar-link">Docker</a></li><li><a href="/configuration/backends/dynamodb.html" class="sidebar-link">DynamoDB</a></li><li><a href="/configuration/backends/ecs.html" class="sidebar-link">ECS</a></li><li><a href="/configuration/backends/etcd.html" class="sidebar-link">Etcd</a></li><li><a href="/configuration/backends/eureka.html" class="sidebar-link">Eureka</a></li><li><a href="/configuration/backends/file.html" class="active sidebar-link">File</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/configuration/backends/file.html#reference" class="sidebar-link">Reference</a></li><li class="sidebar-sub-header"><a href="/configuration/backends/file.html#configuration-mode" class="sidebar-link">Configuration Mode</a></li></ul></li><li><a href="/configuration/backends/kubernetes.html" class="sidebar-link">Kubernetes Ingress</a></li><li><a href="/configuration/backends/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/configuration/backends/mesos.html" class="sidebar-link">Mesos</a></li><li><a href="/configuration/backends/rancher.html" class="sidebar-link">Rancher</a></li><li><a href="/configuration/backends/rest.html" class="sidebar-link">Rest</a></li><li><a href="/configuration/backends/servicefabric.html" class="sidebar-link">Azure Service Fabric</a></li><li><a href="/configuration/backends/zookeeper.html" class="sidebar-link">Zookeeper</a></li><li><a href="/configuration/ping.html" class="sidebar-link">Ping</a></li><li><a href="/configuration/metrics.html" class="sidebar-link">Metrics</a></li><li><a href="/configuration/tracing.html" class="sidebar-link">Tracing</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>User Guides</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="file-provider"><a href="#file-provider" aria-hidden="true" class="header-anchor">#</a> File Provider</h1> <p>Traefik can be configured with a file.</p> <h2 id="reference"><a href="#reference" aria-hidden="true" class="header-anchor">#</a> Reference</h2> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[file]</span>
+
+# Backends
+<span class="token selector">[backends]</span>
+
+<span class="token selector">  [backends.backend1]</span>
+
+<span class="token selector">    [backends.backend1.servers]</span>
+<span class="token selector">      [backends.backend1.servers.server0]</span>
+<span class="token constant">        url</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://10.10.10.1:80&quot;</span>
+<span class="token constant">        weight</span> <span class="token attr-value"><span class="token punctuation">=</span> 1</span>
+<span class="token selector">      [backends.backend1.servers.server1]</span>
+<span class="token constant">        url</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://10.10.10.2:80&quot;</span>
+<span class="token constant">        weight</span> <span class="token attr-value"><span class="token punctuation">=</span> 2</span>
+      # ...
+
+<span class="token selector">    [backends.backend1.circuitBreaker]</span>
+<span class="token constant">      expression</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;NetworkErrorRatio() &gt; 0.5&quot;</span>
+      
+<span class="token selector">    [backends.backend1.responseForwarding]</span>
+<span class="token constant">      flushInterval</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;10ms&quot;</span>
+
+<span class="token selector">    [backends.backend1.loadBalancer]</span>
+<span class="token constant">      method</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;drr&quot;</span>
+<span class="token selector">      [backends.backend1.loadBalancer.stickiness]</span>
+<span class="token constant">        cookieName</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+
+<span class="token selector">    [backends.backend1.maxConn]</span>
+<span class="token constant">      amount</span> <span class="token attr-value"><span class="token punctuation">=</span> 10</span>
+<span class="token constant">      extractorfunc</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;request.host&quot;</span>
+
+<span class="token selector">    [backends.backend1.healthCheck]</span>
+<span class="token constant">      path</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/health&quot;</span>
+<span class="token constant">      port</span> <span class="token attr-value"><span class="token punctuation">=</span> 88</span>
+<span class="token constant">      interval</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;30s&quot;</span>
+<span class="token constant">      timeout</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;5s&quot;</span>
+<span class="token constant">      scheme</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http&quot;</span>
+<span class="token constant">      hostname</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;myhost.com&quot;</span>
+<span class="token selector">      [backends.backend1.healthcheck.headers]</span>
+<span class="token constant">        My-Custom-Header</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foo&quot;</span>
+<span class="token constant">        My-Header</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;bar&quot;</span>
+
+<span class="token selector">  [backends.backend2]</span>
+    # ...
+
+# Frontends
+<span class="token selector">[frontends]</span>
+
+<span class="token selector">  [frontends.frontend1]</span>
+<span class="token constant">    entryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;, &quot;https&quot;]</span>
+<span class="token constant">    backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;backend1&quot;</span>
+<span class="token constant">    passHostHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">    priority</span> <span class="token attr-value"><span class="token punctuation">=</span> 42</span>
+
+<span class="token selector">    [frontends.frontend1.passTLSClientCert]</span>
+<span class="token constant">        pem</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">        [frontends.frontend1.passTLSClientCert.infos]</span>
+<span class="token constant">            notBefore</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">            notAfter</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">            [frontends.frontend1.passTLSClientCert.infos.subject]</span>
+<span class="token constant">                country</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                domainComponent</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                province</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                locality</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                organization</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                commonName</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                serialNumber</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">            [frontends.frontend1.passTLSClientCert.infos.issuer]</span>
+<span class="token constant">                country</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                domainComponent</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                province</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                locality</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                organization</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                commonName</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">                serialNumber</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">    [frontends.frontend1.auth]</span>
+<span class="token constant">      headerField</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;X-WebAuth-User&quot;</span>
+<span class="token selector">      [frontends.frontend1.auth.basic]</span>
+<span class="token constant">        removeHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">        users</span> <span class="token attr-value"><span class="token punctuation">=</span> [</span>
+          &quot;test:$apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/&quot;,
+          &quot;test2:$apr1$d9hr9HBB$4HxwgUir3HP4EsggP/QNo0&quot;,
+        ]
+<span class="token constant">        usersFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/.htpasswd&quot;</span>
+<span class="token selector">      [frontends.frontend1.auth.digest]</span>
+<span class="token constant">        removeHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">        users</span> <span class="token attr-value"><span class="token punctuation">=</span> [</span>
+          &quot;test:traefik:a2688e031edb4be6a3797f3882655c05&quot;,
+          &quot;test2:traefik:518845800f9e2bfb1f1f740ec24f074e&quot;,
+        ]
+<span class="token constant">        usersFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/.htdigest&quot;</span>
+<span class="token selector">      [frontends.frontend1.auth.forward]</span>
+<span class="token constant">        address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://authserver.com/auth&quot;</span>
+<span class="token constant">        trustForwardHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">        authResponseHeaders</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;X-Auth-User&quot;]</span>
+<span class="token selector">        [frontends.frontend1.auth.forward.tls]</span>
+<span class="token constant">          ca</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/local.crt&quot;</span>
+<span class="token constant">          caOptional</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">          cert</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/foo.cert&quot;</span>
+<span class="token constant">          key</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/foo.key&quot;</span>
+<span class="token constant">          insecureSkipVerify</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+<span class="token selector">    [frontends.frontend1.whiteList]</span>
+<span class="token constant">      sourceRange</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;10.42.0.0/16&quot;, &quot;152.89.1.33/32&quot;, &quot;afed:be44::/16&quot;]</span>
+<span class="token selector">      [frontends.frontend1.whiteList.IPStrategy]</span>
+<span class="token constant">        depth</span> <span class="token attr-value"><span class="token punctuation">=</span> 6</span>
+<span class="token constant">        excludedIPs</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;152.89.1.33/32&quot;, &quot;afed:be44::/16&quot;]</span>
+
+<span class="token selector">    [frontends.frontend1.routes]</span>
+<span class="token selector">      [frontends.frontend1.routes.route0]</span>
+<span class="token constant">        rule</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Host:test.localhost&quot;</span>
+<span class="token selector">      [frontends.frontend1.routes.Route1]</span>
+<span class="token constant">        rule</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Method:GET&quot;</span>
+      # ...
+
+<span class="token selector">    [frontends.frontend1.headers]</span>
+<span class="token constant">      allowedHosts</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;foobar&quot;, &quot;foobar&quot;]</span>
+<span class="token constant">      hostsProxyHeaders</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;foobar&quot;, &quot;foobar&quot;]</span>
+<span class="token constant">      SSLRedirect</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      SSLTemporaryRedirect</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      SSLHost</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+<span class="token constant">      STSSeconds</span> <span class="token attr-value"><span class="token punctuation">=</span> 42</span>
+<span class="token constant">      STSIncludeSubdomains</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      STSPreload</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      forceSTSHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      frameDeny</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      customFrameOptionsValue</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+<span class="token constant">      contentTypeNosniff</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      browserXSSFilter</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">      contentSecurityPolicy</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+<span class="token constant">      publicKey</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+<span class="token constant">      referrerPolicy</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+<span class="token constant">      isDevelopment</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">      [frontends.frontend1.headers.customRequestHeaders]</span>
+<span class="token constant">        X-Foo-Bar-01</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+<span class="token constant">        X-Foo-Bar-02</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+        # ...
+<span class="token selector">      [frontends.frontend1.headers.customResponseHeaders]</span>
+<span class="token constant">        X-Foo-Bar-03</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+<span class="token constant">        X-Foo-Bar-04</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+        # ...
+<span class="token selector">      [frontends.frontend1.headers.SSLProxyHeaders]</span>
+<span class="token constant">        X-Foo-Bar-05</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+<span class="token constant">        X-Foo-Bar-06</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;foobar&quot;</span>
+        # ...
+
+<span class="token selector">    [frontends.frontend1.errors]</span>
+<span class="token selector">      [frontends.frontend1.errors.errorPage0]</span>
+<span class="token constant">        status</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;500-599&quot;]</span>
+<span class="token constant">        backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;error&quot;</span>
+<span class="token constant">        query</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/{status}.html&quot;</span>
+<span class="token selector">      [frontends.frontend1.errors.errorPage1]</span>
+<span class="token constant">        status</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;404&quot;, &quot;403&quot;]</span>
+<span class="token constant">        backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;error&quot;</span>
+<span class="token constant">        query</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/{status}.html&quot;</span>
+      # ...
+
+<span class="token selector">    [frontends.frontend1.ratelimit]</span>
+<span class="token constant">      extractorfunc</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;client.ip&quot;</span>
+<span class="token selector">        [frontends.frontend1.ratelimit.rateset.rateset1]</span>
+<span class="token constant">          period</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;10s&quot;</span>
+<span class="token constant">          average</span> <span class="token attr-value"><span class="token punctuation">=</span> 100</span>
+<span class="token constant">          burst</span> <span class="token attr-value"><span class="token punctuation">=</span> 200</span>
+<span class="token selector">        [frontends.frontend1.ratelimit.rateset.rateset2]</span>
+<span class="token constant">          period</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;3s&quot;</span>
+<span class="token constant">          average</span> <span class="token attr-value"><span class="token punctuation">=</span> 5</span>
+<span class="token constant">          burst</span> <span class="token attr-value"><span class="token punctuation">=</span> 10</span>
+        # ...
+
+<span class="token selector">    [frontends.frontend1.redirect]</span>
+<span class="token constant">      entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token constant">      regex</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;^http://localhost/(.*)&quot;</span>
+<span class="token constant">      replacement</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://mydomain/$1&quot;</span>
+<span class="token constant">      permanent</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+<span class="token selector">  [frontends.frontend2]</span>
+    # ...
+
+# HTTPS certificates
+<span class="token selector">[[tls]</span>]
+<span class="token constant">  entryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;https&quot;]</span>
+<span class="token selector">  [tls.certificate]</span>
+<span class="token constant">    certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/my.cert&quot;</span>
+<span class="token constant">    keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;path/to/my.key&quot;</span>
+
+<span class="token selector">[[tls]</span>]
+  # ...
+</code></pre></div><h2 id="configuration-mode"><a href="#configuration-mode" aria-hidden="true" class="header-anchor">#</a> Configuration Mode</h2> <p>You have two choices:</p> <ul><li><a href="/configuration/backends/file/#rules-in-traefik-configuration-file">Rules in Traefik configuration file</a></li> <li><a href="/configuration/backends/file/#rules-in-dedicated-files">Rules in dedicated files</a></li></ul> <p>To enable the file backend, you must either pass the <code>--file</code> option to the Traefik binary or put the <code>[file]</code> section (with or without inner settings) in the configuration file.</p> <p>The configuration file allows managing both backends/frontends and HTTPS certificates (which are not <a href="https://letsencrypt.org" target="_blank" rel="noopener noreferrer">Let's Encrypt<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> certificates generated through Traefik).</p> <p>TOML templating can be used if rules are not defined in the Traefik configuration file.</p> <h3 id="rules-in-traefik-configuration-file"><a href="#rules-in-traefik-configuration-file" aria-hidden="true" class="header-anchor">#</a> Rules in Traefik Configuration File</h3> <p>Add your configuration at the end of the global configuration file <code>traefik.toml</code>:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;, &quot;https&quot;]</span>
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+    # ...
+<span class="token selector">  [entryPoints.https]</span>
+    # ...
+
+<span class="token selector">[file]</span>
+
+# rules
+<span class="token selector">[backends]</span>
+<span class="token selector">  [backends.backend1]</span>
+    # ...
+<span class="token selector">  [backends.backend2]</span>
+    # ...
+
+<span class="token selector">[frontends]</span>
+<span class="token selector">  [frontends.frontend1]</span>
+  # ...
+<span class="token selector">  [frontends.frontend2]</span>
+  # ...
+<span class="token selector">  [frontends.frontend3]</span>
+  # ...
+
+# HTTPS certificate
+<span class="token selector">[[tls]</span>]
+  # ...
+
+<span class="token selector">[[tls]</span>]
+  # ...
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>If `tls.entryPoints` is not defined, the certificate is attached to all the `defaultEntryPoints` with a TLS configuration.
+</code></pre></div> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>Adding certificates directly to the entryPoint is still maintained but certificates declared in this way cannot be managed dynamically.
+It's recommended to use the file provider to declare certificates.
+</code></pre></div> <p>!!! warning
+TOML templating cannot be used if rules are defined in the Traefik configuration file.</p> <h3 id="rules-in-dedicated-files"><a href="#rules-in-dedicated-files" aria-hidden="true" class="header-anchor">#</a> Rules in Dedicated Files</h3> <p>Traefik allows defining rules in one or more separate files.</p> <h4 id="one-separate-file"><a href="#one-separate-file" aria-hidden="true" class="header-anchor">#</a> One Separate File</h4> <p>You have to specify the file path in the <code>file.filename</code> option.</p> <div class="language-ini extra-class"><pre class="language-ini"><code># traefik.toml
+<span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;, &quot;https&quot;]</span>
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+    # ...
+<span class="token selector">  [entryPoints.https]</span>
+    # ...
+
+<span class="token selector">[file]</span>
+<span class="token constant">  filename</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;rules.toml&quot;</span>
+<span class="token constant">  watch</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+</code></pre></div><p>The option <code>file.watch</code> allows Traefik to watch file changes automatically.</p> <h4 id="multiple-separated-files"><a href="#multiple-separated-files" aria-hidden="true" class="header-anchor">#</a> Multiple Separated Files</h4> <p>You could have multiple <code>.toml</code> files in a directory (and recursively in its sub-directories):</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[file]</span>
+<span class="token constant">  directory</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;/path/to/config/&quot;</span>
+<span class="token constant">  watch</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+</code></pre></div><p>The option <code>file.watch</code> allows Traefik to watch file changes automatically.</p> <h4 id="separate-files-content"><a href="#separate-files-content" aria-hidden="true" class="header-anchor">#</a> Separate Files Content</h4> <p>If you are defining rules in one or more separate files, you can use two formats.</p> <h5 id="simple-format"><a href="#simple-format" aria-hidden="true" class="header-anchor">#</a> Simple Format</h5> <p>Backends, Frontends and TLS certificates are defined one at time, as described in the file <code>rules.toml</code>:</p> <div class="language-ini extra-class"><pre class="language-ini"><code># rules.toml
+<span class="token selector">[backends]</span>
+<span class="token selector">  [backends.backend1]</span>
+    # ...
+<span class="token selector">  [backends.backend2]</span>
+    # ...
+
+<span class="token selector">[frontends]</span>
+<span class="token selector">  [frontends.frontend1]</span>
+  # ...
+<span class="token selector">  [frontends.frontend2]</span>
+  # ...
+<span class="token selector">  [frontends.frontend3]</span>
+  # ...
+
+# HTTPS certificate
+<span class="token selector">[[tls]</span>]
+  # ...
+
+<span class="token selector">[[tls]</span>]
+  # ...
+</code></pre></div><h5 id="toml-templating"><a href="#toml-templating" aria-hidden="true" class="header-anchor">#</a> TOML Templating</h5> <p>!!! warning
+TOML templating can only be used <strong>if rules are defined in one or more separate files</strong>.
+Templating will not work in the Traefik configuration file.</p> <p>Traefik allows using TOML templating.</p> <p>Thus, it's possible to define easily lot of Backends, Frontends and TLS certificates as described in the file <code>template-rules.toml</code> :</p> <div class="language-ini extra-class"><pre class="language-ini"><code># template-rules.toml
+<span class="token selector">[backends]</span>
+{{ range $i, $e :<span class="token attr-value"><span class="token punctuation">=</span> until 100 }}</span>
+<span class="token selector">  [backends.backend{{ $e }}]</span>
+    #...
+{{ end }}
+
+<span class="token selector">[frontends]</span>
+{{ range $i, $e :<span class="token attr-value"><span class="token punctuation">=</span> until 100 }}</span>
+<span class="token selector">  [frontends.frontend{{ $e }}]</span>
+    #...
+{{ end }}
+
+
+# HTTPS certificate
+{{ range $i, $e :<span class="token attr-value"><span class="token punctuation">=</span> until 100 }}</span>
+<span class="token selector">[[tls]</span>]
+    #...
+{{ end }}
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/configuration/backends/eureka.html" class="prev">
+          Eureka
+        </a></span> <span class="next"><a href="/configuration/backends/kubernetes.html">
+          Kubernetes Ingress
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/16.f386789a.js" defer></script>
+  </body>
+</html>

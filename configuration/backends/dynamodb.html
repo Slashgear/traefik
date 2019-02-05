@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DynamoDB Provider | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/12.9acb0324.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>Configuration</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/configuration/commons.html" class="sidebar-link">Commons</a></li><li><a href="/configuration/logs.html" class="sidebar-link">Logs</a></li><li><a href="/configuration/entrypoints.html" class="sidebar-link">EntryPoints</a></li><li><a href="/configuration/acme.html" class="sidebar-link">Let's Encrypt</a></li><li><a href="/configuration/api.html" class="sidebar-link">API / Dashboard</a></li><li><a href="/configuration/backends/boltdb.html" class="sidebar-link">BoltDB</a></li><li><a href="/configuration/backends/consul.html" class="sidebar-link">Consul</a></li><li><a href="/configuration/backends/consulcatalog.html" class="sidebar-link">Consul Catalog</a></li><li><a href="/configuration/backends/docker.html" class="sidebar-link">Docker</a></li><li><a href="/configuration/backends/dynamodb.html" class="active sidebar-link">DynamoDB</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/configuration/backends/dynamodb.html#configuration" class="sidebar-link">Configuration</a></li><li class="sidebar-sub-header"><a href="/configuration/backends/dynamodb.html#table-items" class="sidebar-link">Table Items</a></li></ul></li><li><a href="/configuration/backends/ecs.html" class="sidebar-link">ECS</a></li><li><a href="/configuration/backends/etcd.html" class="sidebar-link">Etcd</a></li><li><a href="/configuration/backends/eureka.html" class="sidebar-link">Eureka</a></li><li><a href="/configuration/backends/file.html" class="sidebar-link">File</a></li><li><a href="/configuration/backends/kubernetes.html" class="sidebar-link">Kubernetes Ingress</a></li><li><a href="/configuration/backends/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/configuration/backends/mesos.html" class="sidebar-link">Mesos</a></li><li><a href="/configuration/backends/rancher.html" class="sidebar-link">Rancher</a></li><li><a href="/configuration/backends/rest.html" class="sidebar-link">Rest</a></li><li><a href="/configuration/backends/servicefabric.html" class="sidebar-link">Azure Service Fabric</a></li><li><a href="/configuration/backends/zookeeper.html" class="sidebar-link">Zookeeper</a></li><li><a href="/configuration/ping.html" class="sidebar-link">Ping</a></li><li><a href="/configuration/metrics.html" class="sidebar-link">Metrics</a></li><li><a href="/configuration/tracing.html" class="sidebar-link">Tracing</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>User Guides</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="dynamodb-provider"><a href="#dynamodb-provider" aria-hidden="true" class="header-anchor">#</a> DynamoDB Provider</h1> <p>Traefik can be configured to use Amazon DynamoDB as a provider.</p> <h2 id="configuration"><a href="#configuration" aria-hidden="true" class="header-anchor">#</a> Configuration</h2> <div class="language-ini extra-class"><pre class="language-ini"><code>################################################################
+# DynamoDB Provider
+################################################################
+
+# Enable DynamoDB Provider.
+<span class="token selector">[dynamodb]</span>
+
+# Region to use when connecting to AWS.
+#
+# Required
+#
+<span class="token constant">region</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;us-west-1&quot;</span>
+
+# DyanmoDB Table Name.
+#
+# Optional
+# Default: &quot;traefik&quot;
+#
+<span class="token constant">tableName</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;traefik&quot;</span>
+
+# Enable watch DynamoDB changes.
+#
+# Optional
+# Default: true
+#
+<span class="token constant">watch</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+
+# Polling interval (in seconds).
+#
+# Optional
+# Default: 15
+#
+<span class="token constant">refreshSeconds</span> <span class="token attr-value"><span class="token punctuation">=</span> 15</span>
+
+# Access Key ID to use when connecting to AWS.
+#
+# Optional
+#
+<span class="token constant">accessKeyID</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;abc&quot;</span>
+
+# Secret Access Key to use when connecting to AWS.
+#
+# Optional
+#
+<span class="token constant">secretAccessKey</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;123&quot;</span>
+
+# Endpoint of local dynamodb instance for testing?
+#
+# Optional
+#
+<span class="token constant">endpoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://localhost:8080&quot;</span>
+</code></pre></div><h2 id="table-items"><a href="#table-items" aria-hidden="true" class="header-anchor">#</a> Table Items</h2> <p>Items in the <code>dynamodb</code> table must have three attributes:</p> <ul><li><code>id</code> (string): The id is the primary key.</li> <li><code>name</code>(string): The name is used as the name of the frontend or backend.</li> <li><code>frontend</code> or <code>backend</code> (map): This attribute's structure matches exactly the structure of a Frontend or Backend type in Traefik.<br>
+See <code>types/types.go</code> for details.<br>
+The presence or absence of this attribute determines its type.
+So an item should never have both a <code>frontend</code> and a <code>backend</code> attribute.</li></ul></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/configuration/backends/docker.html" class="prev">
+          Docker
+        </a></span> <span class="next"><a href="/configuration/backends/ecs.html">
+          ECS
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/12.9acb0324.js" defer></script>
+  </body>
+</html>

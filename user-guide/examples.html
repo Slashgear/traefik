@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Examples | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/33.f84e04da.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/32.d475b1ed.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Configuration</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>User Guides</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/user-guide/examples.html" class="active sidebar-link">Configuration Examples</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/examples.html#http-only" class="sidebar-link">HTTP only</a></li><li class="sidebar-sub-header"><a href="/user-guide/examples.html#http-https-with-sni" class="sidebar-link">HTTP + HTTPS (with SNI)</a></li><li class="sidebar-sub-header"><a href="/user-guide/examples.html#http-redirect-on-https" class="sidebar-link">HTTP redirect on HTTPS</a></li><li class="sidebar-sub-header"><a href="/user-guide/examples.html#let-s-encrypt-support" class="sidebar-link">Let's Encrypt support</a></li><li class="sidebar-sub-header"><a href="/user-guide/examples.html#override-entrypoints-in-frontends" class="sidebar-link">Override entrypoints in frontends</a></li><li class="sidebar-sub-header"><a href="/user-guide/examples.html#override-the-traefik-http-server-idletimeout-and-or-throttle-configurations-from-re-loading-too-quickly" class="sidebar-link">Override the Traefik HTTP server idleTimeout and/or throttle configurations from re-loading too quickly</a></li><li class="sidebar-sub-header"><a href="/user-guide/examples.html#using-labels-in-docker-compose-yml" class="sidebar-link">Using labels in docker-compose.yml</a></li></ul></li><li><a href="/user-guide/swarm-mode.html" class="sidebar-link">Swarm Mode Cluster</a></li><li><a href="/user-guide/swarm.html" class="sidebar-link">Swarm Cluster</a></li><li><a href="/user-guide/docker-and-lets-encrypt.html" class="sidebar-link">Let's Encrypt &amp; Docker</a></li><li><a href="/user-guide/kubernetes.html" class="sidebar-link">Kubernetes</a></li><li><a href="/user-guide/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/user-guide/kv-config.html" class="sidebar-link">Key-value Store Configuration</a></li><li><a href="/user-guide/cluster.html" class="sidebar-link">Clustering/HA</a></li><li><a href="/user-guide/grpc.html" class="sidebar-link">gRPC Example</a></li><li><a href="/user-guide/cluster-docker-consul.html" class="sidebar-link">Traefik cluster example with Swarm</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="examples"><a href="#examples" aria-hidden="true" class="header-anchor">#</a> Examples</h1> <p>You will find here some configuration examples of Traefik.</p> <h2 id="http-only"><a href="#http-only" aria-hidden="true" class="header-anchor">#</a> HTTP only</h2> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;]</span>
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+</code></pre></div><h2 id="http-https-with-sni"><a href="#http-https-with-sni" aria-hidden="true" class="header-anchor">#</a> HTTP + HTTPS (with SNI)</h2> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;, &quot;https&quot;]</span>
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.com.key&quot;</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.org.cert&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;integration/fixtures/https/snitest.org.key&quot;</span>
+</code></pre></div><p>Note that we can either give path to certificate file or directly the file content itself (<a href="/user-guide/kv-config/#upload-the-configuration-in-the-key-value-store">like in this TOML example</a>).</p> <h2 id="http-redirect-on-https"><a href="#http-redirect-on-https" aria-hidden="true" class="header-anchor">#</a> HTTP redirect on HTTPS</h2> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;, &quot;https&quot;]</span>
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">    [entryPoints.http.redirect]</span>
+<span class="token constant">    entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;examples/traefik.crt&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;examples/traefik.key&quot;</span>
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>Please note that `regex` and `replacement` do not have to be set in the `redirect` structure if an entrypoint is defined for the redirection (they will not be used in this case)
+</code></pre></div> <h2 id="let-s-encrypt-support"><a href="#let-s-encrypt-support" aria-hidden="true" class="header-anchor">#</a> Let's Encrypt support</h2> <h3 id="basic-example-with-http-challenge"><a href="#basic-example-with-http-challenge" aria-hidden="true" class="header-anchor">#</a> Basic example with HTTP challenge</h3> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+
+<span class="token selector">[acme]</span>
+<span class="token constant">email</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;test@traefik.io&quot;</span>
+<span class="token constant">storage</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;acme.json&quot;</span>
+<span class="token constant">caServer</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://acme-staging-v02.api.letsencrypt.org/directory&quot;</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [acme.httpChallenge]</span>
+<span class="token constant">  entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http&quot;</span>
+
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local1.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local1.com&quot;, &quot;test2.local1.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local2.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local2.com&quot;, &quot;test2x.local2.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local3.com&quot;</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local4.com&quot;</span>
+</code></pre></div><p>This configuration allows generating Let's Encrypt certificates (thanks to <code>HTTP-01</code> challenge) for the four domains <code>local[1-4].com</code> with described SANs.</p> <p>Traefik generates these certificates when it starts and it needs to be restart if new domains are added.</p> <h3 id="onhostrule-option-with-http-challenge"><a href="#onhostrule-option-with-http-challenge" aria-hidden="true" class="header-anchor">#</a> onHostRule option (with HTTP challenge)</h3> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+
+<span class="token selector">[acme]</span>
+<span class="token constant">email</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;test@traefik.io&quot;</span>
+<span class="token constant">storage</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;acme.json&quot;</span>
+<span class="token constant">onHostRule</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">caServer</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://acme-staging-v02.api.letsencrypt.org/directory&quot;</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [acme.httpChallenge]</span>
+<span class="token constant">  entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http&quot;</span>
+
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local1.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local1.com&quot;, &quot;test2.local1.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local2.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local2.com&quot;, &quot;test2x.local2.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local3.com&quot;</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local4.com&quot;</span>
+</code></pre></div><p>This configuration allows generating Let's Encrypt certificates (thanks to <code>HTTP-01</code> challenge) for the four domains <code>local[1-4].com</code>.</p> <p>Traefik generates these certificates when it starts.</p> <p>If a backend is added with a <code>onHost</code> rule, Traefik will automatically generate the Let's Encrypt certificate for the new domain (for frontends wired on the <code>acme.entryPoint</code>).</p> <h3 id="ondemand-option-with-http-challenge"><a href="#ondemand-option-with-http-challenge" aria-hidden="true" class="header-anchor">#</a> OnDemand option (with HTTP challenge)</h3> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+
+<span class="token selector">[acme]</span>
+<span class="token constant">email</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;test@traefik.io&quot;</span>
+<span class="token constant">storage</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;acme.json&quot;</span>
+<span class="token constant">onDemand</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">caServer</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://acme-staging-v02.api.letsencrypt.org/directory&quot;</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [acme.httpChallenge]</span>
+<span class="token constant">  entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http&quot;</span>
+</code></pre></div><p>This configuration allows generating a Let's Encrypt certificate (thanks to <code>HTTP-01</code> challenge) during the first HTTPS request on a new domain.</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>This option simplifies the configuration but :
+
+* TLS handshakes will be slow when requesting a hostname certificate for the first time, which can lead to DDoS attacks.
+* Let's Encrypt have rate limiting: https://letsencrypt.org/docs/rate-limits
+
+That's why, it's better to use the `onHostRule` option if possible.
+</code></pre></div> <h3 id="dns-challenge"><a href="#dns-challenge" aria-hidden="true" class="header-anchor">#</a> DNS challenge</h3> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+
+<span class="token selector">[acme]</span>
+<span class="token constant">email</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;test@traefik.io&quot;</span>
+<span class="token constant">storage</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;acme.json&quot;</span>
+<span class="token constant">caServer</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://acme-staging-v02.api.letsencrypt.org/directory&quot;</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [acme.dnsChallenge]</span>
+<span class="token constant">  provider</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;digitalocean&quot; # DNS Provider name (cloudflare, OVH, gandi...)</span>
+<span class="token constant">  delayBeforeCheck</span> <span class="token attr-value"><span class="token punctuation">=</span> 0</span>
+
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local1.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local1.com&quot;, &quot;test2.local1.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local2.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local2.com&quot;, &quot;test2x.local2.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local3.com&quot;</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local4.com&quot;</span>
+</code></pre></div><p>DNS challenge needs environment variables to be executed.
+These variables have to be set on the machine/container that host Traefik.</p> <p>These variables are described <a href="/configuration/acme/#provider">in this section</a>.</p> <h3 id="dns-challenge-with-wildcard-domains"><a href="#dns-challenge-with-wildcard-domains" aria-hidden="true" class="header-anchor">#</a> DNS challenge with wildcard domains</h3> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+
+<span class="token selector">[acme]</span>
+<span class="token constant">email</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;test@traefik.io&quot;</span>
+<span class="token constant">storage</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;acme.json&quot;</span>
+<span class="token constant">caServer</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https://acme-staging-v02.api.letsencrypt.org/directory&quot;</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [acme.dnsChallenge]</span>
+<span class="token constant">  provider</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;digitalocean&quot; # DNS Provider name (cloudflare, OVH, gandi...)</span>
+<span class="token constant">  delayBeforeCheck</span> <span class="token attr-value"><span class="token punctuation">=</span> 0</span>
+
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;*.local1.com&quot;</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local2.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local2.com&quot;, &quot;test2x.local2.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;*.local3.com&quot;</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;*.local4.com&quot;</span>
+</code></pre></div><p>DNS challenge needs environment variables to be executed.
+These variables have to be set on the machine/container that host Traefik.</p> <p>These variables are described <a href="/configuration/acme/#provider">in this section</a>.</p> <p>More information about wildcard certificates are available <a href="/configuration/acme/#wildcard-domains">in this section</a>.</p> <h3 id="onhostrule-option-and-provided-certificates-with-http-challenge"><a href="#onhostrule-option-and-provided-certificates-with-http-challenge" aria-hidden="true" class="header-anchor">#</a> onHostRule option and provided certificates (with HTTP challenge)</h3> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+<span class="token selector">      [[entryPoints.https.tls.certificates]</span>]
+<span class="token constant">      certFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;examples/traefik.crt&quot;</span>
+<span class="token constant">      keyFile</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;examples/traefik.key&quot;</span>
+
+<span class="token selector">[acme]</span>
+<span class="token constant">email</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;test@traefik.io&quot;</span>
+<span class="token constant">storage</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;acme.json&quot;</span>
+<span class="token constant">onHostRule</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">caServer</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://172.18.0.1:4000/directory&quot;</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [acme.httpChallenge]</span>
+<span class="token constant">  entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http&quot;</span>
+</code></pre></div><p>Traefik will only try to generate a Let's encrypt certificate (thanks to <code>HTTP-01</code> challenge) if the domain cannot be checked by the provided certificates.</p> <h3 id="cluster-mode"><a href="#cluster-mode" aria-hidden="true" class="header-anchor">#</a> Cluster mode</h3> <h4 id="prerequisites"><a href="#prerequisites" aria-hidden="true" class="header-anchor">#</a> Prerequisites</h4> <p>Before you use Let's Encrypt in a Traefik cluster, take a look to <a href="/user-guide/kv-config">the key-value store explanations</a> and more precisely at <a href="/user-guide/kv-config/#store-configuration-in-key-value-store">this section</a>, which will describe how to migrate from a acme local storage <em>(acme.json file)</em> to a key-value store configuration.</p> <h4 id="configuration"><a href="#configuration" aria-hidden="true" class="header-anchor">#</a> Configuration</h4> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">    [entryPoints.https.tls]</span>
+
+<span class="token selector">[acme]</span>
+<span class="token constant">email</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;test@traefik.io&quot;</span>
+<span class="token constant">storage</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;traefik/acme/account&quot;</span>
+<span class="token constant">caServer</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http://172.18.0.1:4000/directory&quot;</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+
+<span class="token selector">[acme.httpChallenge]</span>
+<span class="token constant">    entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http&quot;</span>
+
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local1.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local1.com&quot;, &quot;test2.local1.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local2.com&quot;</span>
+<span class="token constant">  sans</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;test1.local2.com&quot;, &quot;test2x.local2.com&quot;]</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local3.com&quot;</span>
+<span class="token selector">[[acme.domains]</span>]
+<span class="token constant">  main</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;local4.com&quot;</span>
+
+<span class="token selector">[consul]</span>
+<span class="token constant">  endpoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;127.0.0.1:8500&quot;</span>
+<span class="token constant">  watch</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">  prefix</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;traefik&quot;</span>
+</code></pre></div><p>This configuration allows to use the key <code>traefik/acme/account</code> to get/set Let's Encrypt certificates content.
+The <code>consul</code> provider contains the configuration.</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <pre><code>It's possible to use others key-value store providers as described [here](/user-guide/kv-config/#key-value-store-configuration).
+</code></pre></div> <h2 id="override-entrypoints-in-frontends"><a href="#override-entrypoints-in-frontends" aria-hidden="true" class="header-anchor">#</a> Override entrypoints in frontends</h2> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token selector">[frontends]</span>
+
+<span class="token selector">  [frontends.frontend1]</span>
+<span class="token constant">  backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;backend2&quot;</span>
+<span class="token selector">    [frontends.frontend1.routes.test_1]</span>
+<span class="token constant">    rule</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Host:test.localhost&quot;</span>
+
+<span class="token selector">  [frontends.frontend2]</span>
+<span class="token constant">  backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;backend1&quot;</span>
+<span class="token constant">  passHostHeader</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">  entrypoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;https&quot;] # overrides defaultEntryPoints</span>
+<span class="token selector">    [frontends.frontend2.routes.test_1]</span>
+<span class="token constant">    rule</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Host:{subdomain:[a-z]+}.localhost&quot;</span>
+
+<span class="token selector">  [frontends.frontend3]</span>
+<span class="token constant">  entrypoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;http&quot;, &quot;https&quot;] # overrides defaultEntryPoints</span>
+<span class="token constant">  backend</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;backend2&quot;</span>
+<span class="token constant">  rule</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;Path:/test&quot;</span>
+</code></pre></div><h2 id="override-the-traefik-http-server-idletimeout-and-or-throttle-configurations-from-re-loading-too-quickly"><a href="#override-the-traefik-http-server-idletimeout-and-or-throttle-configurations-from-re-loading-too-quickly" aria-hidden="true" class="header-anchor">#</a> Override the Traefik HTTP server idleTimeout and/or throttle configurations from re-loading too quickly</h2> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">providersThrottleDuration</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;5s&quot;</span>
+
+<span class="token selector">[respondingTimeouts]</span>
+<span class="token constant">idleTimeout</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;360s&quot;</span>
+</code></pre></div><h2 id="using-labels-in-docker-compose-yml"><a href="#using-labels-in-docker-compose-yml" aria-hidden="true" class="header-anchor">#</a> Using labels in docker-compose.yml</h2> <p>Pay attention to the <strong>labels</strong> section:</p> <div class="language- extra-class"><pre class="language-text"><code>home:
+image: abiosoft/caddy:0.10.14
+networks:
+  - ntw_front
+volumes:
+  - ./www/home/srv/:/srv/
+deploy:
+  mode: replicated
+  replicas: 2
+  #placement:
+  #  constraints: [node.role==manager]
+  restart_policy:
+    condition: on-failure
+    max_attempts: 5
+  resources:
+    limits:
+      cpus: '0.20'
+      memory: 9M
+    reservations:
+      cpus: '0.05'
+      memory: 9M
+  labels:
+  - &quot;traefik.frontend.rule=PathPrefixStrip:/&quot;
+  - &quot;traefik.backend=home&quot;
+  - &quot;traefik.port=2015&quot;
+  - &quot;traefik.weight=10&quot;
+  - &quot;traefik.enable=true&quot;
+  - &quot;traefik.passHostHeader=true&quot;
+  - &quot;traefik.docker.network=ntw_front&quot;
+  - &quot;traefik.frontend.entryPoints=http&quot;
+  - &quot;traefik.backend.loadbalancer.swarm=true&quot;
+  - &quot;traefik.backend.loadbalancer.method=drr&quot;
+</code></pre></div><p>Something more tricky using <code>regex</code>.</p> <p>In this case a slash is added to <code>siteexample.io/portainer</code> and redirect to <code>siteexample.io/portainer/</code>. For more details: https://github.com/containous/traefik/issues/563</p> <p>The double sign <code>$$</code> are variables managed by the docker compose file (<a href="https://docs.docker.com/compose/compose-file/#variable-substitution" target="_blank" rel="noopener noreferrer">documentation<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>).</p> <div class="language- extra-class"><pre class="language-text"><code>portainer:
+image: portainer/portainer:1.16.5
+networks:
+  - ntw_front
+volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+deploy:
+  mode: replicated
+  replicas: 1
+  placement:
+    constraints: [node.role==manager]
+  restart_policy:
+    condition: on-failure
+    max_attempts: 5
+  resources:
+    limits:
+      cpus: '0.33'
+      memory: 20M
+    reservations:
+      cpus: '0.05'
+      memory: 10M
+  labels:
+    - &quot;traefik.frontend.rule=PathPrefixStrip:/portainer&quot;
+    - &quot;traefik.backend=portainer&quot;
+    - &quot;traefik.port=9000&quot;
+    - &quot;traefik.weight=10&quot;
+    - &quot;traefik.enable=true&quot;
+    - &quot;traefik.passHostHeader=true&quot;
+    - &quot;traefik.docker.network=ntw_front&quot;
+    - &quot;traefik.frontend.entryPoints=http&quot;
+    - &quot;traefik.backend.loadbalancer.swarm=true&quot;
+    - &quot;traefik.backend.loadbalancer.method=drr&quot;
+    # https://github.com/containous/traefik/issues/563#issuecomment-421360934
+    - &quot;traefik.frontend.redirect.regex=^(.*)/portainer$$&quot;
+    - &quot;traefik.frontend.redirect.replacement=$$1/portainer/&quot;
+    - &quot;traefik.frontend.rule=PathPrefix:/portainer;ReplacePathRegex: ^/portainer/(.*) /$$1&quot;
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/configuration/tracing.html" class="prev">
+          Tracing
+        </a></span> <span class="next"><a href="/user-guide/swarm-mode.html">
+          Swarm Mode Cluster
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/33.f84e04da.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Let&#39;s Encrypt &amp; Docker | Traefik</title>
+    <meta name="description" content="Traefik Documentation">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.b74fa497.css" as="style"><link rel="preload" href="/assets/js/app.c0cb1a0b.js" as="script"><link rel="preload" href="/assets/js/32.d475b1ed.js" as="script"><link rel="prefetch" href="/assets/js/10.d9f32ac0.js"><link rel="prefetch" href="/assets/js/11.375b726e.js"><link rel="prefetch" href="/assets/js/12.9acb0324.js"><link rel="prefetch" href="/assets/js/13.8f411b20.js"><link rel="prefetch" href="/assets/js/14.5aa54c49.js"><link rel="prefetch" href="/assets/js/15.18320535.js"><link rel="prefetch" href="/assets/js/16.f386789a.js"><link rel="prefetch" href="/assets/js/17.7c01ac03.js"><link rel="prefetch" href="/assets/js/18.3c97b5d1.js"><link rel="prefetch" href="/assets/js/19.1483f0a7.js"><link rel="prefetch" href="/assets/js/2.f0fe713b.js"><link rel="prefetch" href="/assets/js/20.0485452d.js"><link rel="prefetch" href="/assets/js/21.f2312fc4.js"><link rel="prefetch" href="/assets/js/22.ee03f9ff.js"><link rel="prefetch" href="/assets/js/23.647e2047.js"><link rel="prefetch" href="/assets/js/24.e91ab9c9.js"><link rel="prefetch" href="/assets/js/25.6d2905c1.js"><link rel="prefetch" href="/assets/js/26.6b0b7881.js"><link rel="prefetch" href="/assets/js/27.a1e67edd.js"><link rel="prefetch" href="/assets/js/28.858e5d66.js"><link rel="prefetch" href="/assets/js/29.26643758.js"><link rel="prefetch" href="/assets/js/3.c340e227.js"><link rel="prefetch" href="/assets/js/30.e4524922.js"><link rel="prefetch" href="/assets/js/31.cb24e220.js"><link rel="prefetch" href="/assets/js/33.f84e04da.js"><link rel="prefetch" href="/assets/js/34.bbe37568.js"><link rel="prefetch" href="/assets/js/35.2c01db0b.js"><link rel="prefetch" href="/assets/js/36.308bc37c.js"><link rel="prefetch" href="/assets/js/37.5d1dbe7b.js"><link rel="prefetch" href="/assets/js/38.9377ad2b.js"><link rel="prefetch" href="/assets/js/39.e1a55eef.js"><link rel="prefetch" href="/assets/js/4.90ba113d.js"><link rel="prefetch" href="/assets/js/40.eea6044f.js"><link rel="prefetch" href="/assets/js/5.fae081a3.js"><link rel="prefetch" href="/assets/js/6.a2ec5521.js"><link rel="prefetch" href="/assets/js/7.3779a4fa.js"><link rel="prefetch" href="/assets/js/8.58f6dd40.js"><link rel="prefetch" href="/assets/js/9.96dc80cc.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.b74fa497.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Traefik</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/" class="sidebar-link">Getting Started</a></li><li><a href="/basics.html" class="sidebar-link">Basics</a></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>Configuration</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>User Guides</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/user-guide/examples.html" class="sidebar-link">Configuration Examples</a></li><li><a href="/user-guide/swarm-mode.html" class="sidebar-link">Swarm Mode Cluster</a></li><li><a href="/user-guide/swarm.html" class="sidebar-link">Swarm Cluster</a></li><li><a href="/user-guide/docker-and-lets-encrypt.html" class="active sidebar-link">Let's Encrypt &amp; Docker</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/user-guide/docker-and-lets-encrypt.html#setting-up" class="sidebar-link">Setting Up</a></li><li class="sidebar-sub-header"><a href="/user-guide/docker-and-lets-encrypt.html#networking" class="sidebar-link">Networking</a></li><li class="sidebar-sub-header"><a href="/user-guide/docker-and-lets-encrypt.html#exposing-web-services-to-the-outside-world" class="sidebar-link">Exposing Web Services to the Outside World</a></li></ul></li><li><a href="/user-guide/kubernetes.html" class="sidebar-link">Kubernetes</a></li><li><a href="/user-guide/marathon.html" class="sidebar-link">Marathon</a></li><li><a href="/user-guide/kv-config.html" class="sidebar-link">Key-value Store Configuration</a></li><li><a href="/user-guide/cluster.html" class="sidebar-link">Clustering/HA</a></li><li><a href="/user-guide/grpc.html" class="sidebar-link">gRPC Example</a></li><li><a href="/user-guide/cluster-docker-consul.html" class="sidebar-link">Traefik cluster example with Swarm</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="let-s-encrypt-docker"><a href="#let-s-encrypt-docker" aria-hidden="true" class="header-anchor">#</a> Let's Encrypt &amp; Docker</h1> <p>In this use case, we want to use Traefik as a <em>layer-7</em> load balancer with SSL termination for a set of micro-services used to run a web application.</p> <p>We also want to automatically <em>discover any services</em> on the Docker host and let Traefik reconfigure itself automatically when containers get created (or shut down) so HTTP traffic can be routed accordingly.</p> <p>In addition, we want to use Let's Encrypt to automatically generate and renew SSL certificates per hostname.</p> <h2 id="setting-up"><a href="#setting-up" aria-hidden="true" class="header-anchor">#</a> Setting Up</h2> <p>In order for this to work, you'll need a server with a public IP address, with Docker and docker-compose installed on it.</p> <p>In this example, we're using the fictitious domain <em>my-awesome-app.org</em>.</p> <p>In real-life, you'll want to use your own domain and have the DNS configured accordingly so the hostname records you'll want to use point to the aforementioned public IP address.</p> <h2 id="networking"><a href="#networking" aria-hidden="true" class="header-anchor">#</a> Networking</h2> <p>Docker containers can only communicate with each other over TCP when they share at least one network.
+This makes sense from a topological point of view in the context of networking, since Docker under the hood creates IPTable rules so containers can't reach other containers <em>unless you'd want to</em>.</p> <p>In this example, we're going to use a single network called <code>web</code> where all containers that are handling HTTP traffic (including Traefik) will reside in.</p> <p>On the Docker host, run the following command:</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker network create web
+</code></pre></div><p>Now, let's create a directory on the server where we will configure the rest of Traefik:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">mkdir</span> -p /opt/traefik
+</code></pre></div><p>Within this directory, we're going to create 3 empty files:</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">touch</span> /opt/traefik/docker-compose.yml
+<span class="token function">touch</span> /opt/traefik/acme.json <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> 600 /opt/traefik/acme.json
+<span class="token function">touch</span> /opt/traefik/traefik.toml
+</code></pre></div><p>The <code>docker-compose.yml</code> file will provide us with a simple, consistent and more importantly, a deterministic way to create Traefik.</p> <p>The contents of the file is as follows:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">traefik</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> traefik<span class="token punctuation">:</span>1.5.4
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token datetime number">80:80</span>
+      <span class="token punctuation">-</span> 443<span class="token punctuation">:</span><span class="token number">443</span>
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> web
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock
+      <span class="token punctuation">-</span> /opt/traefik/traefik.toml<span class="token punctuation">:</span>/traefik.toml
+      <span class="token punctuation">-</span> /opt/traefik/acme.json<span class="token punctuation">:</span>/acme.json
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> traefik
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">web</span><span class="token punctuation">:</span>
+    <span class="token key atrule">external</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre></div><p>As you can see, we're mounting the <code>traefik.toml</code> file as well as the (empty) <code>acme.json</code> file in the container.<br>
+Also, we're mounting the <code>/var/run/docker.sock</code> Docker socket in the container as well, so Traefik can listen to Docker events and reconfigure its own internal configuration when containers are created (or shut down).<br>
+Also, we're making sure the container is automatically restarted by the Docker engine in case of problems (or: if the server is rebooted).
+We're publishing the default HTTP ports <code>80</code> and <code>443</code> on the host, and making sure the container is placed within the <code>web</code> network we've created earlier on.<br>
+Finally, we're giving this container a static name called <code>traefik</code>.</p> <p>Let's take a look at a simple <code>traefik.toml</code> configuration as well before we'll create the Traefik container:</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token constant">debug</span> <span class="token attr-value"><span class="token punctuation">=</span> false</span>
+
+<span class="token constant">logLevel</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;ERROR&quot;</span>
+<span class="token constant">defaultEntryPoints</span> <span class="token attr-value"><span class="token punctuation">=</span> [&quot;https&quot;,&quot;http&quot;]</span>
+
+<span class="token selector">[entryPoints]</span>
+<span class="token selector">  [entryPoints.http]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:80&quot;</span>
+<span class="token selector">    [entryPoints.http.redirect]</span>
+<span class="token constant">    entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token selector">  [entryPoints.https]</span>
+<span class="token constant">  address</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;:443&quot;</span>
+<span class="token selector">  [entryPoints.https.tls]</span>
+
+<span class="token selector">[retry]</span>
+
+<span class="token selector">[docker]</span>
+<span class="token constant">endpoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;unix:///var/run/docker.sock&quot;</span>
+<span class="token constant">domain</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;my-awesome-app.org&quot;</span>
+<span class="token constant">watch</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token constant">exposedByDefault</span> <span class="token attr-value"><span class="token punctuation">=</span> false</span>
+
+<span class="token selector">[acme]</span>
+<span class="token constant">email</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;your-email-here@my-awesome-app.org&quot;</span>
+<span class="token constant">storage</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;acme.json&quot;</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;https&quot;</span>
+<span class="token constant">onHostRule</span> <span class="token attr-value"><span class="token punctuation">=</span> true</span>
+<span class="token selector">[acme.httpChallenge]</span>
+<span class="token constant">entryPoint</span> <span class="token attr-value"><span class="token punctuation">=</span> &quot;http&quot;</span>
+</code></pre></div><p>This is the minimum configuration required to do the following:</p> <ul><li>Log <code>ERROR</code>-level messages (or more severe) to the console, but silence <code>DEBUG</code>-level messages</li> <li>Check for new versions of Traefik periodically</li> <li>Create two entry points, namely an <code>HTTP</code> endpoint on port <code>80</code>, and an <code>HTTPS</code> endpoint on port <code>443</code> where all incoming traffic on port <code>80</code> will immediately get redirected to <code>HTTPS</code>.</li> <li>Enable the Docker provider and listen for container events on the Docker unix socket we've mounted earlier. However, <strong>new containers will not be exposed by Traefik by default, we'll get into this in a bit!</strong></li> <li>Enable automatic request and configuration of SSL certificates using Let's Encrypt.
+These certificates will be stored in the <code>acme.json</code> file, which you can back-up yourself and store off-premises.</li></ul> <p>Alright, let's boot the container. From the <code>/opt/traefik</code> directory, run <code>docker-compose up -d</code> which will create and start the Traefik container.</p> <h2 id="exposing-web-services-to-the-outside-world"><a href="#exposing-web-services-to-the-outside-world" aria-hidden="true" class="header-anchor">#</a> Exposing Web Services to the Outside World</h2> <p>Now that we've fully configured and started Traefik, it's time to get our applications running!</p> <p>Let's take a simple example of a micro-service project consisting of various services, where some will be exposed to the outside world and some will not.</p> <p>The <code>docker-compose.yml</code> of our project looks like this:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">&quot;2.1&quot;</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">app</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>docker<span class="token punctuation">-</span>registry.com/my<span class="token punctuation">-</span>awesome<span class="token punctuation">-</span>app/app<span class="token punctuation">:</span>latest
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token key atrule">db</span><span class="token punctuation">:</span>
+        <span class="token key atrule">condition</span><span class="token punctuation">:</span> service_healthy
+      <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+        <span class="token key atrule">condition</span><span class="token punctuation">:</span> service_healthy
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> web
+      <span class="token punctuation">-</span> default
+    <span class="token key atrule">expose</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;9000&quot;</span>
+    <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.docker.network=web&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.enable=true&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.basic.frontend.rule=Host:app.my-awesome-app.org&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.basic.port=9000&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.basic.protocol=http&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.admin.frontend.rule=Host:admin-app.my-awesome-app.org&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.admin.protocol=https&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.admin.port=9443&quot;</span>
+
+  <span class="token key atrule">db</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>docker<span class="token punctuation">-</span>registry.com/back<span class="token punctuation">-</span>end/5.7
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>docker<span class="token punctuation">-</span>registry.com/back<span class="token punctuation">-</span>end/redis<span class="token punctuation">:</span>4<span class="token punctuation">-</span>alpine
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+
+  <span class="token key atrule">events</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>docker<span class="token punctuation">-</span>registry.com/my<span class="token punctuation">-</span>awesome<span class="token punctuation">-</span>app/events<span class="token punctuation">:</span>latest
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token key atrule">db</span><span class="token punctuation">:</span>
+        <span class="token key atrule">condition</span><span class="token punctuation">:</span> service_healthy
+      <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+        <span class="token key atrule">condition</span><span class="token punctuation">:</span> service_healthy
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> web
+      <span class="token punctuation">-</span> default
+    <span class="token key atrule">expose</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;3000&quot;</span>
+    <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.backend=my-awesome-app-events&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.docker.network=web&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.frontend.rule=Host:events.my-awesome-app.org&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.enable=true&quot;</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;traefik.port=3000&quot;</span>
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">web</span><span class="token punctuation">:</span>
+    <span class="token key atrule">external</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre></div><p>Here, we can see a set of services with two applications that we're actually exposing to the outside world.<br>
+Notice how there isn't a single container that has any published ports to the host -- everything is routed through Docker networks.<br>
+Also, only the containers that we want traffic to get routed to are attached to the <code>web</code> network we created at the start of this document.</p> <p>Since the <code>traefik</code> container we've created and started earlier is also attached to this network, HTTP requests can now get routed to these containers.</p> <h3 id="labels"><a href="#labels" aria-hidden="true" class="header-anchor">#</a> Labels</h3> <p>As mentioned earlier, we don't want containers exposed automatically by Traefik.</p> <p>The reason behind this is simple: we want to have control over this process ourselves.
+Thanks to Docker labels, we can tell Traefik how to create its internal routing configuration.</p> <p>Let's take a look at the labels themselves for the <code>app</code> service, which is a HTTP webservice listing on port 9000:</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">-</span> <span class="token string">&quot;traefik.docker.network=web&quot;</span>
+<span class="token punctuation">-</span> <span class="token string">&quot;traefik.enable=true&quot;</span>
+<span class="token punctuation">-</span> <span class="token string">&quot;traefik.basic.frontend.rule=Host:app.my-awesome-app.org&quot;</span>
+<span class="token punctuation">-</span> <span class="token string">&quot;traefik.basic.port=9000&quot;</span>
+<span class="token punctuation">-</span> <span class="token string">&quot;traefik.basic.protocol=http&quot;</span>
+<span class="token punctuation">-</span> <span class="token string">&quot;traefik.admin.frontend.rule=Host:admin-app.my-awesome-app.org&quot;</span>
+<span class="token punctuation">-</span> <span class="token string">&quot;traefik.admin.protocol=https&quot;</span>
+<span class="token punctuation">-</span> <span class="token string">&quot;traefik.admin.port=9443&quot;</span>
+</code></pre></div><p>We use both <code>container labels</code> and <code>service labels</code>.</p> <h4 id="container-labels"><a href="#container-labels" aria-hidden="true" class="header-anchor">#</a> Container labels</h4> <p>First, we specify the <code>backend</code> name which corresponds to the actual service we're routing <strong>to</strong>.</p> <p>We also tell Traefik to use the <code>web</code> network to route HTTP traffic to this container.
+With the <code>traefik.enable</code> label, we tell Traefik to include this container in its internal configuration.</p> <p>With the <code>frontend.rule</code> label, we tell Traefik that we want to route to this container if the incoming HTTP request contains the <code>Host</code> <code>app.my-awesome-app.org</code>.
+Essentially, this is the actual rule used for Layer-7 load balancing.</p> <p>Finally but not unimportantly, we tell Traefik to route <strong>to</strong> port <code>9000</code>, since that is the actual TCP/IP port the container actually listens on.</p> <h3 id="service-labels"><a href="#service-labels" aria-hidden="true" class="header-anchor">#</a> Service labels</h3> <p><code>Service labels</code> allow managing many routes for the same container.</p> <p>When both <code>container labels</code> and <code>service labels</code> are defined, <code>container labels</code> are just used as default values for missing <code>service labels</code> but no frontend/backend are going to be defined only with these labels.
+Obviously, labels <code>traefik.frontend.rule</code> and <code>traefik.port</code> described above, will only be used to complete information set in <code>service labels</code> during the container frontends/backends creation.</p> <p>In the example, two service names are defined : <code>basic</code> and <code>admin</code>.
+They allow creating two frontends and two backends.</p> <ul><li><code>basic</code> has only one <code>service label</code> : <code>traefik.basic.protocol</code>.
+Traefik will use values set in <code>traefik.frontend.rule</code> and <code>traefik.port</code> to create the <code>basic</code> frontend and backend.
+The frontend listens to incoming HTTP requests which contain the <code>Host</code> <code>app.my-awesome-app.org</code> and redirect them in <code>HTTP</code> to the port <code>9000</code> of the backend.</li> <li><code>admin</code> has all the <code>services labels</code> needed to create the <code>admin</code> frontend and backend (<code>traefik.admin.frontend.rule</code>, <code>traefik.admin.protocol</code>, <code>traefik.admin.port</code>).
+Traefik will create a frontend to listen to incoming HTTP requests which contain the <code>Host</code> <code>admin-app.my-awesome-app.org</code> and redirect them in <code>HTTPS</code> to the port <code>9443</code> of the backend.</li></ul> <h4 id="gotchas-and-tips"><a href="#gotchas-and-tips" aria-hidden="true" class="header-anchor">#</a> Gotchas and tips</h4> <ul><li>Always specify the correct port where the container expects HTTP traffic using <code>traefik.port</code> label.<br>
+If a container exposes multiple ports, Traefik may forward traffic to the wrong port.
+Even if a container only exposes one port, you should always write configuration defensively and explicitly.</li> <li>Should you choose to enable the <code>exposedByDefault</code> flag in the <code>traefik.toml</code> configuration, be aware that all containers that are placed in the same network as Traefik will automatically be reachable from the outside world, for everyone and everyone to see.
+Usually, this is a bad idea.</li> <li>With the <code>traefik.frontend.auth.basic</code> label, it's possible for Traefik to provide a HTTP basic-auth challenge for the endpoints you provide the label for.</li> <li>Traefik has built-in support to automatically export <a href="https://prometheus.io" target="_blank" rel="noopener noreferrer">Prometheus<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> metrics</li> <li>Traefik supports websockets out of the box. In the example above, the <code>events</code>-service could be a NodeJS-based application which allows clients to connect using websocket protocol.
+Thanks to the fact that HTTPS in our example is enforced, these websockets are automatically secure as well (WSS)</li></ul> <h3 id="final-thoughts"><a href="#final-thoughts" aria-hidden="true" class="header-anchor">#</a> Final thoughts</h3> <p>Using Traefik as a Layer-7 load balancer in combination with both Docker and Let's Encrypt provides you with an extremely flexible, powerful and self-configuring solution for your projects.</p> <p>With Let's Encrypt, your endpoints are automatically secured with production-ready SSL certificates that are renewed automatically as well.</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/user-guide/swarm.html" class="prev">
+          Swarm Cluster
+        </a></span> <span class="next"><a href="/user-guide/kubernetes.html">
+          Kubernetes
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.c0cb1a0b.js" defer></script><script src="/assets/js/32.d475b1ed.js" defer></script>
+  </body>
+</html>
