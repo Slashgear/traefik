@@ -1,6 +1,7 @@
 module.exports = {
     title: 'Traefik',
     description: 'Traefik Documentation',
+    base: '/traefik/',
     themeConfig: {
         sidebar: [
             ['/', 'Getting Started'],
