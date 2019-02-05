@@ -4,7 +4,7 @@ You will find here some configuration examples of Traefik.
 
 ## HTTP only
 
-```toml
+```ini
 defaultEntryPoints = ["http"]
 
 [entryPoints]
@@ -14,7 +14,7 @@ defaultEntryPoints = ["http"]
 
 ## HTTP + HTTPS (with SNI)
 
-```toml
+```ini
 defaultEntryPoints = ["http", "https"]
 
 [entryPoints]
@@ -34,7 +34,7 @@ Note that we can either give path to certificate file or directly the file conte
 
 ## HTTP redirect on HTTPS
 
-```toml
+```ini
 defaultEntryPoints = ["http", "https"]
 
 [entryPoints]
@@ -50,14 +50,15 @@ defaultEntryPoints = ["http", "https"]
       keyFile = "examples/traefik.key"
 ```
 
-!!! note
+::: tip
     Please note that `regex` and `replacement` do not have to be set in the `redirect` structure if an entrypoint is defined for the redirection (they will not be used in this case)
+:::
 
 ## Let's Encrypt support
 
 ### Basic example with HTTP challenge
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -91,7 +92,7 @@ Traefik generates these certificates when it starts and it needs to be restart i
 
 ### onHostRule option (with HTTP challenge)
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -128,7 +129,7 @@ If a backend is added with a `onHost` rule, Traefik will automatically generate 
 
 ### OnDemand option (with HTTP challenge)
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -148,17 +149,18 @@ entryPoint = "https"
 
 This configuration allows generating a Let's Encrypt certificate (thanks to `HTTP-01` challenge) during the first HTTPS request on a new domain.
 
-!!! note
+::: tip
     This option simplifies the configuration but :
 
     * TLS handshakes will be slow when requesting a hostname certificate for the first time, which can lead to DDoS attacks.
     * Let's Encrypt have rate limiting: https://letsencrypt.org/docs/rate-limits
 
     That's why, it's better to use the `onHostRule` option if possible.
+:::
 
 ### DNS challenge
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -192,7 +194,7 @@ These variables are described [in this section](/configuration/acme/#provider).
 
 ### DNS challenge with wildcard domains
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.https]
   address = ":443"
@@ -227,7 +229,7 @@ More information about wildcard certificates are available [in this section](/co
 
 ### onHostRule option and provided certificates (with HTTP challenge)
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -258,7 +260,7 @@ Before you use Let's Encrypt in a Traefik cluster, take a look to [the key-value
 
 #### Configuration
 
-```toml
+```ini
 [entryPoints]
   [entryPoints.http]
   address = ":80"
@@ -295,12 +297,13 @@ entryPoint = "https"
 This configuration allows to use the key `traefik/acme/account` to get/set Let's Encrypt certificates content.
 The `consul` provider contains the configuration.
 
-!!! note
+::: tip
     It's possible to use others key-value store providers as described [here](/user-guide/kv-config/#key-value-store-configuration).
+:::
 
 ## Override entrypoints in frontends
 
-```toml
+```ini
 [frontends]
 
   [frontends.frontend1]
@@ -323,7 +326,7 @@ The `consul` provider contains the configuration.
 
 ## Override the Traefik HTTP server idleTimeout and/or throttle configurations from re-loading too quickly
 
-```toml
+```ini
 providersThrottleDuration = "5s"
 
 [respondingTimeouts]

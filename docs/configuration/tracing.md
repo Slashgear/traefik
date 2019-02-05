@@ -8,7 +8,7 @@ Traefik supports three tracing backends: Jaeger, Zipkin and DataDog.
 
 ## Jaeger
 
-```toml
+```ini
 # Tracing definition
 [tracing]
   # Backend name used to send tracing data
@@ -77,7 +77,7 @@ Traefik supports three tracing backends: Jaeger, Zipkin and DataDog.
 
 ## Zipkin
 
-```toml
+```ini
 # Tracing definition
 [tracing]
   # Backend name used to send tracing data
@@ -133,7 +133,7 @@ Traefik supports three tracing backends: Jaeger, Zipkin and DataDog.
 
 ## DataDog
 
-```toml
+```ini
 # Tracing definition
 [tracing]
   # Backend name used to send tracing data

@@ -15,8 +15,9 @@ Traefik supports several Key-value stores:
 
 We will see the steps to set it up with an easy example.
 
-!!! note
+::: tip
     We could do the same with any other Key-value Store.
+:::
 
 ### docker-compose file for Consul
 
@@ -64,7 +65,7 @@ Please refer to the [store Traefik configuration](/user-guide/kv-config/#store-c
 
 Here is the toml configuration we would like to store in the Key-value Store  :
 
-```toml
+```ini
 logLevel = "DEBUG"
 
 defaultEntryPoints = ["http", "https"]
@@ -222,15 +223,16 @@ Remember the command `traefik --help` to display the updated list of flags.
 
 Following our example, we will provide backends/frontends  rules and HTTPS certificates to Traefik.
 
-!!! note
+::: tip
     This section is independent of the way Traefik got its static configuration.
     It means that the static configuration can either come from the same Key-value store or from any other sources.
+:::
 
 ### Key-value storage structure
 
 Here is the toml configuration we would like to store in the store :
 
-```toml
+```ini
 [file]
 
 # rules
@@ -347,8 +349,9 @@ And there, the same dynamic configuration in a KV Store (using `prefix = "traefi
 | `/traefik/tls/1/certificate/certfile` | `path/to/your.cert`|
 | `/traefik/tls/1/certificate/keyfile`  | `path/to/your.key` |
 
-!!! note
+::: tip
     As `/traefik/tls/1/entrypoints` is not defined, the certificate will be attached to all `defaulEntryPoints` with a TLS configuration (in the example, the entryPoint `https`)
+:::
 
 - certificate 2
 
@@ -362,8 +365,9 @@ And there, the same dynamic configuration in a KV Store (using `prefix = "traefi
 
 Traefik can watch the backends/frontends configuration changes and generate its configuration automatically.
 
-!!! note
+::: tip
     Only backends/frontends rules are dynamic, the rest of the Traefik configuration stay static.
+:::
 
 The [Etcd](https://github.com/coreos/etcd/issues/860) and [Consul](https://github.com/hashicorp/consul/issues/886) backends do not support updating multiple keys atomically.  
 As a result, it may be possible for Traefik to read an intermediate configuration state despite judicious use of the `--providersThrottleDuration` flag.  
@@ -406,14 +410,16 @@ Here, we have a 50% balance between the `http://172.17.0.3:80` and the `http://1
 | `/traefik_configurations/2/backends/backend1/servers/server2/url`       | `http://172.17.0.4:80`      |
 | `/traefik_configurations/2/backends/backend1/servers/server2/weight`    | `5`                         |
 
-!!! note
+::: tip
     Traefik *will not watch for key changes in the `/traefik_configurations` prefix*. It will only watch for changes in the `/traefik/alias`.  
     Further, if the `/traefik/alias` key is set, all other configuration with `/traefik/backends` or `/traefik/frontends` prefix are ignored.
+:::
 
 ## Store configuration in Key-value store
 
-!!! note
+::: tip
     Don't forget to [setup the connection between Traefik and Key-value store](/user-guide/kv-config/#launch-traefik).
+:::
 
 The static Traefik configuration in a key-value store can be automatically created and updated, using the [`storeconfig` subcommand](/basics/#commands).
 
@@ -429,7 +435,7 @@ If you configured a file provider `[file]`, all your dynamic configuration (back
 
 To upload your ACME certificates to the KV store, get your Traefik TOML file and add the new `storage` option in the `acme` section:
 
-```toml
+```ini
 [acme]
 email = "test@traefik.io"
 storage = "traefik/acme/account" # the key where to store your certificates in the KV store

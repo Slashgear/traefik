@@ -2,7 +2,7 @@
 
 Traefik can be configured to use BoltDB as a provider.
 
-```toml
+```ini
 ################################################################
 # BoltDB Provider
 ################################################################

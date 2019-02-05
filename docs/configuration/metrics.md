@@ -2,7 +2,7 @@
 
 ## Prometheus
 
-```toml
+```ini
 # Metrics definition
 [metrics]
   #...
@@ -29,7 +29,7 @@
 
 ## DataDog
 
-```toml
+```ini
 # Metrics definition
 [metrics]
   #...
@@ -56,7 +56,7 @@
 
 ## StatsD
 
-```toml
+```ini
 # Metrics definition
 [metrics]
   #...
@@ -83,7 +83,7 @@
 
 ## InfluxDB
 
-```toml
+```ini
 [metrics]
   # ...
 

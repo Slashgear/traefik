@@ -2,7 +2,7 @@
 
 ## Configuration
 
-```toml
+```ini
 # Ping definition
 [ping]
   # Name of the related entry point
@@ -42,7 +42,7 @@ You have two options:
 
 To proxy `/ping` from a regular entry point to the administration one without exposing the dashboard, do the following:
 
-```toml
+```ini
 defaultEntryPoints = ["http"]
 
 [entryPoints]
@@ -61,7 +61,7 @@ The above link `ping` on the `http` entry point and then expose it on port `80`
 If you do not want to or cannot expose the health-check on a regular entry point - e.g. your security rules do not allow it, or you have a conflicting path - then you can enable health-check on its own entry point.
 Use the following configuration:
 
-```toml
+```ini
 defaultEntryPoints = ["http"]
 
 [entryPoints]

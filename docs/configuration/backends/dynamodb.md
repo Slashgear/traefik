@@ -4,7 +4,7 @@ Traefik can be configured to use Amazon DynamoDB as a provider.
 
 ## Configuration
 
-```toml
+```ini
 ################################################################
 # DynamoDB Provider
 ################################################################

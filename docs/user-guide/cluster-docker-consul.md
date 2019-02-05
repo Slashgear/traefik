@@ -188,8 +188,9 @@ And now, the Traefik part will only have the Consul configuration.
     [...]
 ```
 
-!!! note
+::: tip
     For Traefik <1.5.0 add `acme.storage=traefik/acme/account` because Traefik is not reading it from Consul.
+:::
 
 If you have some update to do, update the initializer service and re-deploy it.
 The new configuration will be stored in Consul, and you need to restart the Traefik node: `docker service update --force traefik_traefik`.

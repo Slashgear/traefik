@@ -6,7 +6,7 @@ See [this repository for an example deployment package and further documentation
 
 ## Azure Service Fabric
 
-```toml
+```ini
 ################################################################
 # Azure Service Fabric Provider
 ################################################################
@@ -87,8 +87,9 @@ curl -X PUT \
 }'
 ```
 
-!!! note
+::: tip
     This functionality will be released in a future version of the [sfctl](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-lifecycle-sfctl) tool.
+:::
 
 ## Available Labels
 

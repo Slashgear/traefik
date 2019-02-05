@@ -117,7 +117,7 @@ server {
 
 Here is the `traefik.toml` file used:
 
-```toml
+```ini
 maxIdleConnsPerHost = 100000
 defaultEntryPoints = ["http"]
 

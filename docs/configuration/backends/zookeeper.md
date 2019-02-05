@@ -2,7 +2,7 @@
 
 Traefik can be configured to use Zookeeper as a provider.
 
-```toml
+```ini
 ################################################################
 # Zookeeper Provider
 ################################################################

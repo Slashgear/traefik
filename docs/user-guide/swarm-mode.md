@@ -124,13 +124,14 @@ docker-machine ssh manager "docker service create \
 	containous/whoami"
 ```
 
-!!! note
+::: tip
     We set `whoami1` to use sticky sessions (`--label traefik.backend.loadbalancer.stickiness=true`).
     We'll demonstrate that later.
+:::
 
-!!! note
+::: tip
     If using `docker stack deploy`, there is [a specific way that the labels must be defined in the docker-compose file](https://github.com/containous/traefik/issues/994#issuecomment-269095109).
-
+:::
 Check that everything is scheduled and started:
 
 ```shell
@@ -185,8 +186,9 @@ X-Forwarded-Proto: http
 X-Forwarded-Server: 77fc29c69fe4
 ```
 
-!!! note
+::: tip
     As Traefik is published, you can access it from any machine and not only the manager.
+:::
 
 ```shell
 curl -H Host:whoami0.traefik http://$(docker-machine ip worker1)
